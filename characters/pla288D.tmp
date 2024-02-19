@@ -73,13 +73,13 @@ shape = SubResource("RectangleShape2D_r1n1a")
 target_position = Vector2(0, 500)
 collide_with_areas = true
 
+[node name="Shadow" type="Sprite2D" parent="."]
+position = Vector2(0, 12)
+texture = ExtResource("2_588g2")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_snm3r")
 animation = &"idle"
 frame_progress = 0.508637
-
-[node name="Shadow" type="Sprite2D" parent="."]
-position = Vector2(0, 12)
-texture = ExtResource("2_588g2")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
