@@ -597,13 +597,13 @@ position = Vector2(304, 161)
 shape = SubResource("SegmentShape2D_5ebyy")
 
 [node name="Player" parent="." instance=ExtResource("2_vxgaf")]
-position = Vector2(293, 173)
+position = Vector2(294, 148)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(293, 173)
+position = Vector2(294, 148)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
