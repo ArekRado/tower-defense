@@ -1,7 +1,9 @@
 extends Area2D
 
-@export var speed: float = 200.0
+@export var walk_speed: float = 100.0
+@export var run_speed: float = 200.0
 @export var jump_speed: float = -3.0
+@export var double_press_max_time: float = 0.3
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow_sprite: Sprite2D = $Shadow
@@ -17,7 +19,12 @@ var was_in_air: bool = false
 var is_on_floor: bool = true
 var shadow_shift_y: float = -5.0
 
+var double_press_time:float = double_press_max_time
+var last_action: String = ''
+
 func _process(delta: float) -> void:
+	double_press_time -= delta
+	
 	if shadow_raycast.is_colliding():
 		var collision_position: Vector2 = to_local(shadow_raycast.get_collision_point())
 
@@ -37,10 +44,14 @@ func _physics_process(delta: float) -> void:
 
 	direction = Input.get_vector("left", "right", "up", "down")
 	if direction.length() != 0:
-		velocity = (direction * speed * delta) * Engine.physics_ticks_per_second
+		velocity = (direction * get_speed() * delta) * Engine.physics_ticks_per_second
+		if animated_sprite.animation == 'idle':
+			animated_sprite.play("walk")
 	else:
-		velocity.x = move_toward(velocity.x, 0, speed)
-		velocity.y = move_toward(velocity.y, 0, speed)
+		velocity.x = move_toward(velocity.x, 0, get_speed())
+		velocity.y = move_toward(velocity.y, 0, get_speed())
+		if animated_sprite.animation != 'idle':
+			animated_sprite.play("idle")
 	
 	jump()
 	move()
@@ -54,15 +65,29 @@ func _physics_process(delta: float) -> void:
 	#elif animated_sprite.animation == 'jump_start' || animated_sprite.animation == 'jump_end':
 		#shadow_sprite.position.x = position.x
 		
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey && event.is_pressed():
+		if double_press_time >= 0:
+			if Input.is_action_just_pressed('left'):
+				animated_sprite.play("run")
+			elif Input.is_action_just_pressed('right'):
+				animated_sprite.play("run")
+		else:
+			if Input.is_action_just_pressed('left'):
+				last_action = 'left'
+				double_press_time = double_press_max_time
+			elif Input.is_action_just_pressed('right'):
+				last_action = 'right'
+				double_press_time = double_press_max_time
+			else:
+				double_press_time = 0
+		
 func move() -> void:
 	shadow_shift_y += velocity.y / Engine.physics_ticks_per_second
 	position += velocity / Engine.physics_ticks_per_second
-	#shadow_sprite.position.x = position.x
-	#shadow_sprite.position.x += velocity.y / Engine.physics_ticks_per_second
 	
 	if jump_velocity == 0 && shadow_raycast.is_colliding() == false:
 		shadow_sprite.hide()
-		#jump_start()
 		is_on_floor = false
 	elif shadow_sprite.hidden:
 		shadow_sprite.show()
@@ -75,7 +100,7 @@ func move() -> void:
 func update_animation() -> void:
 	if not animation_locked:
 		if direction.x != 0:
-			animated_sprite.play("run")
+			animated_sprite.play("walk")
 		else: 
 			animated_sprite.play("idle")
 	
@@ -87,6 +112,12 @@ func update_facing_direction() -> void:
 		
 func get_sprite_size() -> Vector2:
 	return animated_sprite.sprite_frames.get_frame_texture("idle", 0).get_size() * animated_sprite.get_scale()
+		
+func get_speed() -> float:
+	if animated_sprite.animation == 'run':
+		return run_speed
+	else:
+		return walk_speed
 		
 func jump_start() -> void:
 	is_on_floor = false
