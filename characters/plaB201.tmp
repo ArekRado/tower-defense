@@ -1,6 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0kxsfek724px"]
+[gd_scene load_steps=27 format=3 uid="uid://b0kxsfek724px"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_kvt2g"]
+[ext_resource type="Script" path="res://characters/player.gd" id="1_74dge"]
 [ext_resource type="Texture2D" uid="uid://kkm66tchylq5" path="res://assets/units/recruit/idle.png" id="2_2cy1c"]
 [ext_resource type="Texture2D" uid="uid://bh0ekdp65epb1" path="res://assets/shadow.png" id="2_588g2"]
 [ext_resource type="Texture2D" uid="uid://cr237s7dc2f6x" path="res://assets/units/recruit/jump_end.png" id="3_3wubu"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="8_0qqdp"]
 [ext_resource type="Script" path="res://scripts/states/idle.gd" id="9_ylg43"]
 [ext_resource type="Script" path="res://scripts/states/walk.gd" id="10_fn4fs"]
-[ext_resource type="Script" path="res://scripts/states/jump.gd" id="11_1774g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1n1a"]
 size = Vector2(6, 24)
@@ -147,10 +146,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PlayerNode" type="Area2D"]
+[node name="A" type="Area2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_kvt2g")
+script = ExtResource("1_74dge")
+walk_speed = null
+run_speed = null
+jump_speed = null
+double_press_max_time = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
@@ -171,15 +174,12 @@ texture = ExtResource("2_588g2")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_0qqdp")
-initial_state = NodePath("idle")
+initial_state = NodePath("Idle")
 
-[node name="idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("9_ylg43")
 
-[node name="walk" type="Node" parent="StateMachine"]
+[node name="Walk" type="Node2D" parent="StateMachine"]
 script = ExtResource("10_fn4fs")
-
-[node name="jump" type="Node" parent="StateMachine"]
-script = ExtResource("11_1774g")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
