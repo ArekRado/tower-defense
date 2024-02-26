@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b0kxsfek724px"]
+[gd_scene load_steps=29 format=3 uid="uid://b0kxsfek724px"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kvt2g"]
 [ext_resource type="Texture2D" uid="uid://kkm66tchylq5" path="res://assets/units/recruit/idle.png" id="2_2cy1c"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://3xwgjt30h08g" path="res://assets/units/recruit/walk.png" id="5_g4ijw"]
 [ext_resource type="Texture2D" uid="uid://dr7hikfrqgnjr" path="res://assets/units/recruit/run.png" id="5_ssdih"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="8_0qqdp"]
+[ext_resource type="Script" path="res://scripts/states/run.gd" id="9_e0afw"]
 [ext_resource type="Script" path="res://scripts/states/idle.gd" id="9_ylg43"]
 [ext_resource type="Script" path="res://scripts/states/walk.gd" id="10_fn4fs"]
 [ext_resource type="Script" path="res://scripts/states/jump.gd" id="11_1774g"]
@@ -172,6 +173,9 @@ texture = ExtResource("2_588g2")
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_0qqdp")
 initial_state = NodePath("idle")
+
+[node name="run" type="Node" parent="StateMachine"]
+script = ExtResource("9_e0afw")
 
 [node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("9_ylg43")

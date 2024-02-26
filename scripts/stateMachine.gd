@@ -1,8 +1,10 @@
 extends Node
+class_name StateMachine
 
 @export var initial_state: State
 
 var current_state: State 
+var current_state_name: String
 var states: Dictionary = {}
 
 func _ready() -> void:
@@ -38,6 +40,7 @@ func on_child_transition(state:State, new_state_name: String) -> void:
 		current_state.exit()
 		
 	new_state.enter()
+	current_state_name = new_state_name
 	current_state = new_state
 	
 

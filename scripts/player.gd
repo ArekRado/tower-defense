@@ -9,6 +9,8 @@ class_name Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var shadow_sprite: Sprite2D = $Shadow
 @onready var shadow_raycast: RayCast2D = $ShadowRaycast2D
+@onready var state_machine: StateMachine = $StateMachine
+
 
 var player_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked: bool = false
@@ -65,22 +67,20 @@ func _process(delta: float) -> void:
 	#elif animated_sprite.animation == 'jump_start' || animated_sprite.animation == 'jump_end':
 		#shadow_sprite.position.x = position.x
 		
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventKey && event.is_pressed():
-		#if double_press_time >= 0:
-			#if Input.is_action_just_pressed('left'):
-				#animated_sprite.play("run")
-			#elif Input.is_action_just_pressed('right'):
-				#animated_sprite.play("run")
-		#else:
-			#if Input.is_action_just_pressed('left'):
-				#last_action = 'left'
-				#double_press_time = double_press_max_time
-			#elif Input.is_action_just_pressed('right'):
-				#last_action = 'right'
-				#double_press_time = double_press_max_time
-			#else:
-				#double_press_time = 0
+func _input(event: InputEvent) -> void:
+	if event is InputEventKey && event.is_pressed():
+		if double_press_time >= 0 && state_machine.current_state_name == 'idle':
+			if Input.is_action_just_pressed('left') || Input.is_action_just_pressed('right'):
+				state_machine.on_child_transition(state_machine.current_state, 'run')
+		else:
+			if Input.is_action_just_pressed('left'):
+				last_action = 'left'
+				double_press_time = double_press_max_time
+			elif Input.is_action_just_pressed('right'):
+				last_action = 'right'
+				double_press_time = double_press_max_time
+			else:
+				double_press_time = 0
 		#
 #func move() -> void:
 	#shadow_shift_y += velocity.y / Engine.physics_ticks_per_second
