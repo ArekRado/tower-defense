@@ -1,8 +1,8 @@
 extends Area2D
 class_name Player
 
-@export var walk_speed: float = 70.0
-@export var run_speed: float = 200.0
+@export var walk_speed: Vector2 = Vector2(70, 60)
+@export var run_speed: Vector2 = Vector2(150, 90)
 @export var jump_speed: float = -3.0
 @export var double_press_max_time: float = 0.3
 
@@ -10,7 +10,6 @@ class_name Player
 @onready var shadow_sprite: Sprite2D = $Shadow
 @onready var shadow_raycast: RayCast2D = $ShadowRaycast2D
 @onready var state_machine: StateMachine = $StateMachine
-
 
 var player_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var animation_locked: bool = false
@@ -113,13 +112,13 @@ func update_facing_direction() -> void:
 func get_sprite_size() -> Vector2:
 	return animated_sprite.sprite_frames.get_frame_texture("idle", 0).get_size() * animated_sprite.get_scale()
 		
-func get_speed() -> float:
+func get_speed() -> Vector2:
 	if animated_sprite.animation == 'run':
 		return run_speed
 	else:
 		return walk_speed
 		
-func move(speed: float) -> void: 
+func move(speed: Vector2) -> void: 
 	velocity = (direction * speed) * Engine.physics_ticks_per_second
 	shadow_shift_y += velocity.y / Engine.physics_ticks_per_second
 	position += velocity / Engine.physics_ticks_per_second
