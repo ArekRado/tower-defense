@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_kvt2g"]
 [ext_resource type="Texture2D" uid="uid://kkm66tchylq5" path="res://assets/units/recruit/idle.png" id="2_2cy1c"]
+[ext_resource type="Texture2D" uid="uid://bh0ekdp65epb1" path="res://assets/shadow.png" id="2_588g2"]
 [ext_resource type="Texture2D" uid="uid://bdbiqtbx1tubg" path="res://assets/units/recruit/hit_short_1.png" id="2_t8crx"]
 [ext_resource type="Texture2D" uid="uid://cr237s7dc2f6x" path="res://assets/units/recruit/jump_end.png" id="3_3wubu"]
 [ext_resource type="Texture2D" uid="uid://eby2rp71de84" path="res://assets/units/recruit/hot_short_2.png" id="3_k4jlm"]
@@ -10,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://dr7hikfrqgnjr" path="res://assets/units/recruit/run.png" id="5_ssdih"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="8_0qqdp"]
 [ext_resource type="Script" path="res://scripts/states/run.gd" id="9_e0afw"]
-[ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://characters/shadow.tscn" id="9_ugvqe"]
 [ext_resource type="Script" path="res://scripts/states/idle.gd" id="9_ylg43"]
 [ext_resource type="Script" path="res://scripts/states/walk.gd" id="10_fn4fs"]
 [ext_resource type="Script" path="res://scripts/states/jump.gd" id="11_1774g"]
@@ -102,7 +102,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit_short_1",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -111,9 +111,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fya1o")
 }],
-"loop": false,
+"loop": true,
 "name": &"hit_short_2",
-"speed": 5.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -189,23 +189,28 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PlayerNode" type="Node2D"]
+[node name="PlayerNode" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_kvt2g")
 
-[node name="TransformContainer" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransformContainer"]
-light_mask = 2
-visibility_layer = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_r1n1a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TransformContainer"]
+[node name="ShadowRaycast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 500)
+collide_with_areas = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_snm3r")
-animation = &"idle"
+animation = &"hit_short_1"
+frame = 1
+frame_progress = 1.0
 offset = Vector2(0, -12)
 
-[node name="Shadow" parent="." instance=ExtResource("9_ugvqe")]
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = ExtResource("2_588g2")
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_0qqdp")
@@ -225,3 +230,5 @@ script = ExtResource("11_1774g")
 
 [node name="hit_short" type="Node" parent="StateMachine"]
 script = ExtResource("13_63qkq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

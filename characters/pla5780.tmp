@@ -189,18 +189,16 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PlayerNode" type="Node2D"]
+[node name="PlayerNode" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_kvt2g")
 
-[node name="TransformContainer" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransformContainer"]
-light_mask = 2
-visibility_layer = 2
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_r1n1a")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TransformContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_snm3r")
 animation = &"idle"
 offset = Vector2(0, -12)
@@ -225,3 +223,5 @@ script = ExtResource("11_1774g")
 
 [node name="hit_short" type="Node" parent="StateMachine"]
 script = ExtResource("13_63qkq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

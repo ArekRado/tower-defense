@@ -1,17 +1,12 @@
 extends State
 class_name Walk
 
-@onready var animated_sprite: AnimatedSprite2D = $"../../AnimatedSprite2D"
+@onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
 @onready var player: Player = $"../.."
 
 func enter() -> void:
 	animated_sprite.play("walk")
 	
-func exit() -> void:
-	pass
-	
-func update(delta: float) -> void:
-	pass
 
 func physics_update(delta: float) -> void:
 	player.direction = Input.get_vector("left", "right", "up", "down")
