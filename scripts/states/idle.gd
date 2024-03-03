@@ -6,7 +6,6 @@ class_name Idle
 
 func enter() -> void:
 	animated_sprite.play('idle')
-	pass
 
 func update(_delta: float) -> void:
 	var direction:Vector2 = Input.get_vector("left", "right", "up", "down")

@@ -12,7 +12,6 @@ class_name Player
 @onready var state_machine: StateMachine = $StateMachine
 
 var player_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
-var animation_locked: bool = false
 var direction: Vector2 = Vector2.ZERO
 var jump_velocity: float = 0.0
 var velocity: Vector2 = Vector2.ZERO
@@ -21,6 +20,9 @@ var is_on_floor: bool = true
 
 var double_press_time:float = double_press_max_time
 var last_action: String = ''
+
+func _ready() -> void:
+	shadow.shift_y = randf_range(-0.1, -30)
 
 func _process(delta: float) -> void:
 	double_press_time -= delta
@@ -58,6 +60,7 @@ func get_speed() -> Vector2:
 func move(speed: Vector2) -> void: 
 	velocity = (direction * speed) 
 	transform_container.position += velocity
-	#position += velocity
 	shadow.shift_y += velocity.y
-	shadow.global_position = transform_container.global_position
+
+	shadow.shadow_sprite.global_position.x = transform_container.global_position.x
+	shadow.shadow_raycast.global_position.x = transform_container.global_position.x

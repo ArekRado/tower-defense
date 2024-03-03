@@ -8,7 +8,6 @@ var current_state_name: String
 var states: Dictionary = {}
 
 func _ready() -> void:
-	
 	var children: Array[Node]  = get_children()
 	for child in children:
 		states[child.name.to_lower()] = child
