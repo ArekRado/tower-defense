@@ -17,5 +17,5 @@ func _process(_delta: float) -> void:
 		
 		shadow_raycast.global_position.y = collision_position.y + shift_y
 		shadow_sprite.global_position.y = collision_position.y + shift_y
-	else :
+	else:
 		shadow_sprite.hide()

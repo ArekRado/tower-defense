@@ -9,9 +9,6 @@ func enter() -> void:
 	animated_sprite.play("walk")
 
 func physics_update(delta: float) -> void:
-	#if shadow.is_above_ground == false:
-		#Transitioned.emit(self, 'jump')
-	
 	player.direction = Input.get_vector("left", "right", "up", "down")
 	if player.direction.length() != 0:
 		player.move(player.walk_speed * delta)
@@ -20,4 +17,7 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit(self, 'idle')
 		
 	if Input.is_action_just_pressed("jump"):
+		Transitioned.emit(self, 'jump')
+
+	if shadow.shadow_sprite.global_position.y - player.transform_container.global_position.y > 0.2:
 		Transitioned.emit(self, 'jump')

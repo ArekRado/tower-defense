@@ -59,8 +59,8 @@ func get_speed() -> Vector2:
 
 func move(speed: Vector2) -> void: 
 	velocity = (direction * speed) 
-	transform_container.position += velocity
+	position += velocity
 	shadow.shift_y += velocity.y
 
-	shadow.shadow_sprite.global_position.x = transform_container.global_position.x
-	shadow.shadow_raycast.global_position.x = transform_container.global_position.x
+	shadow.shadow_sprite.global_position.x = global_position.x
+	shadow.shadow_raycast.global_position.x = global_position.x

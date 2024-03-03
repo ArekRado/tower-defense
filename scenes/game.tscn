@@ -579,7 +579,7 @@ sources/0 = SubResource("TileSetAtlasSource_1djtt")
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5ebyy"]
 a = Vector2(-159, 46)
-b = Vector2(143, 47)
+b = Vector2(143, 46)
 
 [node name="Game" type="Node2D"]
 
@@ -612,7 +612,6 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(3, 2)
