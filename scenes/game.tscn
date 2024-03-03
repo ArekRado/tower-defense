@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://o7kon8ygmder"]
 
 [ext_resource type="Texture2D" uid="uid://c66gydbs0j18c" path="res://assets/tiles map.png" id="1_xpw20"]
-[ext_resource type="PackedScene" uid="uid://b0kxsfek724px" path="res://characters/player.tscn" id="2_vxgaf"]
+[ext_resource type="PackedScene" uid="uid://b0kxsfek724px" path="res://player/player.tscn" id="2_vxgaf"]
 [ext_resource type="Texture2D" uid="uid://clpfkng4ge50c" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/1.png" id="3_2ibti"]
 [ext_resource type="Texture2D" uid="uid://btis8gyg1ijkg" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/2.png" id="4_ioqic"]
 [ext_resource type="Texture2D" uid="uid://c5dciojtrtm3b" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/3.png" id="5_5876e"]

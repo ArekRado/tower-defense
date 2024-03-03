@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cr237s7dc2f6x"
-path="res://.godot/imported/jump_end.png-311c5f1e77dc3a935d85b0b7a51c8018.ctex"
+uid="uid://bh0ekdp65epb1"
+path="res://.godot/imported/shadow.png-0058ba4b4e0943618c88d4649ebb8c1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/units/recruit/jump_end.png"
-dest_files=["res://.godot/imported/jump_end.png-311c5f1e77dc3a935d85b0b7a51c8018.ctex"]
+source_file="res://shadow/shadow.png"
+dest_files=["res://.godot/imported/shadow.png-0058ba4b4e0943618c88d4649ebb8c1e.ctex"]
 
 [params]
 

@@ -5,7 +5,7 @@ class_name HitShort
 @onready var player: Player = $"../.."
 
 func enter() -> void:
-	var animation:float = randi_range(0,1)
+	var animation: float = randi_range(0,1)
 	
 	if animation == 0:
 		animated_sprite.play('hit_short_1')
@@ -13,5 +13,7 @@ func enter() -> void:
 		animated_sprite.play('hit_short_2')
 	
 func update(_delta: float) -> void:
+	print(animated_sprite.frame)
+	
 	if animated_sprite.is_playing() == false:
 		Transitioned.emit(self, 'idle')

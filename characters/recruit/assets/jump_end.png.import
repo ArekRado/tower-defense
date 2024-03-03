@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh0ekdp65epb1"
-path="res://.godot/imported/shadow.png-fa649b8bf20b5924dee4fa3287dfd1b8.ctex"
+uid="uid://cr237s7dc2f6x"
+path="res://.godot/imported/jump_end.png-8dc5b1b5b9bdf131772656f302dd4c42.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shadow.png"
-dest_files=["res://.godot/imported/shadow.png-fa649b8bf20b5924dee4fa3287dfd1b8.ctex"]
+source_file="res://characters/recruit/assets/jump_end.png"
+dest_files=["res://.godot/imported/jump_end.png-8dc5b1b5b9bdf131772656f302dd4c42.ctex"]
 
 [params]
 
