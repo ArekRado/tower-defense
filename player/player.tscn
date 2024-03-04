@@ -202,7 +202,7 @@ shape = SubResource("RectangleShape2D_r1n1a")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TransformContainer"]
 sprite_frames = SubResource("SpriteFrames_snm3r")
-animation = &"idle"
+animation = &"hit_short_1"
 offset = Vector2(0, -12)
 
 [node name="Shadow" parent="." instance=ExtResource("9_g6k5g")]
