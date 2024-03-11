@@ -193,6 +193,8 @@ animations = [{
 script = ExtResource("1_kvt2g")
 
 [node name="TransformContainer" type="Area2D" parent="."]
+collision_layer = 17
+collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransformContainer"]
 light_mask = 2
@@ -209,7 +211,7 @@ offset = Vector2(0, -12)
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_0qqdp")
-initial_state = NodePath("idle")
+initial_state = NodePath("jump")
 
 [node name="run" type="Node" parent="StateMachine"]
 script = ExtResource("9_e0afw")

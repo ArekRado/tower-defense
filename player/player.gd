@@ -43,10 +43,7 @@ func _input(event: InputEvent) -> void:
 				double_press_time = 0
 
 func update_facing_direction() -> void:
-	if direction.x > 0:
-		animated_sprite.flip_h = false
-	elif direction.x < 0:
-		animated_sprite.flip_h = true
+	animated_sprite.flip_h = direction.x < 0
 
 func get_sprite_size() -> Vector2:
 	return animated_sprite.sprite_frames.get_frame_texture("idle", 0).get_size() * animated_sprite.get_scale()

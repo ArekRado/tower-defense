@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://f35i7ib0pnxx"]
+
+[ext_resource type="Texture2D" uid="uid://cmayt82o6bknl" path="res://hitEffect/assets/hitEffect.png" id="1_71hm5"]
+[ext_resource type="Script" path="res://hitEffect/hitEffect.gd" id="2_58soh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahm8q"]
+atlas = ExtResource("1_71hm5")
+region = Rect2(0, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx0ty"]
+atlas = ExtResource("1_71hm5")
+region = Rect2(17, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c8qe3"]
+atlas = ExtResource("1_71hm5")
+region = Rect2(34, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qrspd"]
+atlas = ExtResource("1_71hm5")
+region = Rect2(51, 0, 17, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_br7gw"]
+atlas = ExtResource("1_71hm5")
+region = Rect2(68, 0, 17, 17)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vlf6t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahm8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx0ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c8qe3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qrspd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_br7gw")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="HitEffect" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_vlf6t")
+autoplay = "default"
+frame_progress = 0.880647
+script = ExtResource("2_58soh")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

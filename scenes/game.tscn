@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://o7kon8ygmder"]
+[gd_scene load_steps=12 format=3 uid="uid://o7kon8ygmder"]
 
 [ext_resource type="Texture2D" uid="uid://c66gydbs0j18c" path="res://assets/tiles map.png" id="1_xpw20"]
 [ext_resource type="PackedScene" uid="uid://b0kxsfek724px" path="res://player/player.tscn" id="2_vxgaf"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://btis8gyg1ijkg" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/2.png" id="4_ioqic"]
 [ext_resource type="Texture2D" uid="uid://c5dciojtrtm3b" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/3.png" id="5_5876e"]
 [ext_resource type="Texture2D" uid="uid://d1agf6w5t14m3" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/4.png" id="6_7sbdg"]
+[ext_resource type="PackedScene" uid="uid://b4c7xiwrdngfh" path="res://characters/target/target.tscn" id="7_gvrf8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1djtt"]
 texture = ExtResource("1_xpw20")
@@ -612,6 +613,7 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
 position = Vector2(3, 2)
@@ -647,3 +649,6 @@ motion_mirroring = Vector2(576, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees and ground"]
 texture = ExtResource("6_7sbdg")
 centered = false
+
+[node name="Target" parent="." instance=ExtResource("7_gvrf8")]
+position = Vector2(264, 176)

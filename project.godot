@@ -88,6 +88,7 @@ block={
 2d_physics/layer_2="Wall"
 2d_physics/layer_3="Ground"
 2d_physics/layer_4="ShadowRaycast"
+2d_physics/layer_5="Hitbox"
 
 [physics]
 
@@ -97,3 +98,5 @@ block={
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
