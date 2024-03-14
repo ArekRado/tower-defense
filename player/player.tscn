@@ -9,12 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://3xwgjt30h08g" path="res://characters/recruit/assets/walk.png" id="5_g4ijw"]
 [ext_resource type="Texture2D" uid="uid://dr7hikfrqgnjr" path="res://characters/recruit/assets/run.png" id="5_ssdih"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="8_0qqdp"]
-[ext_resource type="Script" path="res://scripts/states/run.gd" id="9_e0afw"]
+[ext_resource type="Script" path="res://player/states/player_run.gd" id="9_e0afw"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="9_g6k5g"]
-[ext_resource type="Script" path="res://scripts/states/idle.gd" id="9_ylg43"]
-[ext_resource type="Script" path="res://scripts/states/walk.gd" id="10_fn4fs"]
-[ext_resource type="Script" path="res://scripts/states/jump.gd" id="11_1774g"]
-[ext_resource type="Script" path="res://scripts/states/hitShort.gd" id="13_63qkq"]
+[ext_resource type="Script" path="res://player/states/player_idle.gd" id="9_ylg43"]
+[ext_resource type="Script" path="res://player/states/player_walk.gd" id="10_fn4fs"]
+[ext_resource type="Script" path="res://player/states/player_jump.gd" id="11_1774g"]
+[ext_resource type="Script" path="res://player/states/player_hitShort.gd" id="13_63qkq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1n1a"]
 size = Vector2(6, 24)

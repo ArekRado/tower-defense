@@ -1,7 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4c7xiwrdngfh"]
+[gd_scene load_steps=11 format=3 uid="uid://b4c7xiwrdngfh"]
 
 [ext_resource type="Texture2D" uid="uid://b6ie7xc0kstqk" path="res://characters/target/assets/target.png" id="1_0paqv"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="2_p11o6"]
+[ext_resource type="Script" path="res://scripts/stateMachine.gd" id="3_lckg5"]
+[ext_resource type="Script" path="res://characters/target/states/target_idle.gd" id="4_bukqn"]
+[ext_resource type="Script" path="res://characters/target/states/target_shake.gd" id="5_74agh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qvi7k"]
 size = Vector2(6, 18)
@@ -21,6 +24,26 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_eunbm"]
+resource_name = "shake"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.2, 0.2), Vector2(-0.2, -0.3), Vector2(0.3, -0.2), Vector2(-0.3, 0.3), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2acxp"]
+_data = {
+"shake": SubResource("Animation_eunbm")
+}
+
 [node name="Target" type="Node2D"]
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -36,3 +59,18 @@ sprite_frames = SubResource("SpriteFrames_b4s58")
 
 [node name="Shadow" parent="." instance=ExtResource("2_p11o6")]
 position = Vector2(0, 12)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2acxp")
+}
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_lckg5")
+initial_state = NodePath("TargetIdle")
+
+[node name="TargetIdle" type="Node" parent="StateMachine"]
+script = ExtResource("4_bukqn")
+
+[node name="TargetShake" type="Node" parent="StateMachine"]
+script = ExtResource("5_74agh")

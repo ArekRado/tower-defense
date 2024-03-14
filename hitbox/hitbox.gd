@@ -14,11 +14,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	print("_on_body_entered", body)
-	pass # Replace with function body.
-
 
 func _on_area_entered(area: Area2D) -> void:
-	var hitEffectInstance:AnimatedSprite2D = hitEffect.instantiate()
+	var hitEffectInstance: AnimatedSprite2D = hitEffect.instantiate()
 	self.add_child(hitEffectInstance)
 	hitEffectInstance.position = collision_shape_2d.position
-	pass # Replace with function body.
