@@ -1,8 +1,9 @@
 extends State
-class_name PlayerHitShort
+class_name CharacterHitShort
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
-@onready var player: Player = $"../.."
+@onready var transform_container: Area2D = $"../../TransformContainer"
+@onready var character: Character = $"../../Character"
 
 @onready var hitbox: PackedScene = preload("res://hitbox/hitbox.tscn")
 
@@ -18,12 +19,12 @@ func enter() -> void:
 		animated_sprite.play('hit_short_2')
 
 func get_hitbox_position() -> Vector2:
-	var shift_x: float = 7 if player.velocity.x > 0 else -7
-	return player.transform_container.position + Vector2(shift_x, -15)
+	var shift_x: float = 7 if character.velocity.x > 0 else -7
+	return transform_container.position + Vector2(shift_x, -15)
 
 func update(_delta: float) -> void:
 	if animated_sprite.is_playing() == false:
-		Transitioned.emit(self, 'idle')
+		Transitioned.emit('idle')
 	elif animated_sprite.frame == 1 && hitboxInstance == null:
 		hitboxInstance = hitbox.instantiate()
 		owner.add_child(hitboxInstance)

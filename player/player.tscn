@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b0kxsfek724px"]
+[gd_scene load_steps=40 format=3 uid="uid://b0kxsfek724px"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_kvt2g"]
 [ext_resource type="Texture2D" uid="uid://kkm66tchylq5" path="res://characters/recruit/assets/idle.png" id="2_2cy1c"]
@@ -9,11 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://3xwgjt30h08g" path="res://characters/recruit/assets/walk.png" id="5_g4ijw"]
 [ext_resource type="Texture2D" uid="uid://dr7hikfrqgnjr" path="res://characters/recruit/assets/run.png" id="5_ssdih"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="8_0qqdp"]
+[ext_resource type="Texture2D" uid="uid://33ms5lfkkwxv" path="res://characters/recruit/assets/shake.png" id="8_a4s3c"]
 [ext_resource type="Script" path="res://player/states/player_run.gd" id="9_e0afw"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="9_g6k5g"]
 [ext_resource type="Script" path="res://player/states/player_idle.gd" id="9_ylg43"]
 [ext_resource type="Script" path="res://player/states/player_walk.gd" id="10_fn4fs"]
 [ext_resource type="Script" path="res://player/states/player_jump.gd" id="11_1774g"]
+[ext_resource type="Script" path="res://player/states/player_shake.gd" id="12_utue5"]
 [ext_resource type="Script" path="res://player/states/player_hitShort.gd" id="13_63qkq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1n1a"]
@@ -74,6 +76,14 @@ region = Rect2(60, 0, 15, 25)
 [sub_resource type="AtlasTexture" id="AtlasTexture_y73d4"]
 atlas = ExtResource("5_ssdih")
 region = Rect2(75, 0, 15, 25)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmer6"]
+atlas = ExtResource("8_a4s3c")
+region = Rect2(12, 0, 12, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qmxbj"]
+atlas = ExtResource("8_a4s3c")
+region = Rect2(0, 0, 12, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mx7s5"]
 atlas = ExtResource("5_g4ijw")
@@ -173,6 +183,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_pmer6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmxbj")
+}],
+"loop": true,
+"name": &"shake",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_mx7s5")
 }, {
 "duration": 1.0,
@@ -212,6 +233,9 @@ offset = Vector2(0, -12)
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_0qqdp")
 initial_state = NodePath("jump")
+
+[node name="shake" type="Node" parent="StateMachine"]
+script = ExtResource("12_utue5")
 
 [node name="run" type="Node" parent="StateMachine"]
 script = ExtResource("9_e0afw")

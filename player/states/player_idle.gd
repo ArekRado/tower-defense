@@ -1,5 +1,5 @@
 extends State
-class_name Idle
+class_name PlayerIdle
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
 @onready var player: Player = $"../.."

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://o7kon8ygmder"]
+[gd_scene load_steps=13 format=3 uid="uid://o7kon8ygmder"]
 
 [ext_resource type="Texture2D" uid="uid://c66gydbs0j18c" path="res://assets/tiles map.png" id="1_xpw20"]
 [ext_resource type="PackedScene" uid="uid://b0kxsfek724px" path="res://player/player.tscn" id="2_vxgaf"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c5dciojtrtm3b" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/3.png" id="5_5876e"]
 [ext_resource type="Texture2D" uid="uid://d1agf6w5t14m3" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/4.png" id="6_7sbdg"]
 [ext_resource type="PackedScene" uid="uid://b4c7xiwrdngfh" path="res://characters/target/target.tscn" id="7_gvrf8"]
+[ext_resource type="PackedScene" uid="uid://cvjqi4ybyfcq0" path="res://characters/recruit/recruit.tscn" id="8_hq443"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1djtt"]
 texture = ExtResource("1_xpw20")
@@ -652,3 +653,6 @@ centered = false
 
 [node name="Target" parent="." instance=ExtResource("7_gvrf8")]
 position = Vector2(264, 176)
+
+[node name="Recruit" parent="." instance=ExtResource("8_hq443")]
+position = Vector2(196, 189)

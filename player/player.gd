@@ -31,7 +31,7 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey && event.is_pressed():
 		if double_press_time >= 0 && state_machine.current_state_name == 'idle':
 			if Input.is_action_just_pressed('left') || Input.is_action_just_pressed('right'):
-				state_machine.on_child_transition(state_machine.current_state, 'run')
+				state_machine.on_child_transition('run')
 		else:
 			if Input.is_action_just_pressed('left'):
 				last_action = 'left'
@@ -45,14 +45,14 @@ func _input(event: InputEvent) -> void:
 func update_facing_direction() -> void:
 	animated_sprite.flip_h = direction.x < 0
 
-func get_sprite_size() -> Vector2:
-	return animated_sprite.sprite_frames.get_frame_texture("idle", 0).get_size() * animated_sprite.get_scale()
+#func get_sprite_size() -> Vector2:
+	#return animated_sprite.sprite_frames.get_frame_texture("idle", 0).get_size() * animated_sprite.get_scale()
 		
-func get_speed() -> Vector2:
-	if animated_sprite.animation == 'run':
-		return run_speed
-	else:
-		return walk_speed
+#func get_speed() -> Vector2:
+	#if animated_sprite.animation == 'run':
+		#return run_speed
+	#else:
+		#return walk_speed
 
 func move(speed: Vector2) -> void: 
 	velocity = (direction * speed) 

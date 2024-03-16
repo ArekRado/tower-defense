@@ -27,10 +27,8 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
 		
-func on_child_transition(state:State, new_state_name: String) -> void:
-	if state != current_state:
-		return
-	var new_state:State = states.get(new_state_name.to_lower())
+func on_child_transition(new_state_name: String) -> void:
+	var new_state: State = states.get(new_state_name.to_lower())
 	if !new_state:
 		push_warning("State with the name " + new_state_name.to_lower() + " doesnt exist")
 		return

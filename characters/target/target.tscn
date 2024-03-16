@@ -20,7 +20,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_1o2i2")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -56,6 +56,7 @@ shape = SubResource("RectangleShape2D_qvi7k")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_b4s58")
+animation = &"idle"
 
 [node name="Shadow" parent="." instance=ExtResource("2_p11o6")]
 position = Vector2(0, 12)
@@ -67,10 +68,10 @@ libraries = {
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_lckg5")
-initial_state = NodePath("TargetIdle")
+initial_state = NodePath("idle")
 
-[node name="TargetIdle" type="Node" parent="StateMachine"]
+[node name="idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_bukqn")
 
-[node name="TargetShake" type="Node" parent="StateMachine"]
+[node name="shake" type="Node" parent="StateMachine"]
 script = ExtResource("5_74agh")

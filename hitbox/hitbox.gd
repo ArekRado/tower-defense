@@ -16,6 +16,11 @@ func _on_body_entered(body: Node2D) -> void:
 	print("_on_body_entered", body)
 
 func _on_area_entered(area: Area2D) -> void:
+	var state_machine: StateMachine = area.get_parent().find_child('StateMachine')
+	
+	if state_machine:
+		state_machine.on_child_transition('shake')
+	
 	var hitEffectInstance: AnimatedSprite2D = hitEffect.instantiate()
 	self.add_child(hitEffectInstance)
 	hitEffectInstance.position = collision_shape_2d.position
