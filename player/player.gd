@@ -18,7 +18,7 @@ var velocity: Vector2 = Vector2.ZERO
 var was_in_air: bool = false
 var is_on_floor: bool = true
 
-var double_press_time:float = double_press_max_time
+var double_press_time: float = double_press_max_time
 var last_action: String = ''
 
 func _ready() -> void:

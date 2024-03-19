@@ -8,4 +8,4 @@ func enter() -> void:
 
 func update(_delta: float) -> void:
 	if animated_sprite.is_playing() == false:
-		Transitioned.emit(self, 'idle')
+		Transitioned.emit('idle')

@@ -23,7 +23,7 @@ func get_hitbox_position() -> Vector2:
 
 func update(_delta: float) -> void:
 	if animated_sprite.is_playing() == false:
-		Transitioned.emit(self, 'idle')
+		Transitioned.emit('idle')
 	elif animated_sprite.frame == 1 && hitboxInstance == null:
 		hitboxInstance = hitbox.instantiate()
 		owner.add_child(hitboxInstance)

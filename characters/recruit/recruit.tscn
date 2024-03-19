@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cvjqi4ybyfcq0"]
+[gd_scene load_steps=41 format=3 uid="uid://cvjqi4ybyfcq0"]
 
 [ext_resource type="PackedScene" uid="uid://byuaowyxqppcp" path="res://character/character.tscn" id="1_2f53a"]
 [ext_resource type="PackedScene" uid="uid://ckbom4qbgu348" path="res://character_ai/character_ai.tscn" id="1_4xvjr"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://character_ai/states/character_jump.gd" id="14_pvxwk"]
 [ext_resource type="Script" path="res://character_ai/states/character_run.gd" id="15_pbkj0"]
 [ext_resource type="Script" path="res://character_ai/states/character_shake.gd" id="16_lfvoc"]
+[ext_resource type="Script" path="res://character_ai/states/character_walk.gd" id="18_4u5iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k237y"]
 size = Vector2(6, 24)
@@ -187,8 +188,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qmxbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmer6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qmxbj")
 }],
-"loop": true,
+"loop": false,
 "name": &"shake",
 "speed": 5.0
 }, {
@@ -228,7 +235,7 @@ shape = SubResource("RectangleShape2D_k237y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TransformContainer"]
 sprite_frames = SubResource("SpriteFrames_fl2q0")
-animation = &"hit_short_1"
+animation = &"idle"
 offset = Vector2(0, -12)
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
@@ -251,3 +258,6 @@ script = ExtResource("15_pbkj0")
 
 [node name="Shake" type="Node" parent="StateMachine"]
 script = ExtResource("16_lfvoc")
+
+[node name="Walk" type="Node" parent="StateMachine"]
+script = ExtResource("18_4u5iy")

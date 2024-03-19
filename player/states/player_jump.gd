@@ -15,7 +15,7 @@ func physics_update(delta: float) -> void:
 	if shadow.is_above_ground && will_touch_shadow:
 		player.transform_container.global_position.y = shadow.shadow_sprite.global_position.y - 0.1
 		player.jump_velocity = 0
-		Transitioned.emit(self, 'idle')
+		Transitioned.emit('idle')
 	else:
 		player.transform_container.global_position.y += player.jump_velocity
 		player.jump_velocity += (player.player_gravity * delta) / Engine.physics_ticks_per_second

@@ -14,10 +14,10 @@ func physics_update(delta: float) -> void:
 		player.move(player.walk_speed * delta)
 		player.update_facing_direction()
 	else: 
-		Transitioned.emit(self, 'idle')
+		Transitioned.emit('idle')
 		
 	if Input.is_action_just_pressed("jump"):
-		Transitioned.emit(self, 'jump')
+		Transitioned.emit('jump')
 
 	if shadow.shadow_sprite.global_position.y - player.transform_container.global_position.y > 0.2:
-		Transitioned.emit(self, 'jump')
+		Transitioned.emit('jump')

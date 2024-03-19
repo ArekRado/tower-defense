@@ -12,7 +12,7 @@ func physics_update(delta: float) -> void:
 	
 	if run_direction.x != 0:
 		if player.direction.x != 0 && run_direction.x != player.direction.x:
-			Transitioned.emit(self, 'idle')
+			Transitioned.emit('idle')
 		else:
 			player.direction.x = run_direction.x
 	
@@ -20,4 +20,4 @@ func physics_update(delta: float) -> void:
 	player.move(player.run_speed * delta)
 	
 	if Input.is_action_just_pressed("jump"):
-		Transitioned.emit(self, 'jump')
+		Transitioned.emit('jump')
