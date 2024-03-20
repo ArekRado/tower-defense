@@ -41,9 +41,3 @@ func physics_update(delta: float) -> void:
 			character.go_to_character = null
 	else: 
 		Transitioned.emit('idle')
-
-	#if Input.is_action_just_pressed("jump"):
-		#Transitioned.emit(self, 'jump')
-#
-	#if shadow.shadow_sprite.global_position.y - transform_container.global_position.y > 0.2:
-		#Transitioned.emit(self, 'jump')
