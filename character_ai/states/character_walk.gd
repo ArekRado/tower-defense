@@ -2,8 +2,7 @@ extends State
 class_name Walk
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
-@onready var character: Character = $"../../Character"
-@onready var main_container: Node2D = $"../../Character"
+@onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
 @onready var transform_container: Area2D = $"../../TransformContainer"
 

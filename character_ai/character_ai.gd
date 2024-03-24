@@ -2,7 +2,7 @@ extends Node
 class_name CharacterAI
 
 @onready var state_machine: StateMachine = $"../StateMachine"
-@onready var character: Character = $"../Character"
+@onready var character: Character = $".."
 
 var wait_delay: float = 0
 
@@ -21,7 +21,7 @@ func go_to_random_point() -> void:
 	var shift: Vector2 = Vector2(100, 10)
 	var random_shift: Vector2 = Vector2((randf() * shift.x) - shift.x/2, (randf() * shift.y) - shift.y/2)
 
-	character.go_to_position = character.main_container.position + random_shift
+	character.go_to_position = character.position + random_shift
 	
 	var random_value: float = randf()
 	if random_value < 0.5:
@@ -30,9 +30,7 @@ func go_to_random_point() -> void:
 		state_machine.on_child_transition('run')
 	
 func attack() -> void:
-	var targets: Array[Character] = get_target_to_attack()
-	targets.shuffle()
-	var target: Character = targets[0]
+	var target: Character = get_target_to_attack()
 	
 	if target == null:
 		return
@@ -64,15 +62,17 @@ func do_something() -> void:
 	else:
 		wait_delay = randf() * 3
 
-func get_target_to_attack() -> Array[Character]:
+func get_target_to_attack() -> Character:
 	var characters: Array[Node] = get_parent().get_parent().find_children('', 'Character').filter(func (node: Node) -> bool: 
 		if node.get_instance_id() == character.get_instance_id():
 			return false
-		
+			
 		return true
-	)
+	) 
 	
-	if characters[0] is Character:
-		return [characters[0]]
+	if characters.size() == 0:
+		return null
 	
-	return [null]
+	characters.shuffle()
+	
+	return characters[0]

@@ -2,7 +2,7 @@ extends State
 class_name CharacterRun
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
-@onready var character: Character = $"../../Character"
+@onready var character: Character = $"../.."
 
 func enter() -> void:
 	animated_sprite.play("run")

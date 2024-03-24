@@ -3,7 +3,7 @@ class_name CharacterHitShort
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
 @onready var transform_container: Area2D = $"../../TransformContainer"
-@onready var character: Character = $"../../Character"
+@onready var character: Character = $"../.."
 
 @onready var hitbox: PackedScene = preload("res://hitbox/hitbox.tscn")
 

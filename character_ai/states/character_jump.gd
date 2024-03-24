@@ -2,7 +2,7 @@ extends State
 class_name CharacterJump
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
-@onready var character: Character = $"../../Character"
+@onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
 @onready var transform_container: Area2D = $"../../TransformContainer"
 

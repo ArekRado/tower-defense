@@ -1,7 +1,6 @@
-[gd_scene load_steps=41 format=3 uid="uid://cvjqi4ybyfcq0"]
+[gd_scene load_steps=40 format=3 uid="uid://cvjqi4ybyfcq0"]
 
-[ext_resource type="PackedScene" uid="uid://byuaowyxqppcp" path="res://character/character.tscn" id="1_2f53a"]
-[ext_resource type="PackedScene" uid="uid://ckbom4qbgu348" path="res://character_ai/character_ai.tscn" id="1_4xvjr"]
+[ext_resource type="Script" path="res://character/character.gd" id="1_8y0co"]
 [ext_resource type="Texture2D" uid="uid://bdbiqtbx1tubg" path="res://characters/recruit/assets/hit_short_1.png" id="2_oi54j"]
 [ext_resource type="Texture2D" uid="uid://eby2rp71de84" path="res://characters/recruit/assets/hot_short_2.png" id="3_wpkxi"]
 [ext_resource type="Texture2D" uid="uid://kkm66tchylq5" path="res://characters/recruit/assets/idle.png" id="4_cpbxk"]
@@ -218,10 +217,7 @@ animations = [{
 }]
 
 [node name="Recruit" type="Node2D"]
-
-[node name="Character" parent="." instance=ExtResource("1_2f53a")]
-
-[node name="CharacterAI" parent="." instance=ExtResource("1_4xvjr")]
+script = ExtResource("1_8y0co")
 
 [node name="TransformContainer" type="Area2D" parent="."]
 collision_layer = 17

@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0kxsfek724px"]
+
+[ext_resource type="Script" path="res://player_controls/player_controls.gd" id="1_kvt2g"]
+[ext_resource type="Script" path="res://scripts/stateMachine.gd" id="8_0qqdp"]
+[ext_resource type="Script" path="res://player_controls/states/player_run.gd" id="9_e0afw"]
+[ext_resource type="Script" path="res://player_controls/states/player_idle.gd" id="9_ylg43"]
+[ext_resource type="Script" path="res://player_controls/states/player_walk.gd" id="10_fn4fs"]
+[ext_resource type="Script" path="res://player_controls/states/player_jump.gd" id="11_1774g"]
+[ext_resource type="Script" path="res://player_controls/states/player_shake.gd" id="12_utue5"]
+[ext_resource type="Script" path="res://player_controls/states/player_hitShort.gd" id="13_63qkq"]
+
+[node name="PlayerControls" type="Node2D"]
+script = ExtResource("1_kvt2g")
+
+[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("8_0qqdp")
+initial_state = NodePath("jump")
+
+[node name="shake" type="Node" parent="StateMachine"]
+script = ExtResource("12_utue5")
+
+[node name="run" type="Node" parent="StateMachine"]
+script = ExtResource("9_e0afw")
+
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("9_ylg43")
+
+[node name="walk" type="Node" parent="StateMachine"]
+script = ExtResource("10_fn4fs")
+
+[node name="jump" type="Node" parent="StateMachine"]
+script = ExtResource("11_1774g")
+
+[node name="hit_short" type="Node" parent="StateMachine"]
+script = ExtResource("13_63qkq")
