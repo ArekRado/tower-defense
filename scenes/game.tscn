@@ -647,12 +647,12 @@ centered = false
 [node name="Target" parent="." instance=ExtResource("7_gvrf8")]
 position = Vector2(264, 176)
 
-[node name="Recruit2" parent="." instance=ExtResource("8_hq443")]
-position = Vector2(306, 184)
-
 [node name="Recruit" parent="." instance=ExtResource("8_hq443")]
 position = Vector2(196, 189)
 is_player = true
 
+[node name="Recruit2" parent="." instance=ExtResource("8_hq443")]
+position = Vector2(324, 192)
+
 [node name="Recruit3" parent="." instance=ExtResource("8_hq443")]
-position = Vector2(360, 190)
+position = Vector2(380, 193)

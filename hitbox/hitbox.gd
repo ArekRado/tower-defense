@@ -12,9 +12,6 @@ func _process(delta: float) -> void:
 	if lifetime < 0:
 		queue_free()
 
-func _on_body_entered(body: Node2D) -> void:
-	print("_on_body_entered", body)
-
 func _on_area_entered(area: Area2D) -> void:
 	var state_machine: StateMachine = area.get_parent().find_child('StateMachine')
 	

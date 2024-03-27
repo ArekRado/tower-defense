@@ -1,5 +1,5 @@
 extends State
-class_name Walk
+class_name CharacterWalk
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
 @onready var character: Character = $"../.."

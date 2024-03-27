@@ -11,93 +11,87 @@ class_name PlayerControls
 @onready var shadow: Shadow = $"../Shadow"
 @onready var state_machine: StateMachine = $"../StateMachine"
 @onready var character: Character = $".."
+@onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
 
 var double_press_time: float = double_press_max_time
 var last_action: String = ''
-
-@onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
-
+var last_delta: float = 0
 
 func _ready() -> void:
 	remote_transform_2d.remote_path = '../../../MainCamera'
 
 func _process(delta: float) -> void:
 	double_press_time -= delta
-
-func _input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		#
-		# WALK
-		#
-		if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'jump':
-			var shift: Vector2 = Vector2.ZERO
-			if Input.is_action_pressed('left'): shift += Vector2.LEFT
-			if Input.is_action_pressed('right'): shift += Vector2.RIGHT
-			if Input.is_action_pressed('up'): shift += Vector2.UP
-			if Input.is_action_pressed('down'): shift += Vector2.DOWN
+	last_delta = delta
+	
+	walk()
+	hit_short()
+	jump()
+	run()
+	
+func walk() -> void:
+	if state_machine.current_state_name == 'run':
+		return
+		
+	if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'jump':
+		var shift: Vector2 = Vector2.ZERO
+		if Input.is_action_pressed('left'): shift += Vector2.LEFT
+		if Input.is_action_pressed('right'): shift += Vector2.RIGHT
+		if Input.is_action_pressed('up'): shift += Vector2.UP
+		if Input.is_action_pressed('down'): shift += Vector2.DOWN
+		
+		shift = shift.normalized()
+		
+		if shift.length() != 0:
+			character.go_to_position = transform_container.global_position + (shift * character.walk_speed * 10)
 			
-			shift = shift.normalized()
-			
-			if shift.length() != 0:
-				character.go_to_position = transform_container.global_position + (shift * character.walk_speed * 10)
+			if state_machine.current_state_name != 'jump':
 				state_machine.on_child_transition('walk')
-			else:
-				state_machine.on_child_transition('idle')
+		elif state_machine.current_state_name != 'jump':
+			state_machine.on_child_transition('idle')
+
+func hit_short() -> void:
+	if state_machine.current_state_name == 'idle' && Input.is_action_just_pressed("hit_short"):
+		state_machine.on_child_transition('hitShort')
+
+func jump() -> void:
+	if Input.is_action_just_pressed("jump") && (state_machine.current_state_name == 'run' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'idle'):
+		state_machine.on_child_transition('jump')
+
+	if state_machine.current_state_name == 'jump':
+		var shift: Vector2 = Vector2.ZERO
+		if Input.is_action_pressed('left'): shift += Vector2.LEFT
+		if Input.is_action_pressed('right'): shift += Vector2.RIGHT
+		if Input.is_action_pressed('up'): shift += Vector2.UP
+		if Input.is_action_pressed('down'): shift += Vector2.DOWN
 		
-		if state_machine.current_state_name != 'idle':
-			return
-		#
-		# HIT SHORT
-		#
-		if Input.is_action_just_pressed("hit_short"):
-			state_machine.on_child_transition('hitShort')
-			return
-			
-		#
-		# Jump
-		#
-		if Input.is_action_just_pressed("jump"):
-			state_machine.on_child_transition('jump')
-			return
-			
-		#
-		# RUN
-		#
-		if double_press_time >= 0:
-			if Input.is_action_just_pressed('left'):
-				state_machine.on_child_transition('run')
-				character.go_to_position = transform_container.global_position + Vector2.LEFT
-			elif Input.is_action_just_pressed('right'):
-				state_machine.on_child_transition('run')
-				character.go_to_position = transform_container.global_position + Vector2.RIGHT
+		shift = shift.normalized()
+		if shift.length() != 0:
+			var walk_speed_normalized: Vector2 = character.walk_speed * last_delta
+			character.direction = shift
+			character.move(walk_speed_normalized)
+		
+func run() -> void:
+	if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' && double_press_time >= 0:
+		if Input.is_action_just_pressed('left'):
+			state_machine.on_child_transition('run')
+			character.go_to_position = transform_container.global_position + Vector2.LEFT
+		elif Input.is_action_just_pressed('right'):
+			state_machine.on_child_transition('run')
+			character.go_to_position = transform_container.global_position + Vector2.RIGHT
+	else:
+		if Input.is_action_just_pressed('left'):
+			last_action = 'left'
+			double_press_time = double_press_max_time
+		elif Input.is_action_just_pressed('right'):
+			last_action = 'right'
+			double_press_time = double_press_max_time
 		else:
-			if Input.is_action_just_pressed('left'):
-				last_action = 'left'
-				double_press_time = double_press_max_time
-			elif Input.is_action_just_pressed('right'):
-				last_action = 'right'
-				double_press_time = double_press_max_time
-			else:
-				double_press_time = 0
+			double_press_time = 0
 		
-
-
-#func update_facing_direction() -> void:
-	#animated_sprite.flip_h = direction.x < 0
-
-#func get_sprite_size() -> Vector2:
-	#return animated_sprite.sprite_frames.get_frame_texture("idle", 0).get_size() * animated_sprite.get_scale()
-		
-#func get_speed() -> Vector2:
-	#if animated_sprite.animation == 'run':
-		#return run_speed
-	#else:
-		#return walk_speed
-
-#func move(speed: Vector2) -> void: 
-	#velocity = (direction * speed) 
-	#position += velocity
-	#shadow.shift_y += velocity.y
-#
-	#shadow.shadow_sprite.global_position.x = global_position.x
-	#shadow.shadow_raycast.global_position.x = global_position.x
+#func _input(event: InputEvent) -> void:
+	#if event is InputEventKey:
+		#walk()
+		#hit_short()
+		#jump()
+		#run()

@@ -1,12 +1,12 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4c7xiwrdngfh"]
 
 [ext_resource type="Texture2D" uid="uid://b6ie7xc0kstqk" path="res://characters/target/assets/target.png" id="1_0paqv"]
-[ext_resource type="Script" path="res://character/character.gd" id="1_q1qth"]
+[ext_resource type="Script" path="res://characters/target/target.gd" id="1_jrbne"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="2_p11o6"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="3_lckg5"]
 [ext_resource type="Script" path="res://characters/target/states/target_idle.gd" id="4_bukqn"]
 [ext_resource type="Script" path="res://characters/target/states/target_shake.gd" id="5_74agh"]
-[ext_resource type="Script" path="res://character_ai/states/character_jump.gd" id="7_67rc5"]
+[ext_resource type="Script" path="res://characters/target/states/target_jump.gd" id="7_0vubq"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1o2i2"]
 atlas = ExtResource("1_0paqv")
@@ -52,7 +52,7 @@ _data = {
 }
 
 [node name="Target" type="Node2D"]
-script = ExtResource("1_q1qth")
+script = ExtResource("1_jrbne")
 
 [node name="TransformContainer" type="Area2D" parent="."]
 collision_layer = 17
@@ -85,4 +85,4 @@ script = ExtResource("4_bukqn")
 script = ExtResource("5_74agh")
 
 [node name="jump" type="Node" parent="StateMachine"]
-script = ExtResource("7_67rc5")
+script = ExtResource("7_0vubq")
