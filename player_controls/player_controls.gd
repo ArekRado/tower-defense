@@ -33,7 +33,7 @@ func walk() -> void:
 	if state_machine.current_state_name == 'run':
 		return
 		
-	if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'jump':
+	if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk':
 		var shift: Vector2 = Vector2.ZERO
 		if Input.is_action_pressed('left'): shift += Vector2.LEFT
 		if Input.is_action_pressed('right'): shift += Vector2.RIGHT
@@ -56,6 +56,7 @@ func hit_short() -> void:
 
 func jump() -> void:
 	if Input.is_action_just_pressed("jump") && (state_machine.current_state_name == 'run' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'idle'):
+		character.direction = Vector2.ZERO
 		state_machine.on_child_transition('jump')
 
 	if state_machine.current_state_name == 'jump':
@@ -69,7 +70,6 @@ func jump() -> void:
 		if shift.length() != 0:
 			var walk_speed_normalized: Vector2 = character.walk_speed * last_delta
 			character.direction = shift
-			character.move(walk_speed_normalized)
 		
 func run() -> void:
 	if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' && double_press_time >= 0:
@@ -88,10 +88,6 @@ func run() -> void:
 			double_press_time = double_press_max_time
 		else:
 			double_press_time = 0
-		
-#func _input(event: InputEvent) -> void:
-	#if event is InputEventKey:
-		#walk()
-		#hit_short()
-		#jump()
-		#run()
+			
+	if state_machine.current_state_name == 'run':
+		character.go_to_position = character.transform_container.global_position + (character.direction * 1)

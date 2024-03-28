@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0kxsfek724px"]
+[gd_scene load_steps=2 format=3 uid="uid://c1oqqp022lfbo"]
 
-[ext_resource type="Script" path="res://player_controls/player_controls.gd" id="1_kvt2g"]
+[ext_resource type="Script" path="res://player_controls/player_controls.gd" id="1_evx3u"]
 
 [node name="PlayerControls" type="Node2D"]
-script = ExtResource("1_kvt2g")
+script = ExtResource("1_evx3u")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
