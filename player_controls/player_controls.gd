@@ -43,7 +43,7 @@ func walk() -> void:
 		shift = shift.normalized()
 		
 		if shift.length() != 0:
-			character.go_to_position = transform_container.global_position + (shift * character.walk_speed * 10)
+			character.go_to_position = transform_container.global_position + (shift * character.walk_speed)
 			
 			if state_machine.current_state_name != 'jump':
 				state_machine.on_child_transition('walk')
@@ -90,4 +90,19 @@ func run() -> void:
 			double_press_time = 0
 			
 	if state_machine.current_state_name == 'run':
-		character.go_to_position = character.transform_container.global_position + (character.direction * 1)
+		character.go_to_position = character.transform_container.global_position + character.direction
+		
+		if Input.is_action_just_pressed('left') && character.direction.x > 0:
+			state_machine.on_child_transition('idle')
+			return
+		if Input.is_action_just_pressed('right') && character.direction.x < 0:
+			state_machine.on_child_transition('idle')
+			return
+		
+		var shift_y: float = 0
+		if Input.is_action_pressed('up'): shift_y = -1
+		if Input.is_action_pressed('down'): shift_y = 1
+		
+		var clamped_shift_y: float = clamp(shift_y * character.run_speed.y, character.run_speed.y * -1, character.run_speed.y)
+		character.go_to_position.y = character.transform_container.global_position.y + clamped_shift_y
+			
