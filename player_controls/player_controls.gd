@@ -24,8 +24,9 @@ func _process(delta: float) -> void:
 	double_press_time -= delta
 	last_delta = delta
 	
-	walk()
+	block()
 	hit_short()
+	walk()
 	jump()
 	run()
 	
@@ -50,8 +51,12 @@ func walk() -> void:
 		elif state_machine.current_state_name != 'jump':
 			state_machine.on_child_transition('idle')
 
+func block() -> void:
+	if Input.is_action_just_pressed("block") && (state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'run') :
+		state_machine.on_child_transition('block')
+
 func hit_short() -> void:
-	if state_machine.current_state_name == 'idle' && Input.is_action_just_pressed("hit_short"):
+	if Input.is_action_just_pressed("hit_short") && (state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'run') :
 		state_machine.on_child_transition('hitShort')
 
 func jump() -> void:

@@ -22,6 +22,8 @@ var jump_velocity: float = 0.0
 var velocity: Vector2 = Vector2.ZERO
 var was_in_air: bool = false
 var is_on_floor: bool = true
+# Used to display shake and fall animations
+var fall_direction: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	shadow.shift_y = randf_range(-0.1, -30)
