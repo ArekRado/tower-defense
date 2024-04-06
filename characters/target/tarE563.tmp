@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://b4c7xiwrdngfh"]
 
 [ext_resource type="Texture2D" uid="uid://b6ie7xc0kstqk" path="res://characters/target/assets/target.png" id="1_0paqv"]
-[ext_resource type="Script" path="res://character/character.gd" id="1_afl0n"]
+[ext_resource type="Script" path="res://characters/target/target.gd" id="1_jrbne"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="2_p11o6"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="3_lckg5"]
 [ext_resource type="Script" path="res://characters/target/states/target_idle.gd" id="4_bukqn"]
@@ -52,11 +52,7 @@ _data = {
 }
 
 [node name="Target" type="Node2D"]
-script = ExtResource("1_afl0n")
-walk_speed = Vector2(0, 0)
-run_speed = Vector2(0, 0)
-jump_speed = -5.0
-short_hit_range = 0.0
+script = ExtResource("1_jrbne")
 
 [node name="TransformContainer" type="Area2D" parent="."]
 collision_layer = 17

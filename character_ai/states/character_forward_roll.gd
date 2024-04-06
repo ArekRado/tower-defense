@@ -7,20 +7,36 @@ class_name CharacterForwardRoll
 @onready var transform_container: Area2D = $"../../TransformContainer"
 
 func enter() -> void:
-	character.jump_velocity = character.jump_speed
-	animated_sprite.play('jump_start')
+	animated_sprite.play("forward_roll")
+	
+func get_target_position() -> Vector2:
+	var target_position: Vector2
+	if character.go_to_position.length() > 0:
+		target_position = character.go_to_position
+	elif character.go_to_character:
+		var target_character_position: Vector2 = character.go_to_character.transform_container.global_position
+		var character_position: Vector2 = character.transform_container.global_position
+		var shift_x: float = character.short_hit_range if character_position.x > target_character_position.x else character.short_hit_range * -1
+		
+		target_position = target_character_position + Vector2(shift_x, 0)
+	else:
+		push_warning("Character needs go_to_position or go_to_character to be defined")
+	
+	return target_position
 
 func physics_update(delta: float) -> void:
-	var will_touch_shadow: bool = transform_container.global_position.y > shadow.shadow_sprite.global_position.y
+	var target_position: Vector2 = get_target_position()
 	
-	if shadow.is_above_ground && will_touch_shadow:
-		transform_container.global_position.y = shadow.shadow_sprite.global_position.y - 0.1
-		character.jump_velocity = 0
+	character.direction = target_position - character.transform_container.global_position
+	var distance: float = character.direction.length()
+	var run_speed: Vector2 = character.run_speed * delta
+	
+	if distance != 0:
+		character.move(run_speed)
+		
+		if distance <= run_speed.length() * 1.2:
+			Transitioned.emit('idle')
+			character.go_to_position = Vector2.ZERO
+			character.go_to_character = null
+	else: 
 		Transitioned.emit('idle')
-	else:
-		transform_container.global_position.y += character.jump_velocity
-		character.jump_velocity += (character.character_gravity * delta) / Engine.physics_ticks_per_second
-	
-	if character.direction.length() != 0:
-		character.move(character.walk_speed * delta)
-	

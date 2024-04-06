@@ -24,6 +24,7 @@ func _process(delta: float) -> void:
 	double_press_time -= delta
 	last_delta = delta
 	
+	forward_roll()
 	block()
 	hit_short()
 	walk()
@@ -60,11 +61,13 @@ func hit_short() -> void:
 		state_machine.on_child_transition('hitShort')
 
 func jump() -> void:
-	if Input.is_action_just_pressed("jump") && (state_machine.current_state_name == 'run' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'idle'):
+	var csn: String = state_machine.current_state_name
+
+	if Input.is_action_just_pressed("jump") && (csn == 'run' || csn == 'walk' || csn == 'idle' || csn == 'forwardRoll'):
 		character.direction = Vector2.ZERO
 		state_machine.on_child_transition('jump')
 
-	if state_machine.current_state_name == 'jump':
+	if csn == 'jump':
 		var shift: Vector2 = Vector2.ZERO
 		if Input.is_action_pressed('left'): shift += Vector2.LEFT
 		if Input.is_action_pressed('right'): shift += Vector2.RIGHT
@@ -111,3 +114,6 @@ func run() -> void:
 		var clamped_shift_y: float = clamp(shift_y * character.run_speed.y, character.run_speed.y * -1, character.run_speed.y)
 		character.go_to_position.y = character.transform_container.global_position.y + clamped_shift_y
 			
+func forward_roll() -> void:
+	if state_machine.current_state_name == 'run' && Input.is_action_just_pressed('block'):
+		state_machine.on_child_transition('forwardRoll')
