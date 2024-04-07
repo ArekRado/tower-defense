@@ -1,5 +1,5 @@
 extends State
-class_name CharacterJump
+class_name CharacterJumpFast
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
 @onready var character: Character = $"../.."
@@ -7,6 +7,7 @@ class_name CharacterJump
 @onready var transform_container: Area2D = $"../../TransformContainer"
 
 func enter() -> void:
+	character.jump_velocity = character.jump_fast_height
 	animated_sprite.play('jump')
 
 func physics_update(delta: float) -> void:
@@ -21,5 +22,5 @@ func physics_update(delta: float) -> void:
 		character.jump_velocity += (character.character_gravity * delta) / Engine.physics_ticks_per_second
 	
 	if character.direction.length() != 0:
-		character.move(character.jump_move_speed * delta)
+		character.move(character.jump_fast_move_speed * delta)
 	

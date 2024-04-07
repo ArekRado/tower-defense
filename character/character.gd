@@ -4,12 +4,16 @@ class_name Character
 @export var is_player: bool = false
 @export var walk_speed: Vector2 = Vector2(70, 60)
 @export var run_speed: Vector2 = Vector2(150, 90)
-@export var jump_speed: float = -3.0
+@export var jump_move_speed: Vector2 = Vector2(70, 60)
+@export var jump_fast_move_speed: Vector2 = Vector2(170, 100)
+@export var jump_height: float = -3.0
+@export var jump_fast_height: float = -2.2
 @export var short_hit_range: float = 5
 
 @onready var animated_sprite: AnimatedSprite2D = $"TransformContainer/AnimatedSprite2D"
 @onready var shadow: Shadow = $"Shadow"
 @onready var transform_container: Area2D = $"TransformContainer"
+@onready var state_machine: StateMachine = $StateMachine
 
 @onready var player_controls: PackedScene = preload("res://player_controls/player_controls.tscn")
 @onready var character_ai: PackedScene = preload("res://character_ai/character_ai.tscn")
@@ -47,3 +51,12 @@ func move(speed: Vector2) -> void:
 	shadow.shadow_raycast.global_position.x = global_position.x
 	
 	update_facing_direction()
+
+func on_hit(_damage: float, power: Vector2) -> void:
+	fall_direction = power
+	
+	if state_machine.current_state_name == 'fall' || state_machine.current_state_name == 'shake':
+		fall_direction += power
+		state_machine.on_child_transition('fall')
+	else:
+		state_machine.on_child_transition('shake')

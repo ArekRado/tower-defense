@@ -55,7 +55,6 @@ _data = {
 script = ExtResource("1_afl0n")
 walk_speed = Vector2(0, 0)
 run_speed = Vector2(0, 0)
-jump_speed = -5.0
 short_hit_range = 0.0
 
 [node name="TransformContainer" type="Area2D" parent="."]

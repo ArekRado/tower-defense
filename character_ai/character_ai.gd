@@ -53,6 +53,10 @@ func do_something() -> void:
 	var random_value: float = randf()
 	wait_delay = 1
 	
+	if character.walk_speed.length() == 0:
+		wait_delay = 10
+		return
+	
 	if random_value < 0.1:
 		go_to_random_point()
 	elif random_value < 0.2: 

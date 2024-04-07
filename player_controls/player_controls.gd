@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 	block()
 	hit_short()
 	walk()
-	jump()
 	run()
+	jump()
 	
 func walk() -> void:
 	if state_machine.current_state_name == 'run':
@@ -49,7 +49,7 @@ func walk() -> void:
 			
 			if state_machine.current_state_name != 'jump':
 				state_machine.on_child_transition('walk')
-		elif state_machine.current_state_name != 'jump':
+		elif state_machine.current_state_name != 'jump' && state_machine.current_state_name != 'idle':
 			state_machine.on_child_transition('idle')
 
 func block() -> void:
@@ -65,9 +65,12 @@ func jump() -> void:
 
 	if Input.is_action_just_pressed("jump") && (csn == 'run' || csn == 'walk' || csn == 'idle' || csn == 'forwardRoll'):
 		character.direction = Vector2.ZERO
-		state_machine.on_child_transition('jump')
+		state_machine.on_child_transition('jumpStart')
 
-	if csn == 'jump':
+	if csn == 'jump' || csn == 'jumpHitShort':
+		if Input.is_action_just_pressed("hit_short"):
+			state_machine.on_child_transition('jumphitShort')
+			
 		var shift: Vector2 = Vector2.ZERO
 		if Input.is_action_pressed('left'): shift += Vector2.LEFT
 		if Input.is_action_pressed('right'): shift += Vector2.RIGHT
@@ -76,8 +79,7 @@ func jump() -> void:
 		
 		shift = shift.normalized()
 		if shift.length() != 0:
-			var walk_speed_normalized: Vector2 = character.walk_speed * last_delta
-			character.direction = shift
+			character.direction = character.jump_move_speed * last_delta * shift
 		
 func run() -> void:
 	if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' && double_press_time >= 0:
@@ -98,6 +100,9 @@ func run() -> void:
 			double_press_time = 0
 			
 	if state_machine.current_state_name == 'run':
+		if Input.is_action_just_pressed("jump"):
+			state_machine.on_child_transition('jumpFast')
+			
 		character.go_to_position = character.transform_container.global_position + character.direction
 		
 		if Input.is_action_just_pressed('left') && character.direction.x > 0:

@@ -5,22 +5,17 @@ class_name CharacterLie
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
 @onready var transform_container: Area2D = $"../../TransformContainer"
+@onready var collision_shape: CollisionShape2D =$"../../TransformContainer/CollisionShape2D"
+
 
 func enter() -> void:
-	character.jump_velocity = character.jump_speed
-	animated_sprite.play('jump_start')
+	character.fall_direction = Vector2.ZERO
+	animated_sprite.play('lie_front') if character.fall_direction.x > 0 else animated_sprite.play('lie_back')
+	collision_shape.disabled = true
+	
+func exit() -> void:
+	collision_shape.disabled = false
 
-func physics_update(delta: float) -> void:
-	var will_touch_shadow: bool = transform_container.global_position.y > shadow.shadow_sprite.global_position.y
-	
-	if shadow.is_above_ground && will_touch_shadow:
-		transform_container.global_position.y = shadow.shadow_sprite.global_position.y - 0.1
-		character.jump_velocity = 0
+func update(_delta: float) -> void:
+	if animated_sprite.is_playing() == false:
 		Transitioned.emit('idle')
-	else:
-		transform_container.global_position.y += character.jump_velocity
-		character.jump_velocity += (character.character_gravity * delta) / Engine.physics_ticks_per_second
-	
-	if character.direction.length() != 0:
-		character.move(character.walk_speed * delta)
-	

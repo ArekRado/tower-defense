@@ -10,6 +10,6 @@ func enter() -> void:
 	transform_container.global_position.y = shadow.shadow_sprite.global_position.y - 0.1
 	Transitioned.emit('idle')
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	transform_container.global_position.y = shadow.shadow_sprite.global_position.y - 0.1
 	Transitioned.emit('idle')

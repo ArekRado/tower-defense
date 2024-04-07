@@ -23,6 +23,10 @@ func get_target_position() -> Vector2:
 		push_warning("Character needs go_to_position or go_to_character to be defined")
 	
 	return target_position
+	
+func update(_delta: float) -> void:
+	if animated_sprite.is_playing() == false:
+		Transitioned.emit('idle')
 
 func physics_update(delta: float) -> void:
 	var target_position: Vector2 = get_target_position()
