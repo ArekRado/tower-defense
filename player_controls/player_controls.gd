@@ -53,8 +53,10 @@ func walk() -> void:
 			state_machine.on_child_transition('idle')
 
 func block() -> void:
-	if Input.is_action_just_pressed("block") && (state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'run') :
-		state_machine.on_child_transition('block')
+	var csn: String = state_machine.current_state_name
+	
+	if Input.is_action_just_pressed("block") && (csn == 'idle' || csn == 'walk' || csn == 'run'):
+			state_machine.on_child_transition('block')
 
 func hit_short() -> void:
 	if Input.is_action_just_pressed("hit_short") && (state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'run') :
@@ -120,5 +122,12 @@ func run() -> void:
 		character.go_to_position.y = character.transform_container.global_position.y + clamped_shift_y
 			
 func forward_roll() -> void:
-	if state_machine.current_state_name == 'run' && Input.is_action_just_pressed('block'):
+	var csn: String = state_machine.current_state_name
+	
+	if Input.is_action_just_pressed('block') && (csn == 'run' || csn == 'jumpEnd'):
+		state_machine.on_child_transition('forwardRoll')
+		
+	if csn == 'forwardRoll':
+		var shift: Vector2 = Vector2.LEFT if character.direction.x < 0 else Vector2.RIGHT
+		character.go_to_position = transform_container.global_position + (shift * character.run_speed)
 		state_machine.on_child_transition('forwardRoll')

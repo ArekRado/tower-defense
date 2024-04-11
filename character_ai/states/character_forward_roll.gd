@@ -5,9 +5,14 @@ class_name CharacterForwardRoll
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
 @onready var transform_container: Area2D = $"../../TransformContainer"
+@onready var collision_shape: CollisionShape2D =$"../../TransformContainer/CollisionShape2D"
 
 func enter() -> void:
 	animated_sprite.play("forward_roll")
+	collision_shape.disabled = true
+	
+func exit() -> void:
+	collision_shape.disabled = false
 	
 func get_target_position() -> Vector2:
 	var target_position: Vector2
