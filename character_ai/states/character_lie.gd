@@ -9,8 +9,8 @@ class_name CharacterLie
 
 
 func enter() -> void:
+	animated_sprite.play('lie_back') if character.fall_direction.x > 0 else animated_sprite.play('lie_front')
 	character.fall_direction = Vector2.ZERO
-	animated_sprite.play('lie_front') if character.fall_direction.x > 0 else animated_sprite.play('lie_back')
 	collision_shape.disabled = true
 	
 func exit() -> void:

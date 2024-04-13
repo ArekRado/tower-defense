@@ -14,7 +14,7 @@ func get_target_position() -> Vector2:
 	elif character.go_to_character:
 		var target_character_position: Vector2 = character.go_to_character.transform_container.global_position
 		var character_position: Vector2 = character.transform_container.global_position
-		var shift_x: float = character.short_hit_range if character_position.x > target_character_position.x else character.short_hit_range * -1
+		var shift_x: float = character.hit_short_range if character_position.x > target_character_position.x else character.hit_short_range * -1
 		
 		target_position = target_character_position + Vector2(shift_x, 0)
 	else:

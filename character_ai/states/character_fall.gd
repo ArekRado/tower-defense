@@ -7,9 +7,10 @@ class_name CharacterFall
 @onready var transform_container: Area2D = $"../../TransformContainer"
 
 func enter() -> void:
+	print(character.fall_direction)
 	character.jump_velocity = character.fall_direction.y
 	transform_container.global_position.y += -1
-	animated_sprite.play('fall_front') if character.fall_direction.x > 0 else animated_sprite.play('fall_back')
+	animated_sprite.play('fall_back') if character.fall_direction.x > 0 else animated_sprite.play('fall_front')
 
 func physics_update(delta: float) -> void:
 	var will_touch_shadow: bool = transform_container.global_position.y > shadow.shadow_sprite.global_position.y
@@ -20,7 +21,8 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit('lie')
 	else:
 		transform_container.global_position.y += character.jump_velocity
+		
 		character.jump_velocity += (character.character_gravity * delta) / Engine.physics_ticks_per_second
 	
 	if character.direction.length() != 0:
-		character.move(character.fall_direction * delta)
+		character.move(character.fall_direction * delta * -1)

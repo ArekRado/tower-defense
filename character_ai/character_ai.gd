@@ -37,7 +37,7 @@ func attack() -> void:
 	
 	var distance_to_target: float = (character.transform_container.global_position - target.transform_container.global_position).length()
 	
-	if distance_to_target <= character.short_hit_range:
+	if distance_to_target <= character.hit_short_range:
 		state_machine.on_child_transition('hitShort')
 	else:
 		character.go_to_character = target
@@ -50,21 +50,22 @@ func attack() -> void:
 	wait_delay = 0.1
 
 func do_something() -> void:
-	var random_value: float = randf()
+	#var random_value: float = randf()
 	wait_delay = 1
+	return
 	
-	if character.walk_speed.length() == 0:
-		wait_delay = 10
-		return
-	
-	if random_value < 0.1:
-		go_to_random_point()
-	elif random_value < 0.2: 
-		state_machine.on_child_transition('jump')
-	elif random_value < 0.9:
-		attack()
-	else:
-		wait_delay = randf() * 3
+	#if character.walk_speed.length() == 0:
+		#wait_delay = 10
+		#return
+	#
+	#if random_value < 0.1:
+		#go_to_random_point()
+	#elif random_value < 0.2: 
+		#state_machine.on_child_transition('jump')
+	#elif random_value < 0.9:
+		#attack()
+	#else:
+		#wait_delay = randf() * 3
 
 func get_target_to_attack() -> Character:
 	var characters: Array[Node] = get_parent().get_parent().find_children('', 'Character').filter(func (node: Node) -> bool: 
