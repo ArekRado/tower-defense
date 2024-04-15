@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=3 uid="uid://cvjqi4ybyfcq0"]
+[gd_scene load_steps=76 format=3 uid="uid://cvjqi4ybyfcq0"]
 
 [ext_resource type="Script" path="res://character/character.gd" id="1_8y0co"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="10_0v3jx"]
@@ -68,7 +68,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_qrhas"]
 resource_name = "jump_fast_hit_short"
-length = 0.2
+length = 0.4
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -93,7 +93,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector2(0.1, 0.1), Vector2(7, -15)],
+"args": [0.4, Vector2(0.3, 0.3), Vector2(7, -15)],
 "method": &"create_hitbox"
 }]
 }
@@ -125,7 +125,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector2(0.1, 0.1), Vector2(7, -15)],
+"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15)],
 "method": &"create_hitbox"
 }]
 }
@@ -144,10 +144,76 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_hhjyv"]
+resource_name = "jump_hit_short"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransformContainer/AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"jump_hit_short_1", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15)],
+"method": &"create_hitbox"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["jump"],
+"method": &"on_child_transition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_heb12"]
+resource_name = "lie"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StateMachine")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["idle"],
+"method": &"on_child_transition"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jusfm"]
 _data = {
 "hit_short": SubResource("Animation_od7y6"),
 "jump_fast_hit_short": SubResource("Animation_qrhas"),
+"jump_hit_short": SubResource("Animation_hhjyv"),
+"lie": SubResource("Animation_heb12"),
 "run_hit_short": SubResource("Animation_cgt1k")
 }
 
@@ -608,6 +674,20 @@ animations = [{
 
 [node name="Recruit" type="Node2D"]
 script = ExtResource("1_8y0co")
+is_player = null
+walk_speed = null
+run_speed = null
+jump_move_speed = null
+jump_fast_move_speed = null
+jump_height = null
+jump_fast_height = null
+hit_short_range = null
+hit_short_damage = null
+hit_short_power = null
+run_hit_short_damage = null
+run_hit_short_power = null
+jump_fast_hit_short_damage = null
+jump_fast_hit_short_power = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -626,7 +706,7 @@ shape = SubResource("RectangleShape2D_k237y")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TransformContainer"]
 sprite_frames = SubResource("SpriteFrames_fl2q0")
-animation = &"jump_hit_short_2"
+animation = &"lie_back"
 offset = Vector2(0, -12)
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]

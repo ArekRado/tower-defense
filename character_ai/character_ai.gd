@@ -6,9 +6,6 @@ class_name CharacterAI
 
 var wait_delay: float = 0
 
-#func _ready() -> void:
-	#state_machine.on_child_transition('walk')
-
 func _process(delta: float) -> void:
 	if state_machine.current_state_name == 'idle':
 		if wait_delay > 0:

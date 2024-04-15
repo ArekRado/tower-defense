@@ -46,8 +46,6 @@ func walk() -> void:
 		
 		shift = shift.normalized()
 		
-		print(animated_sprite.is_flipped_h)
-		
 		if shift.length() != 0:
 			character.go_to_position = transform_container.global_position + (shift * character.walk_speed)
 			

@@ -2,14 +2,23 @@ extends Node2D
 class_name Character
 
 @export var is_player: bool = false
+
 @export var walk_speed: Vector2 = Vector2(70, 60)
 @export var run_speed: Vector2 = Vector2(150, 90)
 @export var jump_move_speed: Vector2 = Vector2(70, 60)
 @export var jump_fast_move_speed: Vector2 = Vector2(170, 100)
 @export var jump_height: float = -3.0
 @export var jump_fast_height: float = -2.2
+
 @export var hit_short_range: float = 5
+@export var hit_short_damage: float = 1
 @export var hit_short_power: Vector2 = Vector2(20, 1)
+
+@export var run_hit_short_damage: float = 2
+@export var run_hit_short_power: Vector2 = Vector2(20, 1)
+
+@export var jump_fast_hit_short_damage: float = 2
+@export var jump_fast_hit_short_power: Vector2 = Vector2(20, 1)
 
 @onready var animated_sprite: AnimatedSprite2D = $"TransformContainer/AnimatedSprite2D"
 @onready var shadow: Shadow = $"Shadow"
@@ -75,3 +84,4 @@ func create_hitbox(lifetime: float = 0.2, hitbox_scale: Vector2 = Vector2.ONE, h
 	hitboxInstance.collision_shape_2d.scale = hitbox_scale
 	hitboxInstance.collision_shape_2d.position = Vector2(-1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y)
 	hitboxInstance.power = Vector2(hit_short_power.x if animated_sprite.is_flipped_h() else -1 * hit_short_power.x, hit_short_power.y * -1)
+	hitboxInstance.damage = switch

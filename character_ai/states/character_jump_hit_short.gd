@@ -26,4 +26,3 @@ func physics_update(delta: float) -> void:
 	
 	if character.direction.length() != 0:
 		character.move(character.jump_move_speed * delta)
-	
