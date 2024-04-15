@@ -8,7 +8,7 @@ class_name CharacterJumpFast
 
 func enter() -> void:
 	character.jump_velocity = character.jump_fast_height
-	animated_sprite.play('jump')
+	animated_sprite.play('jump_fast')
 
 func physics_update(delta: float) -> void:
 	var will_touch_shadow: bool = transform_container.global_position.y > shadow.shadow_sprite.global_position.y
@@ -23,4 +23,3 @@ func physics_update(delta: float) -> void:
 	
 	if character.direction.length() != 0:
 		character.move(character.jump_fast_move_speed * delta)
-	

@@ -3,10 +3,7 @@ class_name CharacterLie
 
 @onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
 @onready var character: Character = $"../.."
-@onready var shadow: Shadow = $"../../Shadow"
-@onready var transform_container: Area2D = $"../../TransformContainer"
 @onready var collision_shape: CollisionShape2D =$"../../TransformContainer/CollisionShape2D"
-
 
 func enter() -> void:
 	animated_sprite.play('lie_back') if character.fall_direction.x > 0 else animated_sprite.play('lie_front')

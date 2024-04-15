@@ -27,6 +27,8 @@ func _process(delta: float) -> void:
 	forward_roll()
 	block()
 	hit_short()
+	run_hit_short()
+	jump_fast_hit_short()
 	walk()
 	run()
 	jump()
@@ -44,6 +46,8 @@ func walk() -> void:
 		
 		shift = shift.normalized()
 		
+		print(animated_sprite.is_flipped_h)
+		
 		if shift.length() != 0:
 			character.go_to_position = transform_container.global_position + (shift * character.walk_speed)
 			
@@ -59,9 +63,17 @@ func block() -> void:
 			state_machine.on_child_transition('block')
 
 func hit_short() -> void:
-	if Input.is_action_just_pressed("hit_short") && (state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk' || state_machine.current_state_name == 'run') :
+	if Input.is_action_just_pressed("hit_short") && (state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk') :
 		state_machine.on_child_transition('hitShort')
+		
+func run_hit_short() -> void:
+	if Input.is_action_just_pressed("hit_short") && state_machine.current_state_name == 'run':
+		state_machine.on_child_transition('runHitShort')
 
+func jump_fast_hit_short() -> void:
+	if Input.is_action_just_pressed("hit_short") && state_machine.current_state_name == 'jumpFast':
+		state_machine.on_child_transition('jumpFastHitShort')
+		
 func jump() -> void:
 	var csn: String = state_machine.current_state_name
 

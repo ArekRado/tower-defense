@@ -55,8 +55,9 @@ func move(speed: Vector2) -> void:
 	shadow.shadow_sprite.global_position.x = global_position.x
 	shadow.shadow_raycast.global_position.x = global_position.x
 	
-	update_facing_direction()
-
+	if direction.x != 0:
+		update_facing_direction()
+	
 func on_hit(_damage: float, power: Vector2) -> void:
 	fall_direction = power
 	animation_player.stop()
@@ -72,5 +73,5 @@ func create_hitbox(lifetime: float = 0.2, hitbox_scale: Vector2 = Vector2.ONE, h
 	transform_container.add_child(hitboxInstance)
 	hitboxInstance.lifetime = lifetime
 	hitboxInstance.collision_shape_2d.scale = hitbox_scale
-	hitboxInstance.collision_shape_2d.position = Vector2(hitbox_position.x if velocity.x > 0 else -1 * hitbox_position.x, hitbox_position.y)
-	hitboxInstance.power = Vector2(hit_short_power.x * -1 if velocity.x > 0 else hit_short_power.x, hit_short_power.y * -1)
+	hitboxInstance.collision_shape_2d.position = Vector2(-1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y)
+	hitboxInstance.power = Vector2(hit_short_power.x if animated_sprite.is_flipped_h() else -1 * hit_short_power.x, hit_short_power.y * -1)
