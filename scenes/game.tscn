@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b2vyj1tibuqie"]
+[gd_scene load_steps=14 format=3 uid="uid://b2vyj1tibuqie"]
 
 [ext_resource type="Texture2D" uid="uid://c66gydbs0j18c" path="res://assets/tiles map.png" id="1_xpw20"]
 [ext_resource type="Texture2D" uid="uid://clpfkng4ge50c" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/1.png" id="3_2ibti"]
@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://c5dciojtrtm3b" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/3.png" id="5_5876e"]
 [ext_resource type="Texture2D" uid="uid://d1agf6w5t14m3" path="res://assets/Nature Landscapes Free Pixel Art/nature_4/4.png" id="6_7sbdg"]
 [ext_resource type="PackedScene" uid="uid://b4c7xiwrdngfh" path="res://characters/target/target.tscn" id="7_gvrf8"]
+[ext_resource type="PackedScene" uid="uid://d4hnnespr8fl5" path="res://structures/baracks/baracks.tscn" id="8_g7wdg"]
 [ext_resource type="PackedScene" uid="uid://cvjqi4ybyfcq0" path="res://characters/recruit/recruit.tscn" id="8_hq443"]
+[ext_resource type="Texture2D" uid="uid://vvlqiwn2jef4" path="res://structures/lumberjack_hut/lumberjack_hut.png" id="9_02t26"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1djtt"]
 texture = ExtResource("1_xpw20")
@@ -656,3 +658,10 @@ position = Vector2(324, 192)
 
 [node name="Recruit3" parent="." instance=ExtResource("8_hq443")]
 position = Vector2(380, 193)
+
+[node name="Baracks" parent="." instance=ExtResource("8_g7wdg")]
+position = Vector2(152, 155)
+
+[node name="LumberjackHut" type="Sprite2D" parent="."]
+position = Vector2(441, 164)
+texture = ExtResource("9_02t26")

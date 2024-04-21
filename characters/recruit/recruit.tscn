@@ -1,6 +1,6 @@
 [gd_scene load_steps=76 format=3 uid="uid://cvjqi4ybyfcq0"]
 
-[ext_resource type="Script" path="res://character/character.gd" id="1_8y0co"]
+[ext_resource type="Script" path="res://characters/character.gd" id="1_8y0co"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="10_0v3jx"]
 [ext_resource type="Script" path="res://character_ai/states/character_block.gd" id="11_ag021"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="11_ixbwu"]
