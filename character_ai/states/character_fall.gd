@@ -7,7 +7,6 @@ class_name CharacterFall
 @onready var transform_container: Area2D = $"../../TransformContainer"
 
 func enter() -> void:
-	print(character.fall_direction)
 	character.jump_velocity = character.fall_direction.y
 	transform_container.global_position.y += -1
 	animated_sprite.play('fall_back') if character.fall_direction.x > 0 else animated_sprite.play('fall_front')

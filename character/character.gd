@@ -56,7 +56,7 @@ func _ready() -> void:
 func update_facing_direction() -> void:
 	animated_sprite.flip_h = direction.x < 0
 
-func move(speed: Vector2) -> void: 
+func move(speed: Vector2) -> void:
 	velocity = (direction.normalized() * speed) 
 	position += velocity
 	shadow.shift_y += velocity.y
@@ -67,21 +67,22 @@ func move(speed: Vector2) -> void:
 	if direction.x != 0:
 		update_facing_direction()
 	
-func on_hit(_damage: float, power: Vector2) -> void:
+func on_hit(damage: float, power: Vector2) -> void:
 	fall_direction = power
 	animation_player.stop()
 	
-	if state_machine.current_state_name == 'fall' || state_machine.current_state_name == 'shake':
+	if damage > 1 || state_machine.current_state_name == 'fall' || state_machine.current_state_name == 'shake':
 		fall_direction += power
 		state_machine.on_child_transition('fall')
 	else:
 		state_machine.on_child_transition('shake')
 
-func create_hitbox(lifetime: float = 0.2, hitbox_scale: Vector2 = Vector2.ONE, hitbox_position: Vector2 = Vector2.ZERO) -> void:
+func create_hitbox(lifetime: float = 0.2, hitbox_scale: Vector2 = Vector2.ONE, hitbox_position: Vector2 = Vector2.ZERO, power: Vector2 = Vector2.ZERO, damage: float = 0.0) -> void:
 	hitboxInstance = hitbox.instantiate()
 	transform_container.add_child(hitboxInstance)
 	hitboxInstance.lifetime = lifetime
 	hitboxInstance.collision_shape_2d.scale = hitbox_scale
 	hitboxInstance.collision_shape_2d.position = Vector2(-1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y)
-	hitboxInstance.power = Vector2(hit_short_power.x if animated_sprite.is_flipped_h() else -1 * hit_short_power.x, hit_short_power.y * -1)
-	hitboxInstance.damage = switch
+	hitboxInstance.power = Vector2(power.x if animated_sprite.is_flipped_h() else -1 * power.x, hit_short_power.y * -1)
+	hitboxInstance.damage = damage
+	hitboxInstance.shadow_shift_y = shadow.shift_y

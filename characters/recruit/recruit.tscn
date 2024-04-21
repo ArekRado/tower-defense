@@ -47,7 +47,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector2(0.1, 0.1), Vector2(7, -15)],
+"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(20, 1), 1.0],
 "method": &"create_hitbox"
 }]
 }
@@ -93,54 +93,8 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.4, Vector2(0.3, 0.3), Vector2(7, -15)],
+"args": [0.4, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(30, 0.5), 2.0],
 "method": &"create_hitbox"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_cgt1k"]
-resource_name = "run_hit_short"
-length = 0.4
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TransformContainer/AnimatedSprite2D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"run_hit_short", 1.0, false],
-"method": &"play"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15)],
-"method": &"create_hitbox"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("StateMachine")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["idle"],
-"method": &"on_child_transition"
 }]
 }
 
@@ -171,7 +125,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15)],
+"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(20, 1), 2.0],
 "method": &"create_hitbox"
 }]
 }
@@ -201,6 +155,52 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["idle"],
+"method": &"on_child_transition"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cgt1k"]
+resource_name = "run_hit_short"
+length = 0.4
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TransformContainer/AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"run_hit_short", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(30, 1), 2.0],
+"method": &"create_hitbox"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StateMachine")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["idle"],
@@ -674,20 +674,6 @@ animations = [{
 
 [node name="Recruit" type="Node2D"]
 script = ExtResource("1_8y0co")
-is_player = null
-walk_speed = null
-run_speed = null
-jump_move_speed = null
-jump_fast_move_speed = null
-jump_height = null
-jump_fast_height = null
-hit_short_range = null
-hit_short_damage = null
-hit_short_power = null
-run_hit_short_damage = null
-run_hit_short_power = null
-jump_fast_hit_short_damage = null
-jump_fast_hit_short_power = null
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -695,8 +681,7 @@ libraries = {
 }
 
 [node name="TransformContainer" type="Area2D" parent="."]
-collision_layer = 17
-collision_mask = 17
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransformContainer"]
 light_mask = 2
