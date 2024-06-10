@@ -1,7 +1,7 @@
 extends Node2D
 class_name Baracks
 
-@export var character_amount_max: int = 3
+@export var character_amount_max: int = 0
 @export var character_creation_max_time: float = 1.0
 var character_creation_time: float = 0.0
 

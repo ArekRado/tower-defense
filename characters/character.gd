@@ -1,22 +1,29 @@
 extends Node2D
 class_name Character
 
+@export_category('general')
 @export var is_player: bool = false
 
+@export_category('movement')
 @export var walk_speed: Vector2 = Vector2(70, 60)
 @export var run_speed: Vector2 = Vector2(150, 90)
+
+@export_category('jump')
 @export var jump_move_speed: Vector2 = Vector2(70, 60)
 @export var jump_fast_move_speed: Vector2 = Vector2(170, 100)
 @export var jump_height: float = -3.0
 @export var jump_fast_height: float = -2.2
 
+@export_category('hit short')
 @export var hit_short_range: float = 5
 @export var hit_short_damage: float = 1
 @export var hit_short_power: Vector2 = Vector2(20, 1)
 
+@export_category('run hit short')
 @export var run_hit_short_damage: float = 2
 @export var run_hit_short_power: Vector2 = Vector2(20, 1)
 
+@export_category('jump fast hit short')
 @export var jump_fast_hit_short_damage: float = 2
 @export var jump_fast_hit_short_power: Vector2 = Vector2(20, 1)
 
@@ -63,6 +70,8 @@ func move(speed: Vector2) -> void:
 
 	shadow.shadow_sprite.global_position.x = global_position.x
 	shadow.shadow_raycast.global_position.x = global_position.x
+	
+	z_index = global_position.y - shadow.shift_y
 	
 	if direction.x != 0:
 		update_facing_direction()
