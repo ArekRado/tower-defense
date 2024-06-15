@@ -12,7 +12,7 @@ func enter() -> void:
 func physics_update(delta: float) -> void:
 	var will_touch_shadow: bool = transform_container.global_position.y > shadow.shadow_sprite.global_position.y
 	
-	if shadow.is_above_ground && will_touch_shadow:
+	if shadow.is_above_ground&&will_touch_shadow:
 		transform_container.global_position.y = shadow.shadow_sprite.global_position.y - 0.1
 		character.jump_velocity = 0
 		Transitioned.emit('jumpEnd')

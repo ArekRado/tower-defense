@@ -8,7 +8,7 @@ class_name Hitbox
 @export var shadow_shift_y: float = 0.0
 
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
-@onready var hitEffect: PackedScene = preload("res://hitEffect/hitEffect.tscn")
+@onready var hitEffect: PackedScene = preload ("res://hitEffect/hitEffect.tscn")
 
 func _process(delta: float) -> void:
 	lifetime -= delta
@@ -23,7 +23,7 @@ func _on_area_entered(area: Area2D) -> void:
 	if abs(character.shadow.shift_y - shadow_shift_y) > 5:
 		return
 	
-	if state_machine && character:
+	if state_machine&&character:
 		character.on_hit(damage, power)
 	
 	var hitEffectInstance: AnimatedSprite2D = hitEffect.instantiate()

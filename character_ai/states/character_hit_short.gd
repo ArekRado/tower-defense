@@ -6,7 +6,7 @@ class_name CharacterHitShort
 @onready var character: Character = $"../.."
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
-@onready var hitbox: PackedScene = preload("res://hitbox/hitbox.tscn")
+@onready var hitbox: PackedScene = preload ("res://hitbox/hitbox.tscn")
 
 var hitboxInstance: Hitbox
 var has_hitbox: bool = false

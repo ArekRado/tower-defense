@@ -9,14 +9,14 @@ var wait_delay: float = 0
 func _process(delta: float) -> void:
 	if state_machine.current_state_name == 'idle':
 		if wait_delay > 0:
-			wait_delay -= delta 
-			return 
+			wait_delay -= delta
+			return
 		
 		do_something()
 
 func go_to_random_point() -> void:
 	var shift: Vector2 = Vector2(100, 10)
-	var random_shift: Vector2 = Vector2((randf() * shift.x) - shift.x/2, (randf() * shift.y) - shift.y/2)
+	var random_shift: Vector2 = Vector2((randf() * shift.x) - shift.x / 2, (randf() * shift.y) - shift.y / 2)
 
 	character.go_to_position = character.position + random_shift
 	
@@ -65,12 +65,12 @@ func do_something() -> void:
 		#wait_delay = randf() * 3
 
 func get_target_to_attack() -> Character:
-	var characters: Array[Node] = get_parent().get_parent().find_children('', 'Character').filter(func (node: Node) -> bool: 
+	var characters: Array[Node] = get_parent().get_parent().find_children('', 'Character').filter(func(node: Node) -> bool:
 		if node.get_instance_id() == character.get_instance_id():
 			return false
 			
 		return true
-	) 
+	)
 	
 	if characters.size() == 0:
 		return null

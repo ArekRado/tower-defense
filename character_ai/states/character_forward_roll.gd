@@ -5,7 +5,7 @@ class_name CharacterForwardRoll
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
 @onready var transform_container: Area2D = $"../../TransformContainer"
-@onready var collision_shape: CollisionShape2D =$"../../TransformContainer/CollisionShape2D"
+@onready var collision_shape: CollisionShape2D = $"../../TransformContainer/CollisionShape2D"
 
 func enter() -> void:
 	animated_sprite.play("forward_roll")
@@ -21,7 +21,7 @@ func get_target_position() -> Vector2:
 	elif character.go_to_character:
 		var target_character_position: Vector2 = character.go_to_character.transform_container.global_position
 		var character_position: Vector2 = character.transform_container.global_position
-		var shift_x: float = character.hit_short_range if character_position.x > target_character_position.x else character.hit_short_range * -1
+		var shift_x: float = character.hit_short_range if character_position.x > target_character_position.x else character.hit_short_range * - 1
 		
 		target_position = target_character_position + Vector2(shift_x, 0)
 	else:
@@ -47,5 +47,5 @@ func physics_update(delta: float) -> void:
 			Transitioned.emit('idle')
 			character.go_to_position = Vector2.ZERO
 			character.go_to_character = null
-	else: 
+	else:
 		Transitioned.emit('idle')

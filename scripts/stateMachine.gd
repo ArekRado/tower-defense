@@ -3,13 +3,13 @@ class_name StateMachine
 
 @export var initial_state: State
 
-var current_state: State 
+var current_state: State
 var current_state_name: String
 var previous_state_name: String
 var states: Dictionary = {}
 
 func _ready() -> void:
-	var children: Array[Node]  = get_children()
+	var children: Array[Node] = get_children()
 	for child in children:
 		states[child.name.to_lower()] = child
 		@warning_ignore("unsafe_method_access")
@@ -41,6 +41,3 @@ func on_child_transition(new_state_name: String) -> void:
 	previous_state_name = current_state_name
 	current_state_name = new_state_name
 	current_state = new_state
-	
-
-

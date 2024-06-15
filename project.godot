@@ -25,11 +25,11 @@ gdscript/warnings/unsafe_call_argument=2
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=720
+window/size/viewport_height=720
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
-window/stretch/scale=4.0
+window/stretch/scale=2.0
 
 [file_customization]
 

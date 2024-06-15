@@ -7,15 +7,14 @@ var assigned_characters: Array[Character] = []
 func _ready() -> void:
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
-func assign_character(character:Character) -> void:
+func assign_character(character: Character) -> void:
 	assigned_characters.push_back(character)
 
-func unassign_character(character:Character) -> void:
-	assigned_characters = assigned_characters.filter(func (c:Character) -> bool: 
+func unassign_character(character: Character) -> void:
+	assigned_characters = assigned_characters.filter(func(c: Character) -> bool:
 		return character.get_instance_id() != c.get_instance_id()
 	)

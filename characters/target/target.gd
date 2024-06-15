@@ -7,8 +7,8 @@ class_name Target
 @onready var shadow: Shadow = $"Shadow"
 @onready var transform_container: Area2D = $"TransformContainer"
 
-@onready var player_controls: PackedScene = preload("res://player_controls/player_controls.tscn")
-@onready var character_ai: PackedScene = preload("res://character_ai/character_ai.tscn")
+@onready var player_controls: PackedScene = preload ("res://player_controls/player_controls.tscn")
+@onready var character_ai: PackedScene = preload ("res://character_ai/character_ai.tscn")
 
 var target_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var direction: Vector2 = Vector2.ZERO
