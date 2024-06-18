@@ -19,6 +19,6 @@ func physics_update(delta: float) -> void:
 	else:
 		transform_container.global_position.y += character.jump_velocity
 		character.jump_velocity += (character.character_gravity * delta) / Engine.physics_ticks_per_second
-	
+		
 	if character.direction.length() != 0:
 		character.move(character.jump_move_speed * delta)

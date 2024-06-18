@@ -747,3 +747,5 @@ script = ExtResource("19_y0run")
 
 [node name="RunHitShort" type="Node" parent="StateMachine"]
 script = ExtResource("20_n0yfb")
+
+[connection signal="switch_ground" from="Shadow" to="." method="_on_shadow_switch_ground"]

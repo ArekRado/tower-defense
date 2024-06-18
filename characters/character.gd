@@ -37,6 +37,7 @@ class_name Character
 @onready var character_ai: PackedScene = preload ("res://character_ai/character_ai.tscn")
 @onready var hitbox: PackedScene = preload ("res://hitbox/hitbox.tscn")
 
+var height: float = 0.0
 var go_to_position: Vector2
 var go_to_character: Character
 var character_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -48,7 +49,7 @@ var is_on_floor: bool = true
 # Used to display shake and fall animations
 var fall_direction: Vector2 = Vector2.ZERO
 
-var hitboxInstance: Hitbox
+var hitbox_instance: Hitbox
 
 func _ready() -> void:
 	shadow.shift_y = randf_range( - 0.1, -30)
@@ -87,11 +88,20 @@ func on_hit(damage: float, power: Vector2) -> void:
 		state_machine.on_child_transition('shake')
 
 func create_hitbox(lifetime: float=0.2, hitbox_scale: Vector2=Vector2.ONE, hitbox_position: Vector2=Vector2.ZERO, power: Vector2=Vector2.ZERO, damage: float=0.0) -> void:
-	hitboxInstance = hitbox.instantiate()
-	transform_container.add_child(hitboxInstance)
-	hitboxInstance.lifetime = lifetime
-	hitboxInstance.collision_shape_2d.scale = hitbox_scale
-	hitboxInstance.collision_shape_2d.position = Vector2( - 1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y)
-	hitboxInstance.power = Vector2(power.x if animated_sprite.is_flipped_h() else - 1 * power.x, hit_short_power.y * - 1)
-	hitboxInstance.damage = damage
-	hitboxInstance.shadow_shift_y = shadow.shift_y
+	hitbox_instance = hitbox.instantiate()
+	transform_container.add_child(hitbox_instance)
+	hitbox_instance.lifetime = lifetime
+	hitbox_instance.collision_shape_2d.scale = hitbox_scale
+	hitbox_instance.collision_shape_2d.position = Vector2( - 1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y)
+	hitbox_instance.power = Vector2(power.x if animated_sprite.is_flipped_h() else - 1 * power.x, hit_short_power.y * - 1)
+	hitbox_instance.damage = damage
+	hitbox_instance.shadow_shift_y = shadow.shift_y
+
+func _on_shadow_switch_ground(current_ground_height: float, new_ground_height: float) -> void:
+	var diff: float = current_ground_height - new_ground_height
+	transform_container.global_position.y += diff
+
+	shadow.shadow_sprite.global_position.y += diff
+	shadow.shadow_raycast.global_position.y += diff
+	
+	pass # Replace with function body.
