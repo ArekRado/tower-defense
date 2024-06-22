@@ -3,11 +3,11 @@ class_name Hitbox
 
 @export var lifetime: float = 0.0
 @export var damage: float = 1
-@export var power: Vector2 = Vector2.ZERO
+@export var power: Vector3 = Vector3.ZERO
 
 @export var shadow_shift_y: float = 0.0
 
-@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
+@onready var collision_shape_2d: CollisionShape3D = $CollisionShape2D
 @onready var hitEffect: PackedScene = preload ("res://hitEffect/hitEffect.tscn")
 
 func _process(delta: float) -> void:
@@ -26,6 +26,6 @@ func _on_area_entered(area: Area2D) -> void:
 	if state_machine&&character:
 		character.on_hit(damage, power)
 	
-	var hitEffectInstance: AnimatedSprite2D = hitEffect.instantiate()
+	var hitEffectInstance: AnimatedSprite3D = hitEffect.instantiate()
 	self.add_child(hitEffectInstance)
 	hitEffectInstance.position = collision_shape_2d.position

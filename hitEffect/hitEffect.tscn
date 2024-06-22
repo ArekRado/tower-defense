@@ -46,7 +46,7 @@ animations = [{
 "speed": 10.0
 }]
 
-[node name="HitEffect" type="AnimatedSprite2D"]
+[node name="HitEffect" type="AnimatedSprite3D"]
 sprite_frames = SubResource("SpriteFrames_vlf6t")
 autoplay = "default"
 frame_progress = 0.880647

@@ -1,4 +1,4 @@
-extends AnimatedSprite2D
+extends AnimatedSprite3D
 
 func _on_animation_finished() -> void:
 	queue_free()

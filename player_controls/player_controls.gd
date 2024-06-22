@@ -1,24 +1,24 @@
-extends Node2D
+extends Node3D
 class_name PlayerControls
 
-@export var walk_speed: Vector2 = Vector2(70, 60)
-@export var run_speed: Vector2 = Vector2(150, 90)
+@export var walk_speed: Vector3 = Vector3(70, 60, 0)
+@export var run_speed: Vector3 = Vector3(150, 90, 0)
 @export var jump_speed: float = -3.0
 @export var double_press_max_time: float = 0.3
 
-@onready var transform_container: Area2D = $"../TransformContainer"
-@onready var animated_sprite: AnimatedSprite2D = $"../TransformContainer/AnimatedSprite2D"
+@onready var transform_container: Area3D = $"../TransformContainer"
+@onready var animated_sprite: AnimatedSprite3D = $"../TransformContainer/AnimatedSprite3D"
 @onready var shadow: Shadow = $"../Shadow"
 @onready var state_machine: StateMachine = $"../StateMachine"
 @onready var character: Character = $".."
-@onready var remote_transform_2d: RemoteTransform2D = $RemoteTransform2D
+@onready var remote_transform_3d: RemoteTransform3D = $RemoteTransform3D
 
 var double_press_time: float = double_press_max_time
 var last_action: String = ''
 var last_delta: float = 0
 
 func _ready() -> void:
-	remote_transform_2d.remote_path = '../../../MainCamera'
+	remote_transform_3d.remote_path = '../../../MainCamera'
 
 func _process(delta: float) -> void:
 	double_press_time -= delta
@@ -39,11 +39,11 @@ func walk() -> void:
 		return
 		
 	if state_machine.current_state_name == 'idle'||state_machine.current_state_name == 'walk':
-		var shift: Vector2 = Vector2.ZERO
-		if Input.is_action_pressed('left'): shift += Vector2.LEFT
-		if Input.is_action_pressed('right'): shift += Vector2.RIGHT
-		if Input.is_action_pressed('up'): shift += Vector2.UP
-		if Input.is_action_pressed('down'): shift += Vector2.DOWN
+		var shift: Vector3 = Vector3.ZERO
+		if Input.is_action_pressed('left'): shift += Vector3.LEFT
+		if Input.is_action_pressed('right'): shift += Vector3.RIGHT
+		if Input.is_action_pressed('up'): shift += Vector3.UP
+		if Input.is_action_pressed('down'): shift += Vector3.DOWN
 		
 		shift = shift.normalized()
 		
@@ -77,18 +77,18 @@ func jump() -> void:
 	var csn: String = state_machine.current_state_name
 
 	if Input.is_action_just_pressed("jump")&&(csn == 'run'||csn == 'walk'||csn == 'idle'||csn == 'forwardRoll'):
-		character.direction = Vector2.ZERO
+		character.direction = Vector3.ZERO
 		state_machine.on_child_transition('jumpStart')
 
 	if csn == 'jump'||csn == 'jumpHitShort':
 		if Input.is_action_just_pressed("hit_short"):
 			state_machine.on_child_transition('jumphitShort')
 			
-		var shift: Vector2 = Vector2.ZERO
-		if Input.is_action_pressed('left'): shift += Vector2.LEFT
-		if Input.is_action_pressed('right'): shift += Vector2.RIGHT
-		if Input.is_action_pressed('up'): shift += Vector2.UP
-		if Input.is_action_pressed('down'): shift += Vector2.DOWN
+		var shift: Vector3 = Vector3.ZERO
+		if Input.is_action_pressed('left'): shift += Vector3.LEFT
+		if Input.is_action_pressed('right'): shift += Vector3.RIGHT
+		if Input.is_action_pressed('up'): shift += Vector3.UP
+		if Input.is_action_pressed('down'): shift += Vector3.DOWN
 		
 		shift = shift.normalized()
 		if shift.length() != 0:
@@ -98,10 +98,10 @@ func run() -> void:
 	if state_machine.current_state_name == 'idle'||state_machine.current_state_name == 'walk'&&double_press_time >= 0:
 		if Input.is_action_just_pressed('left'):
 			state_machine.on_child_transition('run')
-			character.go_to_position = transform_container.global_position + Vector2.LEFT
+			character.go_to_position = transform_container.global_position + Vector3.LEFT
 		elif Input.is_action_just_pressed('right'):
 			state_machine.on_child_transition('run')
-			character.go_to_position = transform_container.global_position + Vector2.RIGHT
+			character.go_to_position = transform_container.global_position + Vector3.RIGHT
 	else:
 		if Input.is_action_just_pressed('left'):
 			last_action = 'left'
@@ -125,12 +125,12 @@ func run() -> void:
 			state_machine.on_child_transition('idle')
 			return
 		
-		var shift_y: float = 0
-		if Input.is_action_pressed('up'): shift_y = -1
-		if Input.is_action_pressed('down'): shift_y = 1
+		var shift_z: float = 0
+		if Input.is_action_pressed('up'): shift_z = -1
+		if Input.is_action_pressed('down'): shift_z = 1
 		
-		var clamped_shift_y: float = clamp(shift_y * character.run_speed.y, character.run_speed.y * - 1, character.run_speed.y)
-		character.go_to_position.y = character.transform_container.global_position.y + clamped_shift_y
+		var clamped_shift_z: float = clamp(shift_z * character.run_speed.y, character.run_speed.y * - 1, character.run_speed.y)
+		character.go_to_position.z = character.transform_container.global_position.z + clamped_shift_z
 			
 func forward_roll() -> void:
 	var csn: String = state_machine.current_state_name
@@ -139,7 +139,7 @@ func forward_roll() -> void:
 		state_machine.on_child_transition('forwardRoll')
 		
 	if csn == 'forwardRoll':
-		var shift: Vector2 = Vector2.LEFT if character.direction.x < 0 else Vector2.RIGHT
+		var shift: Vector3 = Vector3.LEFT if character.direction.x < 0 else Vector3.RIGHT
 		character.go_to_position = transform_container.global_position + (shift * character.run_speed)
 		state_machine.on_child_transition('forwardRoll')
 			

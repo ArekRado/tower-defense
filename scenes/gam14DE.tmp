@@ -579,13 +579,13 @@ sources/0 = SubResource("TileSetAtlasSource_1djtt")
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_qf6ft"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_5ebyy"]
-a = Vector2(-159, 46)
-b = Vector2(143, 46)
+a = Vector3(-159, 46)
+b = Vector3(143, 46)
 
 [node name="Game" type="Node2D"]
 
 [node name="Ground" type="TileMap" parent="."]
-position = Vector2(1, 0)
+position = Vector3(1, 0)
 tile_set = SubResource("TileSet_o41pb")
 format = 2
 layer_0/tile_data = PackedInt32Array(655369, 851968, 6, 720905, 851968, 7, 786441, 851968, 7, 655370, 917504, 6, 720906, 917504, 7, 786442, 917504, 7, 655371, 917504, 6, 720907, 917504, 7, 786443, 917504, 7, 655372, 917504, 6, 720908, 917504, 7, 786444, 917504, 7, 655373, 917504, 6, 720909, 917504, 7, 786445, 917504, 7, 655374, 917504, 6, 720910, 917504, 7, 786446, 917504, 7, 655375, 917504, 6, 720911, 917504, 7, 786447, 917504, 7, 655376, 917504, 6, 720912, 917504, 7, 786448, 917504, 7, 655377, 917504, 6, 720913, 917504, 7, 786449, 917504, 7, 655378, 917504, 6, 720914, 917504, 7, 786450, 917504, 7, 655379, 917504, 6, 720915, 917504, 7, 786451, 917504, 7, 655380, 917504, 6, 720916, 917504, 7, 786452, 917504, 7, 655381, 917504, 6, 720917, 917504, 7, 786453, 917504, 7, 655382, 917504, 6, 720918, 917504, 7, 786454, 917504, 7, 655383, 917504, 6, 720919, 917504, 7, 786455, 917504, 7, 655384, 917504, 6, 720920, 917504, 7, 786456, 917504, 7, 655385, 917504, 6, 720921, 917504, 7, 786457, 917504, 7, 655386, 917504, 6, 720922, 917504, 7, 786458, 917504, 7, 655387, 983040, 6, 720923, 983040, 7, 786459, 983040, 7)
@@ -596,11 +596,11 @@ collision_mask = 12
 physics_material_override = SubResource("PhysicsMaterial_qf6ft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
-position = Vector2(304, 161)
+position = Vector3(304, 161)
 shape = SubResource("SegmentShape2D_5ebyy")
 
 [node name="MainCamera" type="Camera2D" parent="."]
-position = Vector2(294, 148)
+position = Vector3(294, 148)
 process_callback = 0
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
@@ -610,49 +610,49 @@ drag_vertical_enabled = true
 visible = false
 
 [node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(3, 2)
-motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(1, 0)
+position = Vector3(3, 2)
+motion_scale = Vector3(0, 0)
+motion_mirroring = Vector3(1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
 texture = ExtResource("3_2ibti")
 centered = false
 
 [node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-1, 0)
-motion_scale = Vector2(0.09, 0.09)
-motion_mirroring = Vector2(576, 0)
+position = Vector3(-1, 0)
+motion_scale = Vector3(0.09, 0.09)
+motion_mirroring = Vector3(576, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds"]
 texture = ExtResource("4_ioqic")
 centered = false
 
 [node name="Trees and ground2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, -1)
-motion_scale = Vector2(0.07, 0.07)
-motion_mirroring = Vector2(576, 0)
+position = Vector3(0, -1)
+motion_scale = Vector3(0.07, 0.07)
+motion_mirroring = Vector3(576, 0)
 
 [node name="3" type="Sprite2D" parent="ParallaxBackground/Trees and ground2"]
 texture = ExtResource("5_5876e")
 centered = false
 
 [node name="Trees and ground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.03, 0.03)
-motion_mirroring = Vector2(576, 0)
+motion_scale = Vector3(0.03, 0.03)
+motion_mirroring = Vector3(576, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees and ground"]
 texture = ExtResource("6_7sbdg")
 centered = false
 
 [node name="Target" parent="." instance=ExtResource("7_gvrf8")]
-position = Vector2(264, 176)
+position = Vector3(264, 176)
 
 [node name="Recruit2" parent="." instance=ExtResource("8_hq443")]
-position = Vector2(306, 184)
+position = Vector3(306, 184)
 
 [node name="Recruit" parent="." instance=ExtResource("8_hq443")]
-position = Vector2(196, 189)
+position = Vector3(196, 189)
 is_player = true
 
 [node name="Recruit3" parent="." instance=ExtResource("8_hq443")]
-position = Vector2(360, 190)
+position = Vector3(360, 190)

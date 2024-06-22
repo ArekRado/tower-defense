@@ -8,7 +8,7 @@
 script = ExtResource("1_fj1y4")
 
 [node name="Raycast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 500)
+target_position = Vector3(0, 500)
 collision_mask = 12
 collide_with_areas = true
 script = ExtResource("2_um888")

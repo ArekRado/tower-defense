@@ -8,7 +8,7 @@ script = ExtResource("1_fj1y4")
 shadow_shift_y = null
 
 [node name="Raycast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 500)
+target_position = Vector3(0, 500)
 collide_with_areas = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

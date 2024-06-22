@@ -1,4 +1,4 @@
-extends Node2D
+extends Node3D
 class_name Baracks
 
 @export var character_amount_max: int = 0

@@ -1,4 +1,4 @@
-extends RayCast2D
+extends RayCast3D
 
 signal collided(last_collider: Object, found_collider: Object)
 

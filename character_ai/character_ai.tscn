@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://character_ai/character_ai.gd" id="1_vby62"]
 
-[node name="CharacterAI" type="Node2D"]
+[node name="CharacterAI" type="Node3D"]
 script = ExtResource("1_vby62")

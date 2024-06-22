@@ -3,7 +3,7 @@ class_name CharacterJumpFastHitShort
 
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
-@onready var transform_container: Area2D = $"../../TransformContainer"
+@onready var transform_container: Area3D = $"../../TransformContainer"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 func enter() -> void:

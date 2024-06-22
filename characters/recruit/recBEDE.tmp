@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://character_ai/states/character_walk.gd" id="18_4u5iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k237y"]
-size = Vector2(6, 24)
+size = Vector3(6, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w54jc"]
 atlas = ExtResource("2_oi54j")
@@ -230,13 +230,13 @@ collision_mask = 17
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TransformContainer"]
 light_mask = 2
 visibility_layer = 2
-position = Vector2(0, -12)
+position = Vector3(0, -12)
 shape = SubResource("RectangleShape2D_k237y")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TransformContainer"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="TransformContainer"]
 sprite_frames = SubResource("SpriteFrames_fl2q0")
 animation = &"idle"
-offset = Vector2(0, -12)
+offset = Vector3(0, -12)
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
 

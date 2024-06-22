@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://player_controls/player_controls.gd" id="1_evx3u"]
 
-[node name="PlayerControls" type="Node2D"]
+[node name="PlayerControls" type="Node3D"]
 script = ExtResource("1_evx3u")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+update_rotation = false
+update_scale = false

@@ -15,8 +15,8 @@ func _process(delta: float) -> void:
 		do_something()
 
 func go_to_random_point() -> void:
-	var shift: Vector2 = Vector2(100, 10)
-	var random_shift: Vector2 = Vector2((randf() * shift.x) - shift.x / 2, (randf() * shift.y) - shift.y / 2)
+	var shift: Vector3 = Vector3(100, 10, 0)
+	var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, (randf() * shift.y) - shift.y / 2, 0)
 
 	character.go_to_position = character.position + random_shift
 	

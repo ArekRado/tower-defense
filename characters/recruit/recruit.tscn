@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://cvjqi4ybyfcq0"]
+[gd_scene load_steps=75 format=3 uid="uid://cvjqi4ybyfcq0"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8y0co"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="10_0v3jx"]
@@ -26,7 +26,7 @@ length = 0.4
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransformContainer/AnimatedSprite2D")
+tracks/0/path = NodePath("TransformContainer/AnimatedSprite3D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -47,7 +47,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(20, 1), 1.0],
+"args": [0.2, Vector3(0.3, 0.3, 0), Vector3(7, -15, 0), Vector3(20, 1, 0), 1.0],
 "method": &"create_hitbox"
 }]
 }
@@ -72,7 +72,7 @@ length = 0.4
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransformContainer/AnimatedSprite2D")
+tracks/0/path = NodePath("TransformContainer/AnimatedSprite3D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,7 +93,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.4, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(30, 0.5), 2.0],
+"args": [0.4, Vector3(0.3, 0.3, 0), Vector3(7, -15, 0), Vector3(30, 0.5, 0), 2.0],
 "method": &"create_hitbox"
 }]
 }
@@ -104,7 +104,7 @@ length = 0.4
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransformContainer/AnimatedSprite2D")
+tracks/0/path = NodePath("TransformContainer/AnimatedSprite3D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -125,7 +125,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(20, 1), 2.0],
+"args": [0.2, Vector3(0.3, 0.3, 0), Vector3(7, -15, 0), Vector3(20, 1, 0), 2.0],
 "method": &"create_hitbox"
 }]
 }
@@ -168,7 +168,7 @@ length = 0.4
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("TransformContainer/AnimatedSprite2D")
+tracks/0/path = NodePath("TransformContainer/AnimatedSprite3D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -189,7 +189,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector2(0.3, 0.3), Vector2(7, -15), Vector2(30, 1), 2.0],
+"args": [0.2, Vector3(0.3, 0.3, 0), Vector3(7, -15, 0), Vector3(30, 1, 0), 2.0],
 "method": &"create_hitbox"
 }]
 }
@@ -216,9 +216,6 @@ _data = {
 "lie": SubResource("Animation_heb12"),
 "run_hit_short": SubResource("Animation_cgt1k")
 }
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_k237y"]
-size = Vector2(6, 24)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_57m8j"]
 load_path = "res://.godot/imported/recruit.png-c7e9a7c2e78f1fbafa753bfe1181fa59.ctex"
@@ -672,7 +669,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Recruit" type="Node2D"]
+[node name="Recruit" type="Node3D"]
 script = ExtResource("1_8y0co")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -680,23 +677,21 @@ libraries = {
 "": SubResource("AnimationLibrary_jusfm")
 }
 
-[node name="TransformContainer" type="Area2D" parent="."]
+[node name="TransformContainer" type="Area3D" parent="."]
 collision_mask = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TransformContainer"]
-light_mask = 2
-visibility_layer = 2
-position = Vector2(0, -12)
-shape = SubResource("RectangleShape2D_k237y")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TransformContainer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TransformContainer"]
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="TransformContainer"]
+offset = Vector2(0, -12)
+texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fl2q0")
 animation = &"lie_back"
-offset = Vector2(0, -12)
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
 
-[node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("11_ixbwu")
 initial_state = NodePath("JumpStart")
 
@@ -747,5 +742,3 @@ script = ExtResource("19_y0run")
 
 [node name="RunHitShort" type="Node" parent="StateMachine"]
 script = ExtResource("20_n0yfb")
-
-[connection signal="switch_ground" from="Shadow" to="." method="_on_shadow_switch_ground"]

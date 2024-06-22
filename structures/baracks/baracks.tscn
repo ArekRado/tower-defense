@@ -4,11 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bf74h3oeapjar" path="res://structures/baracks/baracks.png" id="2_ahxgo"]
 [ext_resource type="Script" path="res://structures/baracks/baracks.gd" id="3_w5o7y"]
 
-[node name="Structure" type="Node2D"]
+[node name="Structure" type="Node3D"]
 script = ExtResource("1_n063b")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite3D" parent="."]
 texture = ExtResource("2_ahxgo")
 
-[node name="Baracks" type="Node2D" parent="."]
+[node name="Baracks" type="Node3D" parent="."]
 script = ExtResource("3_w5o7y")

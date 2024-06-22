@@ -3,10 +3,9 @@
 [ext_resource type="Script" path="res://structures/structure.gd" id="1_u5g6j"]
 [ext_resource type="Texture2D" uid="uid://vvlqiwn2jef4" path="res://structures/lumberjack_hut/lumberjack_hut.png" id="2_qnywc"]
 
-[node name="Structure" type="Node2D"]
+[node name="Structure" type="Node3D"]
 script = ExtResource("1_u5g6j")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(4, -80)
-scale = Vector2(8.39592, 7.99093)
+[node name="Sprite2D" type="Sprite3D" parent="."]
+transform = Transform3D(8.39592, 0, 0, 0, 7.99093, 0, 0, 0, 0, 4, -80, 0)
 texture = ExtResource("2_qnywc")

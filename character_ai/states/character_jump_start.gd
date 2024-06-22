@@ -1,7 +1,7 @@
 extends State
 class_name CharacterJumpStart
 
-@onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
+@onready var animated_sprite: AnimatedSprite3D = $"../../TransformContainer/AnimatedSprite3D"
 @onready var character: Character = $"../.."
 
 func enter() -> void:

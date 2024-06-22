@@ -1,7 +1,7 @@
 extends State
 class_name TargetIdle
 
-@onready var animated_sprite: AnimatedSprite2D = $"../../TransformContainer/AnimatedSprite2D"
+@onready var animated_sprite: AnimatedSprite3D = $"../../TransformContainer/AnimatedSprite3D"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 func enter() -> void:
