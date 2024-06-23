@@ -32,7 +32,7 @@ func attack() -> void:
 	if target == null:
 		return
 	
-	var distance_to_target: float = (character.transform_container.global_position - target.transform_container.global_position).length()
+	var distance_to_target: float = (character.global_position - target.global_position).length()
 	
 	if distance_to_target <= character.hit_short_range:
 		state_machine.on_child_transition('hitShort')

@@ -1,9 +1,9 @@
 extends State
 class_name CharacterLie
 
-@onready var animated_sprite: AnimatedSprite3D = $"../../TransformContainer/AnimatedSprite3D"
+@onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
-@onready var collision_shape: CollisionShape3D = $"../../TransformContainer/CollisionShape3D"
+@onready var collision_shape: CollisionShape3D = $"../../CollisionShape3D"
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 func enter() -> void:

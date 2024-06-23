@@ -21,7 +21,6 @@
 [ext_resource type="Script" path="res://character_ai/states/character_run_hit_short.gd" id="20_n0yfb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mug0u"]
-size = Vector3(0.25293, 0.147949, 0.130035)
 
 [sub_resource type="Animation" id="Animation_od7y6"]
 resource_name = "hit_short"
@@ -676,7 +675,7 @@ animations = [{
 script = ExtResource("1_8y0co")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17233e-06, 0.0736745, 4.95911e-05)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -12, 0)
 shape = SubResource("BoxShape3D_mug0u")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -685,7 +684,6 @@ libraries = {
 }
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -0.000125885, 0, 0.00199592)
 offset = Vector2(0, 12)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fl2q0")
@@ -695,7 +693,7 @@ animation = &"lie_back"
 
 [node name="StateMachine" type="Node3D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("11_ixbwu")
-initial_state = NodePath("Idle")
+initial_state = NodePath("JumpStart")
 
 [node name="HitShort" type="Node" parent="StateMachine"]
 script = ExtResource("12_tegv7")

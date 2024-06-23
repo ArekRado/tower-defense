@@ -1,8 +1,6 @@
 extends State
 class_name CharacterHitShort
 
-@onready var animated_sprite: AnimatedSprite3D = $"../../TransformContainer/AnimatedSprite3D"
-@onready var transform_container: Area3D = $"../../TransformContainer"
 @onready var character: Character = $"../.."
 @onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 

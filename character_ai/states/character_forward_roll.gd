@@ -1,11 +1,10 @@
 extends State
 class_name CharacterForwardRoll
 
-@onready var animated_sprite: AnimatedSprite3D = $"../../TransformContainer/AnimatedSprite3D"
+@onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
-@onready var transform_container: Area3D = $"../../TransformContainer"
-@onready var collision_shape: CollisionShape3D = $"../../TransformContainer/CollisionShape3D"
+@onready var collision_shape: CollisionShape3D = $"../../CollisionShape3D"
 
 func enter() -> void:
 	animated_sprite.play("forward_roll")
@@ -19,8 +18,8 @@ func get_target_position() -> Vector3:
 	if character.go_to_position.length() > 0:
 		target_position = character.go_to_position
 	elif character.go_to_character:
-		var target_character_position: Vector3 = character.go_to_character.transform_container.global_position
-		var character_position: Vector3 = character.transform_container.global_position
+		var target_character_position: Vector3 = character.go_to_character.global_position
+		var character_position: Vector3 = character.global_position
 		var shift_x: float = character.hit_short_range if character_position.x > target_character_position.x else character.hit_short_range * - 1
 		
 		target_position = target_character_position + Vector3(shift_x, 0, 0)
@@ -36,8 +35,8 @@ func update(_delta: float) -> void:
 func physics_update(delta: float) -> void:
 	var target_position: Vector3 = get_target_position()
 	
-	character.direction = target_position - character.transform_container.global_position
-	var distance: float = character.direction.length()
+	character.velocity = target_position - character.global_position
+	var distance: float = character.velocity.length()
 	var run_speed: Vector3 = character.run_speed * delta
 	
 	if distance != 0:

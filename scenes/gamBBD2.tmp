@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2vyj1tibuqie"]
+[gd_scene load_steps=8 format=3 uid="uid://b2vyj1tibuqie"]
 
 [ext_resource type="PackedScene" uid="uid://2lb5jkkgdd1u" path="res://ground/ground.tscn" id="3_6x0mb"]
 [ext_resource type="PackedScene" uid="uid://d4hnnespr8fl5" path="res://structures/baracks/baracks.tscn" id="8_g7wdg"]
@@ -16,13 +16,10 @@ load_path = "res://.godot/imported/3.png-a7482561bac7507dc23042612abc48fe.ctex"
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cbp55"]
 load_path = "res://.godot/imported/4.png-afa537d1968c392d6f546b0b16fe2a96.ctex"
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2x57"]
-
 [node name="Game" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000172377, 0.00360906, -0.00203133)
 
 [node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.387625, 3.60916, 3.76944)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 2.265, 4.384, 3.605)
 projection = 1
 size = 2.961
 near = 0.001
@@ -66,7 +63,7 @@ texture = SubResource("CompressedTexture2D_cbp55")
 centered = false
 
 [node name="Recruit" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 1.5339, 1.39)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1.06358, 1.94905, 1.22334)
 is_player = true
 
 [node name="Baracks" parent="." instance=ExtResource("8_g7wdg")]
@@ -74,10 +71,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152, 155, 0)
 visible = false
 
 [node name="Ground" parent="." instance=ExtResource("3_6x0mb")]
-physics_material = SubResource("PhysicsMaterial_q2x57")
-data = {
-"cells": PackedInt32Array(3, 2, 655364, 10, 2, 655370, 13, 2, 655370, 3, 65535, 655370, 3, 65534, 655370, 3, 65533, 655370, 3, 65532, 655370, 2, 65532, 655370, 2, 65533, 655370, 2, 65534, 655370, 2, 65535, 655370, 2, 2, 655364, 1, 2, 655364, 0, 2, 655364, 65535, 2, 655364, 65534, 2, 655364, 65533, 2, 655364, 65532, 2, 655364, 65531, 2, 655364, 65530, 2, 655370, 65529, 2, 655370, 65528, 2, 655370, 65527, 2, 655370, 65526, 2, 655370, 3, 1, 655370, 2, 1, 655370, 2, 0, 655370, 3, 0, 655370, 10, 1, 655370, 10, 0, 655370, 10, 65535, 655370, 10, 65534, 655370, 10, 65533, 655370, 10, 65532, 655370, 11, 65532, 655370, 12, 65532, 655370, 13, 65532, 655370, 11, 2, 655370, 12, 2, 655370, 14, 1, 655370, 14, 2, 655370, 14, 0, 655370, 14, 65535, 655370, 14, 65534, 655370, 14, 65533, 655370, 14, 65532, 655370, 1, 65532, 655370, 0, 65532, 655370, 65535, 65532, 655370, 65534, 65532, 655370, 65533, 65532, 655370, 65533, 1, 655370, 65533, 0, 655370, 65533, 65535, 655370, 65533, 65534, 655370, 65533, 65533, 655370, 2, 65531, 655370, 2, 65530, 655370, 2, 65529, 655370, 2, 65528, 655370, 2, 65527, 655370, 3, 65527, 655370, 4, 65527, 655370, 5, 65527, 655370, 6, 65527, 655370, 7, 65527, 655370, 8, 65527, 655370, 9, 65527, 655370, 10, 65527, 655370, 11, 65527, 655370, 12, 65527, 655370, 13, 65527, 655370, 14, 65527, 655370, 14, 65531, 655370, 14, 65530, 655370, 14, 65529, 655370, 14, 65528, 655370, 4, 2, 655364, 5, 2, 655364, 6, 2, 655364)
-}
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 12.583)

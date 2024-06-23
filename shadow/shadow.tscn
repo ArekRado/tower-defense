@@ -9,12 +9,14 @@ script = ExtResource("1_fj1y4")
 
 [node name="Raycast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00180781, -1.19209e-07, -0.000987768)
-target_position = Vector3(0, -500, -500)
+target_position = Vector3(0, -500, 0)
 collision_mask = 12
+hit_from_inside = true
 collide_with_areas = true
 script = ExtResource("2_um888")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
 texture_filter = 0
 texture = ExtResource("1_g3qjs")
 
