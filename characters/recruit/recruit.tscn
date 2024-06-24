@@ -1,6 +1,7 @@
-[gd_scene load_steps=76 format=3 uid="uid://cvjqi4ybyfcq0"]
+[gd_scene load_steps=77 format=3 uid="uid://cvjqi4ybyfcq0"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_8y0co"]
+[ext_resource type="Texture2D" uid="uid://dc6dvvgdmh5sa" path="res://characters/recruit/assets/recruit.png" id="2_spqwk"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="10_0v3jx"]
 [ext_resource type="Script" path="res://character_ai/states/character_block.gd" id="11_ag021"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="11_ixbwu"]
@@ -283,20 +284,20 @@ region = Rect2(0, 24, 24, 24)
 atlas = SubResource("CompressedTexture2D_57m8j")
 region = Rect2(24, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_3h4nk"]
-atlas = SubResource("CompressedTexture2D_57m8j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ygtf"]
+atlas = ExtResource("2_spqwk")
 region = Rect2(48, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ysbc2"]
-atlas = SubResource("CompressedTexture2D_57m8j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8kwi"]
+atlas = ExtResource("2_spqwk")
 region = Rect2(72, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_yig8i"]
-atlas = SubResource("CompressedTexture2D_57m8j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_axwia"]
+atlas = ExtResource("2_spqwk")
 region = Rect2(96, 24, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jlr1"]
-atlas = SubResource("CompressedTexture2D_57m8j")
+[sub_resource type="AtlasTexture" id="AtlasTexture_afvqw"]
+atlas = ExtResource("2_spqwk")
 region = Rect2(120, 24, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tp3do"]
@@ -493,16 +494,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3h4nk")
+"texture": SubResource("AtlasTexture_3ygtf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ysbc2")
+"texture": SubResource("AtlasTexture_k8kwi")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_yig8i")
+"texture": SubResource("AtlasTexture_axwia")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1jlr1")
+"texture": SubResource("AtlasTexture_afvqw")
 }],
 "loop": true,
 "name": &"idle",
@@ -673,6 +674,7 @@ animations = [{
 }]
 
 [node name="Recruit" type="CharacterBody3D"]
+collision_mask = 5
 script = ExtResource("1_8y0co")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -689,7 +691,8 @@ transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 
 offset = Vector2(0, 12)
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fl2q0")
-animation = &"lie_back"
+animation = &"idle"
+frame_progress = 0.127116
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
 

@@ -66,7 +66,7 @@ texture = SubResource("CompressedTexture2D_cbp55")
 centered = false
 
 [node name="Recruit" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 1.5339, 1.39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 1.05277, 1.39)
 is_player = true
 
 [node name="Baracks" parent="." instance=ExtResource("8_g7wdg")]

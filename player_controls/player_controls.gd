@@ -24,15 +24,15 @@ func _process(delta: float) -> void:
 	double_press_time -= delta
 	last_delta = delta
 	
-	# forward_roll()
-	# block()
-	# hit_short()
-	# run_hit_short()
-	# jump_fast_hit_short()
+	forward_roll()
+	block()
+	hit_short()
+	run_hit_short()
+	jump_fast_hit_short()
 	walk()
-	# run()
-	# jump()
-	# fall()
+	run()
+	jump()
+	fall()
 	
 func walk() -> void:
 	if state_machine.current_state_name == 'run':
