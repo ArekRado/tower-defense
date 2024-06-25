@@ -6,7 +6,6 @@ class_name PlayerControls
 @export var jump_speed: float = -3.0
 @export var double_press_max_time: float = 0.3
 
-@onready var animated_sprite: AnimatedSprite3D = $"../AnimatedSprite3D"
 @onready var shadow: Shadow = $"../Shadow"
 @onready var state_machine: StateMachine = $"../StateMachine"
 @onready var character: Character = $".."

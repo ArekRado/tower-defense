@@ -64,6 +64,9 @@ func _physics_process(delta: float) -> void:
 	# velocity.y -= character_gravity * delta
 	# get_input()
 	is_colliding = move_and_slide()
+
+	if velocity.x != 0:
+		update_facing_direction()
 	
 func move(speed: Vector3) -> void:
 	# if is_movement_blocked == true:
