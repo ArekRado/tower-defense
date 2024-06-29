@@ -39,15 +39,12 @@ class_name Character
 var height: float = 0.0
 var go_to_position: Vector3
 var go_to_character: Character
-var character_gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
 var jump_velocity: float = 0.0
-# var velocity: Vector3 = Vector3.ZERO
 var is_movement_blocked: bool = false
 # Used to display shake and fall animations
 var fall_direction: Vector3 = Vector3.ZERO
 
 var hitbox_instance: Hitbox
-var is_colliding: bool = true
 
 func _ready() -> void:
 	if is_player:
@@ -60,28 +57,6 @@ func _ready() -> void:
 func update_facing_direction() -> void:
 	animated_sprite.flip_h = velocity.x < 0
 
-func _physics_process(delta: float) -> void:
-	# velocity.y -= character_gravity * delta
-	# get_input()
-	is_colliding = move_and_slide()
-
-	if velocity.x != 0:
-		update_facing_direction()
-	
-func move(speed: Vector3) -> void:
-	# if is_movement_blocked == true:
-	# 	return
-
-	# velocity = (velocity.normalized() * speed)
-	# position += velocity
-
-	# shadow.shadow_sprite.global_position.z = global_position.z
-	# shadow.shadow_raycast.global_position.z = global_position.z
-	
-	# if velocity.x != 0:
-	# 	update_facing_direction()
-	pass
-	
 func on_hit(damage: float, power: Vector3) -> void:
 	fall_direction = power
 	animation_player.stop()

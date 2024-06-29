@@ -16,7 +16,7 @@ collide_with_areas = true
 script = ExtResource("2_um888")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0)
+billboard = 1
 texture_filter = 0
 texture = ExtResource("1_g3qjs")
 

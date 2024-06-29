@@ -2,6 +2,7 @@ extends State
 class_name CharacterIdle
 
 @onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
+@onready var character: Character = $"../.."
 
 func enter() -> void:
 	animated_sprite.play('idle')
@@ -9,3 +10,9 @@ func enter() -> void:
 	var frame_index: int = randi_range(0, frames_count)
 
 	animated_sprite.frame = frame_index
+
+func physics_update(_delta: float) -> void:
+	character.move_and_slide()
+
+func update(_delta: float) -> void:
+	character.update_facing_direction()

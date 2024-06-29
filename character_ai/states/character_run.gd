@@ -30,7 +30,7 @@ func physics_update(delta: float) -> void:
 	var run_speed: Vector3 = character.run_speed * delta
 	
 	if distance != 0:
-		character.move(run_speed)
+		character.move_and_slide()
 		
 		if distance <= run_speed.length() * 1.2:
 			Transitioned.emit('idle')
@@ -38,3 +38,6 @@ func physics_update(delta: float) -> void:
 			character.go_to_character = null
 	else:
 		Transitioned.emit('idle')
+
+func update(_delta: float) -> void:
+	character.update_facing_direction()

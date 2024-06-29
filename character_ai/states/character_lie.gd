@@ -14,3 +14,9 @@ func enter() -> void:
 	
 func exit() -> void:
 	collision_shape.disabled = false
+
+func physics_update(_delta: float) -> void:
+	character.move_and_slide()
+
+func update(_delta: float) -> void:
+	character.update_facing_direction()

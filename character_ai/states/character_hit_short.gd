@@ -11,3 +11,9 @@ var has_hitbox: bool = false
 
 func enter() -> void:
 	animation_player.play('hit_short')
+
+func physics_update(_delta: float) -> void:
+	character.move_and_slide()
+
+func update(_delta: float) -> void:
+	character.update_facing_direction()

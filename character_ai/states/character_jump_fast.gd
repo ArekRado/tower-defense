@@ -1,6 +1,8 @@
 extends State
 class_name CharacterJumpFast
 
+var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 @onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
@@ -18,7 +20,11 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit('jumpEnd')
 	else:
 		character.global_position.y += character.jump_velocity
-		character.jump_velocity += (character.character_gravity * delta) / Engine.physics_ticks_per_second
+		character.jump_velocity += gravity * delta
 	
 	if character.velocity.length() != 0:
-		character.move(character.jump_fast_move_speed * delta)
+		character.move_and_slide()
+		# character.move(character.jump_fast_move_speed * delta)
+
+func update(_delta: float) -> void:
+	character.update_facing_direction()

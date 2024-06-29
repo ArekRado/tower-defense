@@ -26,12 +26,17 @@ func get_target_position() -> Vector3:
 	
 	return target_position
 
+func update(_delta: float) -> void:
+	character.update_facing_direction()
+
 func physics_update(delta: float) -> void:
 	var target_position: Vector3 = get_target_position()
 	character.velocity = target_position - character.global_position
 	var distance: float = character.velocity.length()
 	var walk_speed: Vector3 = character.walk_speed * delta
 	
+	character.move_and_slide()
+
 	if distance != 0:
 		# character.move(walk_speed)
 		

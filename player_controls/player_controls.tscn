@@ -6,5 +6,6 @@
 script = ExtResource("1_evx3u")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 999, 999)
 update_rotation = false
 update_scale = false

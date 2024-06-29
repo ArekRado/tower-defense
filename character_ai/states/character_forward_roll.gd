@@ -29,6 +29,7 @@ func get_target_position() -> Vector3:
 	return target_position
 	
 func update(_delta: float) -> void:
+	character.update_facing_direction()
 	if animated_sprite.is_playing() == false:
 		Transitioned.emit('idle')
 
@@ -39,8 +40,11 @@ func physics_update(delta: float) -> void:
 	var distance: float = character.velocity.length()
 	var run_speed: Vector3 = character.run_speed * delta
 	
+	character.move_and_slide()
+
 	if distance != 0:
-		character.move(run_speed)
+		character.move_and_slide()
+		# character.move(run_speed)
 		
 		if distance <= run_speed.length() * 1.2:
 			Transitioned.emit('idle')

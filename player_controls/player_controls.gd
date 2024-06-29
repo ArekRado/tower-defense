@@ -19,7 +19,6 @@ func _ready() -> void:
 	remote_transform_3d.remote_path = '../../../MainCamera'
 
 func _process(delta: float) -> void:
-	print('state ', state_machine.current_state_name)
 	double_press_time -= delta
 	last_delta = delta
 	
@@ -51,10 +50,8 @@ func walk() -> void:
 		if shift.length() != 0:
 			character.go_to_position = character.global_position + (shift * character.walk_speed)
 			if state_machine.current_state_name != 'jump':
-				print('1')
 				state_machine.on_child_transition('walk')
 		elif state_machine.current_state_name != 'jump'&&state_machine.current_state_name != 'idle':
-			print('2')
 			state_machine.on_child_transition('idle')
 
 func block() -> void:
@@ -89,12 +86,14 @@ func jump() -> void:
 		var shift: Vector3 = Vector3.ZERO
 		if Input.is_action_pressed('left'): shift += Vector3.LEFT
 		if Input.is_action_pressed('right'): shift += Vector3.RIGHT
-		if Input.is_action_pressed('up'): shift += Vector3.UP
-		if Input.is_action_pressed('down'): shift += Vector3.DOWN
+		if Input.is_action_pressed('up'): shift += Vector3.FORWARD
+		if Input.is_action_pressed('down'): shift += Vector3.BACK
 		
 		shift = shift.normalized()
 		if shift.length() != 0:
-			character.velocity = character.jump_move_speed * last_delta * shift
+			# character.jump_velocity = character.jump_height
+			character.velocity.x = character.jump_move_speed.x * shift.x
+			character.velocity.z = character.jump_move_speed.z * shift.z
 		
 func run() -> void:
 	if state_machine.current_state_name == 'idle'||state_machine.current_state_name == 'walk'&&double_press_time >= 0:
