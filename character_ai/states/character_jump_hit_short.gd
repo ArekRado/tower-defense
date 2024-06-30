@@ -1,7 +1,7 @@
 extends State
 class_name CharacterJumpHitShort
 
-var gravity: int = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"

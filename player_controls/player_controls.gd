@@ -91,7 +91,6 @@ func jump() -> void:
 		
 		shift = shift.normalized()
 		if shift.length() != 0:
-			# character.jump_velocity = character.jump_height
 			character.velocity.x = character.jump_move_speed.x * shift.x
 			character.velocity.z = character.jump_move_speed.z * shift.z
 		
@@ -100,9 +99,11 @@ func run() -> void:
 		if Input.is_action_just_pressed('left'):
 			state_machine.on_child_transition('run')
 			character.go_to_position = character.global_position + Vector3.LEFT
+			character.velocity = Vector3.LEFT
 		elif Input.is_action_just_pressed('right'):
 			state_machine.on_child_transition('run')
 			character.go_to_position = character.global_position + Vector3.RIGHT
+			character.velocity = Vector3.RIGHT
 	else:
 		if Input.is_action_just_pressed('left'):
 			last_action = 'left'
@@ -130,7 +131,7 @@ func run() -> void:
 		if Input.is_action_pressed('up'): shift_z = -1
 		if Input.is_action_pressed('down'): shift_z = 1
 		
-		var clamped_shift_z: float = clamp(shift_z * character.run_speed.y, character.run_speed.y * - 1, character.run_speed.y)
+		var clamped_shift_z: float = clamp(shift_z * character.run_speed.z, character.run_speed.z * - 1, character.run_speed.z)
 		character.go_to_position.z = character.global_position.z + clamped_shift_z
 			
 func forward_roll() -> void:

@@ -25,19 +25,16 @@ func get_target_position() -> Vector3:
 func physics_update(delta: float) -> void:
 	var target_position: Vector3 = get_target_position()
 	
-	character.velocity = target_position - character.global_position
+	character.velocity = Vector3(target_position - character.global_position).normalized() * character.run_speed
 	var distance: float = character.velocity.length()
 	var run_speed: Vector3 = character.run_speed * delta
 	
-	if distance != 0:
-		character.move_and_slide()
-		
-		if distance <= run_speed.length() * 1.2:
-			Transitioned.emit('idle')
-			character.go_to_position = Vector3.ZERO
-			character.go_to_character = null
-	else:
+	character.move_and_slide()
+	
+	if distance <= run_speed.length() * 1.2:
 		Transitioned.emit('idle')
+		character.go_to_position = Vector3.ZERO
+		character.go_to_character = null
 
 func update(_delta: float) -> void:
 	character.update_facing_direction()

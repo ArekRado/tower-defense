@@ -1,11 +1,11 @@
-extends Area2D
+extends Area3D
 class_name Hitbox
 
 @export var lifetime: float = 0.0
 @export var damage: float = 1
 @export var power: Vector3 = Vector3.ZERO
 
-@onready var collision_shape_2d: CollisionShape3D = $CollisionShape2D
+@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var hitEffect: PackedScene = preload ("res://hitEffect/hitEffect.tscn")
 
 func _process(delta: float) -> void:
@@ -14,7 +14,7 @@ func _process(delta: float) -> void:
 	if lifetime < 0:
 		queue_free()
 
-func _on_area_entered(area: Area2D) -> void:
+func _on_area_entered(area: Area3D) -> void:
 	var character: Character = area.get_parent()
 	var state_machine: StateMachine = area.get_parent().find_child('StateMachine')
 	
@@ -23,4 +23,4 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	var hitEffectInstance: AnimatedSprite3D = hitEffect.instantiate()
 	self.add_child(hitEffectInstance)
-	hitEffectInstance.position = collision_shape_2d.position
+	hitEffectInstance.position = collision_shape_3d.position

@@ -55,7 +55,8 @@ func _ready() -> void:
 		add_child(character_ai_instance)
 	
 func update_facing_direction() -> void:
-	animated_sprite.flip_h = velocity.x < 0
+	if velocity.x < 0: animated_sprite.flip_h = true
+	elif velocity.x > 0: animated_sprite.flip_h = false
 
 func on_hit(damage: float, power: Vector3) -> void:
 	fall_direction = power
@@ -71,7 +72,7 @@ func create_hitbox(lifetime: float=0.2, hitbox_scale: Vector3=Vector3.ONE, hitbo
 	hitbox_instance = hitbox.instantiate()
 	add_child(hitbox_instance)
 	hitbox_instance.lifetime = lifetime
-	hitbox_instance.collision_shape_2d.scale = hitbox_scale
-	hitbox_instance.collision_shape_2d.position = Vector3( - 1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y, 0)
+	hitbox_instance.collision_shape_3d.scale = hitbox_scale
+	hitbox_instance.collision_shape_3d.position = Vector3( - 1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y, 0)
 	hitbox_instance.power = Vector3(power.x if animated_sprite.is_flipped_h() else - 1 * power.x, hit_short_power.y * - 1, 0)
 	hitbox_instance.damage = damage

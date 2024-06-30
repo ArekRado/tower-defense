@@ -468,7 +468,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"forward_roll",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -676,7 +676,6 @@ animations = [{
 [node name="Recruit" type="CharacterBody3D"]
 collision_mask = 5
 script = ExtResource("1_8y0co")
-jump_height = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.17233e-06, 0.111181, 4.95911e-05)
@@ -694,8 +693,7 @@ billboard = 1
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_fl2q0")
-animation = &"idle"
-frame_progress = 0.127116
+animation = &"forward_roll"
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
 
