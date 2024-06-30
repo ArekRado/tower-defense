@@ -12,12 +12,12 @@ func enter() -> void:
 	animated_sprite.play('fall_back') if character.fall_direction.x > 0 else animated_sprite.play('fall_front')
 
 func physics_update(delta: float) -> void:
-	character.velocity.y += character.jump_velocity
+	character.velocity.y = character.jump_velocity
 
 	character.move_and_slide()
 
 	if character.is_on_floor():
-		character.velocity.y = 0
+		character.velocity = Vector3.ZERO
 		Transitioned.emit('lie')
 	else:
 		character.jump_velocity -= gravity * delta

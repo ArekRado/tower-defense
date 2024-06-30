@@ -5,6 +5,8 @@ class_name CharacterWalk
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
 
+var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 func enter() -> void:
 	animated_sprite.play("walk")
 
@@ -31,10 +33,16 @@ func update(_delta: float) -> void:
 
 func physics_update(delta: float) -> void:
 	var target_position: Vector3 = get_target_position()
-	character.velocity = target_position - character.global_position
+	var velocity: Vector3 = target_position - character.global_position
+	character.velocity.x = velocity.x
+	character.velocity.z = velocity.z
+			
+	if character.is_on_floor() == false:
+		character.velocity.y -= gravity * delta
+		
 	var distance: float = character.velocity.length()
 	var walk_speed: Vector3 = character.walk_speed * delta
-	
+
 	character.move_and_slide()
 
 	if distance != 0:

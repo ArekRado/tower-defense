@@ -4,6 +4,8 @@ class_name CharacterRun
 @onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
 
+var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 func enter() -> void:
 	animated_sprite.play("run")
 	
@@ -25,7 +27,13 @@ func get_target_position() -> Vector3:
 func physics_update(delta: float) -> void:
 	var target_position: Vector3 = get_target_position()
 	
-	character.velocity = Vector3(target_position - character.global_position).normalized() * character.run_speed
+	var velocity: Vector3 = Vector3(target_position - character.global_position).normalized() * character.run_speed
+	character.velocity.x = velocity.x
+	character.velocity.z = velocity.z
+	
+	if character.is_on_floor() == false:
+		character.velocity.y -= gravity * delta
+
 	var distance: float = character.velocity.length()
 	var run_speed: Vector3 = character.run_speed * delta
 	

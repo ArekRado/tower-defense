@@ -6,6 +6,8 @@ class_name CharacterForwardRoll
 @onready var shadow: Shadow = $"../../Shadow"
 @onready var collision_shape: CollisionShape3D = $"../../CollisionShape3D"
 
+var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
+
 func enter() -> void:
 	animated_sprite.play("forward_roll")
 	collision_shape.disabled = true
@@ -48,3 +50,6 @@ func physics_update(delta: float) -> void:
 		character.go_to_position = Vector3.ZERO
 		character.go_to_character = null
 		character.velocity = Vector3.ZERO
+
+	if character.is_on_floor() == false:
+		character.velocity.y -= gravity * delta

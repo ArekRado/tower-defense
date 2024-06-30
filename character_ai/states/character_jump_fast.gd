@@ -12,12 +12,12 @@ func enter() -> void:
 	animated_sprite.play('jump_fast')
 
 func physics_update(delta: float) -> void:
-	character.velocity.y += character.jump_velocity
+	character.velocity.y = character.jump_velocity
 
 	character.move_and_slide()
 
 	if character.is_on_floor():
-		character.velocity.y = 0
+		character.velocity = Vector3.ZERO
 		Transitioned.emit('jumpEnd')
 	else:
 		character.jump_velocity -= gravity * delta
