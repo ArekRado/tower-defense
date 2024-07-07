@@ -1,12 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://2lb5jkkgdd1u"]
 
-[ext_resource type="MeshLibrary" uid="uid://bsxgti23yhg4j" path="res://assets/MeshLibrary.tres" id="1_6qome"]
+[ext_resource type="PackedScene" uid="uid://d3j6gyg3coyd5" path="res://ground/platform_large.tscn" id="1_gk7i2"]
 
-[node name="Ground" type="GridMap"]
-mesh_library = ExtResource("1_6qome")
-cell_size = Vector3(0.5, 0.5, 0.5)
-collision_layer = 4
-collision_mask = 4
-data = {
-"cells": PackedInt32Array(65534, 2, 39, 65533, 2, 39, 65532, 2, 39, 65531, 2, 39, 0, 2, 41, 2, 2, 41, 1, 2, 41, 4, 2, 41, 3, 2, 41, 10, 2, 37, 13, 2, 37)
-}
+[node name="Ground" type="Node3D"]
+
+[node name="Platform" parent="." instance=ExtResource("1_gk7i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)

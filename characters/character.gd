@@ -31,6 +31,7 @@ class_name Character
 @onready var shadow: Shadow = $"Shadow"
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 
 @onready var player_controls: PackedScene = preload ("res://player_controls/player_controls.tscn")
 @onready var character_ai: PackedScene = preload ("res://character_ai/character_ai.tscn")
@@ -76,3 +77,22 @@ func create_hitbox(lifetime: float=0.2, hitbox_scale: Vector3=Vector3.ONE, hitbo
 	hitbox_instance.collision_shape_3d.position = Vector3( - 1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y, 0)
 	hitbox_instance.power = Vector3(power.x if animated_sprite.is_flipped_h() else - 1 * power.x, hit_short_power.y * - 1, 0)
 	hitbox_instance.damage = damage
+
+func get_direction_to_target() -> Vector3:
+	var direction: Vector3
+
+	if is_player:
+		if go_to_position.length() > 0:
+			direction = go_to_position - global_position
+	else:
+		if go_to_position.length() > 0:
+			navigation_agent_3d.target_position = go_to_position
+			direction = navigation_agent_3d.get_next_path_position() - global_position
+		elif go_to_character:
+			navigation_agent_3d.target_position = go_to_character.global_position
+			direction = navigation_agent_3d.get_next_path_position() - global_position
+		else:
+			push_warning("Character needs go_to_position or go_to_character to be defined")
+
+	direction = direction.normalized()
+	return direction

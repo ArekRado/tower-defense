@@ -95,7 +95,6 @@ block={
 
 [physics]
 
-3d/default_gravity=9.8
 2d/default_gravity=2.0
 
 [rendering]

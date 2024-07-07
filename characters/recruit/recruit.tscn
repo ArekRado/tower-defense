@@ -675,8 +675,10 @@ animations = [{
 
 [node name="Recruit" type="CharacterBody3D"]
 transform = Transform3D(0.986003, 0, 0, 0, 0.986003, 0, 0, 0, 0.986003, 0, 0, 0)
-collision_mask = 5
+collision_mask = 4
 script = ExtResource("1_8y0co")
+walk_speed = Vector3(70, 0, 60)
+run_speed = Vector3(150, 0, 90)
 jump_fast_move_speed = Vector3(2, 0, 1)
 jump_height = 3.5
 jump_fast_height = 2.5
@@ -752,3 +754,8 @@ script = ExtResource("19_y0run")
 
 [node name="RunHitShort" type="Node" parent="StateMachine"]
 script = ExtResource("20_n0yfb")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.1
+target_desired_distance = 0.1
+navigation_layers = 4

@@ -1,86 +1,48 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2vyj1tibuqie"]
+[gd_scene load_steps=6 format=3 uid="uid://b2vyj1tibuqie"]
 
 [ext_resource type="PackedScene" uid="uid://2lb5jkkgdd1u" path="res://ground/ground.tscn" id="3_6x0mb"]
+[ext_resource type="Script" path="res://ground/ground.gd" id="3_eowuk"]
 [ext_resource type="PackedScene" uid="uid://d4hnnespr8fl5" path="res://structures/baracks/baracks.tscn" id="8_g7wdg"]
 [ext_resource type="PackedScene" uid="uid://cvjqi4ybyfcq0" path="res://characters/recruit/recruit.tscn" id="8_hq443"]
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vbanc"]
-load_path = "res://.godot/imported/1.png-84748a232b01f6c9bbd7e4ac2632809d.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5ok0n"]
-load_path = "res://.godot/imported/2.png-89b1787b0f7c80708189925d6f812296.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_t1ckx"]
-load_path = "res://.godot/imported/3.png-a7482561bac7507dc23042612abc48fe.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cbp55"]
-load_path = "res://.godot/imported/4.png-afa537d1968c392d6f546b0b16fe2a96.ctex"
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_q2x57"]
+[sub_resource type="NavigationMesh" id="NavigationMesh_fovfp"]
+vertices = PackedVector3Array(-0.95, 0.17, -0.4, -0.95, 0.17, 0.4, 0.85, 0.17, 0.4, 0.85, 0.17, -0.4)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+agent_height = 0.32
+agent_radius = 0.05
+region_min_size = 1.0
+detail_sample_distance = 1.0
 
 [node name="Game" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000172377, 0.00360906, -0.00203133)
 
 [node name="MainCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.387625, 3.60916, 3.76944)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -3.017, 3.609, 3.769)
 projection = 1
 size = 2.961
 near = 0.001
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-visible = false
-
-[node name="Sky" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(3, 2)
-motion_scale = Vector2(0, 0)
-motion_mirroring = Vector2(1, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Sky"]
-texture = SubResource("CompressedTexture2D_vbanc")
-centered = false
-
-[node name="Clouds" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(-1, 0)
-motion_scale = Vector2(0.09, 0.09)
-motion_mirroring = Vector2(576, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Clouds"]
-texture = SubResource("CompressedTexture2D_5ok0n")
-centered = false
-
-[node name="Trees and ground2" type="ParallaxLayer" parent="ParallaxBackground"]
-position = Vector2(0, -1)
-motion_scale = Vector2(0.07, 0.07)
-motion_mirroring = Vector2(576, 0)
-
-[node name="3" type="Sprite2D" parent="ParallaxBackground/Trees and ground2"]
-texture = SubResource("CompressedTexture2D_t1ckx")
-centered = false
-
-[node name="Trees and ground" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.03, 0.03)
-motion_mirroring = Vector2(576, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Trees and ground"]
-texture = SubResource("CompressedTexture2D_cbp55")
-centered = false
-
 [node name="Recruit" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 1.05277, 1.39)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0.35277, 0.388288)
 is_player = true
+
+[node name="Recruit2" parent="." instance=ExtResource("8_hq443")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.598998, 0.317923, 0.316205)
 
 [node name="Baracks" parent="." instance=ExtResource("8_g7wdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152, 155, 0)
 visible = false
 
-[node name="Ground" parent="." instance=ExtResource("3_6x0mb")]
-physics_material = SubResource("PhysicsMaterial_q2x57")
-data = {
-"cells": PackedInt32Array(3, 2, 655364, 10, 2, 655370, 13, 2, 655370, 3, 65535, 655370, 3, 65534, 655370, 3, 65533, 655370, 3, 65532, 655370, 2, 65532, 655370, 2, 65533, 655370, 2, 65534, 655370, 2, 65535, 655370, 2, 2, 655364, 1, 2, 655364, 0, 2, 655364, 65535, 2, 655364, 65534, 2, 655364, 65533, 2, 655364, 65532, 2, 655364, 65531, 2, 655364, 65530, 2, 655370, 65529, 2, 655370, 65528, 2, 655370, 65527, 2, 655370, 65526, 2, 655370, 3, 1, 655370, 2, 1, 655370, 2, 0, 655370, 3, 0, 655370, 10, 1, 655370, 10, 0, 655370, 10, 65535, 655370, 10, 65534, 655370, 10, 65533, 655370, 10, 65532, 655370, 11, 65532, 655370, 12, 65532, 655370, 13, 65532, 655370, 11, 2, 655370, 12, 2, 655370, 14, 1, 655370, 14, 2, 655370, 14, 0, 655370, 14, 65535, 655370, 14, 65534, 655370, 14, 65533, 655370, 14, 65532, 655370, 1, 65532, 655370, 0, 65532, 655370, 65535, 65532, 655370, 65534, 65532, 655370, 65533, 65532, 655370, 65533, 1, 655370, 65533, 0, 655370, 65533, 65535, 655370, 65533, 65534, 655370, 65533, 65533, 655370, 2, 65531, 655370, 2, 65530, 655370, 2, 65529, 655370, 2, 65528, 655370, 2, 65527, 655370, 3, 65527, 655370, 4, 65527, 655370, 5, 65527, 655370, 6, 65527, 655370, 7, 65527, 655370, 8, 65527, 655370, 9, 65527, 655370, 10, 65527, 655370, 11, 65527, 655370, 12, 65527, 655370, 13, 65527, 655370, 14, 65527, 655370, 14, 65531, 655370, 14, 65530, 655370, 14, 65529, 655370, 14, 65528, 655370, 4, 2, 655364, 5, 2, 655364, 6, 2, 655364, 65544, 2, 4, 65545, 2, 4, 65546, 2, 4, 65547, 2, 4, 65548, 2, 4, 131086, 2, 4, 131087, 2, 4, 262154, 2, 4, 262153, 2, 4, 262152, 2, 4, 262151, 2, 4, 262150, 2, 4, 262149, 2, 4, 262148, 2, 4, 262147, 2, 4, 262146, 2, 4, 327678, 2, 655364, 327677, 2, 655364, 327674, 2, 655364, 327673, 2, 655364, 131065, 2, 4, 131064, 2, 4, 131063, 2, 4, 196598, 2, 4, 196597, 2, 4, 262132, 2, 4, 262133, 2, 4, 262155, 2, 4)
-}
-metadata/_editor_floor_ = Vector3(0, -5, 0)
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 12.583)
+transform = Transform3D(1, 0, 0, 0, 0.146031, 0.98928, 0, -0.98928, 0.146031, -0.839667, 0.56689, 4.86059)
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
+shadow_enabled = true
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_fovfp")
+navigation_layers = 4
+script = ExtResource("3_eowuk")
+
+[node name="Ground" parent="NavigationRegion3D" instance=ExtResource("3_6x0mb")]
+metadata/_editor_floor_ = Vector3(0, -5, 0)
