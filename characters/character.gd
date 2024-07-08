@@ -87,10 +87,12 @@ func get_direction_to_target() -> Vector3:
 	else:
 		if go_to_position.length() > 0:
 			navigation_agent_3d.target_position = go_to_position
-			direction = navigation_agent_3d.get_next_path_position() - global_position
+			var next_path_target: Vector3 = global_position.direction_to(navigation_agent_3d.get_next_path_position())
+			direction = next_path_target
 		elif go_to_character:
 			navigation_agent_3d.target_position = go_to_character.global_position
-			direction = navigation_agent_3d.get_next_path_position() - global_position
+			var next_path_target: Vector3 = global_position.direction_to(navigation_agent_3d.get_next_path_position())
+			direction = next_path_target
 		else:
 			push_warning("Character needs go_to_position or go_to_character to be defined")
 

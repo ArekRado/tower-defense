@@ -4,5 +4,11 @@
 
 [node name="Ground" type="Node3D"]
 
-[node name="Platform" parent="." instance=ExtResource("1_gk7i2")]
+[node name="Platform large2" parent="." instance=ExtResource("1_gk7i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1, 0, 0)
+
+[node name="Platform large3" parent="." instance=ExtResource("1_gk7i2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+
+[node name="Platform large" parent="." instance=ExtResource("1_gk7i2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05, 0, 0)

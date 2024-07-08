@@ -1,18 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2vyj1tibuqie"]
+[gd_scene load_steps=7 format=3 uid="uid://b2vyj1tibuqie"]
 
 [ext_resource type="PackedScene" uid="uid://2lb5jkkgdd1u" path="res://ground/ground.tscn" id="3_6x0mb"]
 [ext_resource type="Script" path="res://ground/ground.gd" id="3_eowuk"]
+[ext_resource type="Texture2D" uid="uid://cqtfno53o0me8" path="res://assets/units/recruit.png" id="5_arcxb"]
 [ext_resource type="PackedScene" uid="uid://d4hnnespr8fl5" path="res://structures/baracks/baracks.tscn" id="8_g7wdg"]
 [ext_resource type="PackedScene" uid="uid://cvjqi4ybyfcq0" path="res://characters/recruit/recruit.tscn" id="8_hq443"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_fovfp"]
-vertices = PackedVector3Array(-0.95, 0.17, -0.4, -0.95, 0.17, 0.4, 0.85, 0.17, 0.4, 0.85, 0.17, -0.4)
+vertices = PackedVector3Array(-2.85, 0.17, -0.25, -2.85, 0.17, 0.25, 2.9, 0.17, 0.25, 2.9, 0.17, -0.25)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+sample_partition_type = 2
 geometry_parsed_geometry_type = 1
+cell_height = 0.01
 agent_height = 0.32
-agent_radius = 0.05
+agent_radius = 0.25
 region_min_size = 1.0
-detail_sample_distance = 1.0
+edge_max_error = 0.1
 
 [node name="Game" type="Node3D"]
 
@@ -23,11 +26,11 @@ size = 2.961
 near = 0.001
 
 [node name="Recruit" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.13, 0.35277, 0.388288)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37, 0.35277, -0.30992)
 is_player = true
 
 [node name="Recruit2" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.598998, 0.317923, 0.316205)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.598998, 0.317923, 0.135386)
 
 [node name="Baracks" parent="." instance=ExtResource("8_g7wdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152, 155, 0)
@@ -46,3 +49,6 @@ script = ExtResource("3_eowuk")
 
 [node name="Ground" parent="NavigationRegion3D" instance=ExtResource("3_6x0mb")]
 metadata/_editor_floor_ = Vector3(0, -5, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = ExtResource("5_arcxb")

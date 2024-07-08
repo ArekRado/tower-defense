@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckbom4qbgu348"]
+[gd_scene load_steps=3 format=3 uid="uid://ckbom4qbgu348"]
 
 [ext_resource type="Script" path="res://character_ai/character_ai.gd" id="1_vby62"]
+[ext_resource type="Texture2D" uid="uid://cqtfno53o0me8" path="res://assets/units/recruit.png" id="2_fk3aq"]
 
 [node name="CharacterAI" type="Node3D"]
 script = ExtResource("1_vby62")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture = ExtResource("2_fk3aq")

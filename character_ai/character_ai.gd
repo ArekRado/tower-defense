@@ -3,6 +3,7 @@ class_name CharacterAI
 
 @onready var state_machine: StateMachine = $"../StateMachine"
 @onready var character: Character = $".."
+@onready var sprite_3d: Sprite3D = $Sprite3D
 
 var wait_delay: float = 0
 
@@ -15,17 +16,17 @@ func _process(delta: float) -> void:
 		do_something()
 
 func go_to_random_point() -> void:
-	var shift: Vector3 = Vector3(2, 0, 2)
-	var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, (randf() * shift.y) - shift.y / 2, 0)
+	var shift: Vector3 = Vector3(9, 0, 3)
+	var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, 0, (randf() * shift.z) - shift.z / 2, )
 
+	sprite_3d.global_position = character.global_position + random_shift
 	character.go_to_position = character.global_position + random_shift
 	
 	var random_value: float = randf()
-	state_machine.on_child_transition('walk')
-	# if random_value < 0.5:
-	# 	state_machine.on_child_transition('walk')
-	# else:
-	# 	state_machine.on_child_transition('run')
+	if random_value < 0.5:
+		state_machine.on_child_transition('walk')
+	else:
+		state_machine.on_child_transition('run')
 	
 func attack() -> void:
 	var target: Character = get_target_to_attack()
