@@ -6,7 +6,6 @@ var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
-@onready var collision_shape_3d: CollisionShape3D = $"../../CollisionShape3D"
 
 func enter() -> void:
 	animated_sprite.play('jump')

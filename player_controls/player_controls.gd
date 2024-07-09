@@ -30,6 +30,7 @@ func _process(delta: float) -> void:
 	walk()
 	run()
 	jump()
+	jump_fast()
 	fall()
 	
 func walk() -> void:
@@ -94,8 +95,25 @@ func jump() -> void:
 			character.velocity.x = character.jump_move_speed.x * shift.x
 			character.velocity.z = character.jump_move_speed.z * shift.z
 		
+func jump_fast() -> void:
+	var csn: String = state_machine.current_state_name
+
+	if csn == 'jumpFast':
+		if Input.is_action_just_pressed("hit_short"):
+			state_machine.on_child_transition('jumphitShort')
+			
+		var shift: Vector3 = Vector3.ZERO
+		if Input.is_action_pressed('up'): shift += Vector3.FORWARD
+		if Input.is_action_pressed('down'): shift += Vector3.BACK
+		
+		shift = shift.normalized()
+		if shift.length() != 0:
+			character.go_to_position = character.global_position + (shift * character.jump_fast_move_speed)
+
 func run() -> void:
-	if state_machine.current_state_name == 'idle'||state_machine.current_state_name == 'walk'&&double_press_time >= 0:
+	var csn: String = state_machine.current_state_name
+
+	if csn == 'idle'||csn == 'walk'&&double_press_time >= 0:
 		if Input.is_action_just_pressed('left'):
 			state_machine.on_child_transition('run')
 			character.go_to_position = character.global_position + Vector3.LEFT
@@ -114,7 +132,7 @@ func run() -> void:
 		else:
 			double_press_time = 0
 			
-	if state_machine.current_state_name == 'run':
+	if csn == 'run':
 		if Input.is_action_just_pressed("jump"):
 			state_machine.on_child_transition('jumpFast')
 			

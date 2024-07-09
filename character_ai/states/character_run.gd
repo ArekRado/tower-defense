@@ -9,9 +9,6 @@ var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 func enter() -> void:
 	animated_sprite.play("run")
 
-func exit() -> void:
-	character.velocity = Vector3.ZERO
-
 func update(_delta: float) -> void:
 	character.update_facing_direction()
 	

@@ -8,6 +8,7 @@ var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func enter() -> void:
 	animated_sprite.play('idle')
+	character.velocity = Vector3.ZERO
 	var frames_count: int = animated_sprite.sprite_frames.get_frame_count('idle')
 	var frame_index: int = randi_range(0, frames_count)
 

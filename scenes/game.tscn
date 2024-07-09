@@ -29,9 +29,6 @@ near = 0.001
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37, 0.35277, -0.30992)
 is_player = true
 
-[node name="Recruit2" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.598998, 0.317923, 0.135386)
-
 [node name="Baracks" parent="." instance=ExtResource("8_g7wdg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152, 155, 0)
 visible = false

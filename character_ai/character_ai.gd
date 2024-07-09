@@ -3,7 +3,6 @@ class_name CharacterAI
 
 @onready var state_machine: StateMachine = $"../StateMachine"
 @onready var character: Character = $".."
-@onready var sprite_3d: Sprite3D = $Sprite3D
 
 var wait_delay: float = 0
 
@@ -19,7 +18,6 @@ func go_to_random_point() -> void:
 	var shift: Vector3 = Vector3(9, 0, 3)
 	var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, 0, (randf() * shift.z) - shift.z / 2, )
 
-	sprite_3d.global_position = character.global_position + random_shift
 	character.go_to_position = character.global_position + random_shift
 	
 	var random_value: float = randf()

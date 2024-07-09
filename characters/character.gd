@@ -80,7 +80,6 @@ func create_hitbox(lifetime: float=0.2, hitbox_scale: Vector3=Vector3.ONE, hitbo
 
 func get_direction_to_target() -> Vector3:
 	var direction: Vector3
-
 	if is_player:
 		if go_to_position.length() > 0:
 			direction = go_to_position - global_position
