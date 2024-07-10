@@ -11,7 +11,13 @@ func enter() -> void:
 	animated_sprite.play('jump')
 
 func physics_update(delta: float) -> void:
+	var target_direction: Vector3 = character.get_direction_to_target()
+	var jump_move_speed: Vector3 = character.jump_move_speed * delta
+
+	var velocity: Vector3 = target_direction * jump_move_speed
+	character.velocity.x = velocity.x
 	character.velocity.y = character.jump_velocity
+	character.velocity.z = velocity.z
 	
 	character.move_and_slide()
 

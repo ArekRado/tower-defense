@@ -13,15 +13,13 @@ class_name PlayerControls
 
 var double_press_time: float = double_press_max_time
 var last_action: String = ''
-var last_delta: float = 0
 
 func _ready() -> void:
 	remote_transform_3d.remote_path = '../../../MainCamera'
 
 func _process(delta: float) -> void:
 	double_press_time -= delta
-	last_delta = delta
-	
+
 	forward_roll()
 	block()
 	hit_short()
@@ -46,8 +44,6 @@ func walk() -> void:
 		
 		shift = shift.normalized()
 
-		# character.velocity = shift
-		
 		if shift.length() != 0:
 			character.go_to_position = character.global_position + (shift * character.walk_speed)
 			if state_machine.current_state_name != 'jump':
@@ -92,8 +88,11 @@ func jump() -> void:
 		
 		shift = shift.normalized()
 		if shift.length() != 0:
-			character.velocity.x = character.jump_move_speed.x * shift.x
-			character.velocity.z = character.jump_move_speed.z * shift.z
+			character.go_to_position = character.global_position + (shift * character.jump_move_speed)
+			# print(character.jump_move_speed.x, ' ', shift.x, ' ', delta)
+			# # ustawiać to go to point i poruszac postacia w character jump
+			# character.velocity.x = character.jump_move_speed.x * shift.x * delta
+			# character.velocity.z = character.jump_move_speed.z * shift.z * delta
 		
 func jump_fast() -> void:
 	var csn: String = state_machine.current_state_name

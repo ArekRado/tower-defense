@@ -37,6 +37,8 @@ class_name Character
 @onready var character_ai: PackedScene = preload ("res://character_ai/character_ai.tscn")
 @onready var hitbox: PackedScene = preload ("res://hitbox/hitbox.tscn")
 
+# true - right; false - left
+var direction: bool = true
 var height: float = 0.0
 var go_to_position: Vector3
 var go_to_character: Character
@@ -54,6 +56,12 @@ func _ready() -> void:
 	else:
 		var character_ai_instance: CharacterAI = character_ai.instantiate()
 		add_child(character_ai_instance)
+
+func _process(_delta: float) -> void:
+	if velocity.x > 0:
+		direction = true
+	elif velocity.x < 0:
+		direction = false
 	
 func update_facing_direction() -> void:
 	if velocity.x < 0: animated_sprite.flip_h = true

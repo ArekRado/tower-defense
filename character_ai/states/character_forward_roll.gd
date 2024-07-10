@@ -3,7 +3,6 @@ class_name CharacterForwardRoll
 
 @onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
-@onready var shadow: Shadow = $"../../Shadow"
 @onready var collision_shape: CollisionShape3D = $"../../CollisionShape3D"
 
 var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -22,19 +21,13 @@ func update(_delta: float) -> void:
 		Transitioned.emit('idle')
 
 func physics_update(delta: float) -> void:
-	var target_position: Vector3 = character.get_direction_to_target()
-	
-	character.velocity = Vector3(target_position - character.global_position).normalized() * character.run_speed
-	var distance: float = character.velocity.length()
+	var target_direction: Vector3 = character.get_direction_to_target()
 	var run_speed: Vector3 = character.run_speed * delta
+	
+	var velocity: Vector3 = target_direction * run_speed
 	
 	character.move_and_slide()
 	
-	if distance <= run_speed.length() * 1.2:
+	if character.velocity.length() == 0||character.navigation_agent_3d.is_navigation_finished():
 		Transitioned.emit('idle')
-		character.go_to_position = Vector3.ZERO
 		character.go_to_character = null
-		character.velocity = Vector3.ZERO
-
-	if character.is_on_floor() == false:
-		character.velocity.y -= gravity * delta
