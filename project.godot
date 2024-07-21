@@ -28,7 +28,7 @@ gdscript/warnings/unsafe_call_argument=2
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="viewport"
-window/stretch/aspect="ignore"
+window/stretch/aspect="expand"
 
 [file_customization]
 
@@ -88,10 +88,17 @@ block={
 [layer_names]
 
 2d_physics/layer_1="Character"
+3d_physics/layer_1="Character"
 2d_physics/layer_2="Wall"
+3d_physics/layer_2="Wall"
 2d_physics/layer_3="Ground"
+3d_physics/layer_3="Ground"
 2d_physics/layer_4="ShadowRaycast"
+3d_physics/layer_4="ShadowRaycast"
 2d_physics/layer_5="Hitbox"
+3d_physics/layer_5="Hitbox"
+3d_physics/layer_6="City"
+3d_physics/layer_7="Player"
 
 [physics]
 

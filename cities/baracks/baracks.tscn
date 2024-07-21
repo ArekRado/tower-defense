@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4hnnespr8fl5"]
 
-[ext_resource type="Script" path="res://structures/structure.gd" id="1_n063b"]
-[ext_resource type="Texture2D" uid="uid://bf74h3oeapjar" path="res://structures/baracks/baracks.png" id="2_ahxgo"]
-[ext_resource type="Script" path="res://structures/baracks/baracks.gd" id="3_w5o7y"]
+[ext_resource type="Script" path="res://cities/city.gd" id="1_n063b"]
+[ext_resource type="Texture2D" uid="uid://bf74h3oeapjar" path="res://cities/baracks/baracks.png" id="2_ahxgo"]
+[ext_resource type="Script" path="res://cities/baracks/baracks.gd" id="3_w5o7y"]
 
 [node name="Structure" type="Node3D"]
 script = ExtResource("1_n063b")

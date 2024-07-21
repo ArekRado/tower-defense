@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://deall7urbuam4"]
 
-[ext_resource type="Script" path="res://structures/structure.gd" id="1_u5g6j"]
-[ext_resource type="Texture2D" uid="uid://vvlqiwn2jef4" path="res://structures/lumberjack_hut/lumberjack_hut.png" id="2_qnywc"]
+[ext_resource type="Script" path="res://cities/city.gd" id="1_u5g6j"]
+[ext_resource type="Texture2D" uid="uid://vvlqiwn2jef4" path="res://cities/lumberjack_hut/lumberjack_hut.png" id="2_qnywc"]
 
 [node name="Structure" type="Node3D"]
 script = ExtResource("1_u5g6j")

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vvlqiwn2jef4"
-path.s3tc="res://.godot/imported/lumberjack_hut.png-01e6bf7054331a94932179cb1a19db12.s3tc.ctex"
+uid="uid://bf74h3oeapjar"
+path.s3tc="res://.godot/imported/baracks.png-029b42711c1e716d8bf7e1c390f124dc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://structures/lumberjack_hut/lumberjack_hut.png"
-dest_files=["res://.godot/imported/lumberjack_hut.png-01e6bf7054331a94932179cb1a19db12.s3tc.ctex"]
+source_file="res://cities/baracks/baracks.png"
+dest_files=["res://.godot/imported/baracks.png-029b42711c1e716d8bf7e1c390f124dc.s3tc.ctex"]
 
 [params]
 

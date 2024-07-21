@@ -5,12 +5,14 @@ var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
-@onready var shadow: Shadow = $"../../Shadow"
 
 func enter() -> void:
 	character.jump_velocity = character.jump_fast_height
 	animated_sprite.play('jump_fast')
 
+func update(_delta: float) -> void:
+	character.update_facing_direction()
+	
 func physics_update(delta: float) -> void:
 	var target_direction: Vector3 = character.get_direction_to_target()
 	var jump_fast_move_speed: Vector3 = character.jump_fast_move_speed * delta
@@ -26,6 +28,3 @@ func physics_update(delta: float) -> void:
 		Transitioned.emit('jumpEnd')
 	else:
 		character.jump_velocity -= gravity * delta
-
-func update(_delta: float) -> void:
-	character.update_facing_direction()

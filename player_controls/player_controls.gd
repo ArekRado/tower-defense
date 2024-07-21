@@ -89,10 +89,6 @@ func jump() -> void:
 		shift = shift.normalized()
 		if shift.length() != 0:
 			character.go_to_position = character.global_position + (shift * character.jump_move_speed)
-			# print(character.jump_move_speed.x, ' ', shift.x, ' ', delta)
-			# # ustawiać to go to point i poruszac postacia w character jump
-			# character.velocity.x = character.jump_move_speed.x * shift.x * delta
-			# character.velocity.z = character.jump_move_speed.z * shift.z * delta
 		
 func jump_fast() -> void:
 	var csn: String = state_machine.current_state_name
@@ -136,7 +132,7 @@ func run() -> void:
 			state_machine.on_child_transition('jumpFast')
 			
 		character.go_to_position = character.global_position + character.velocity
-		
+
 		if Input.is_action_just_pressed('left')&&character.velocity.x > 0:
 			state_machine.on_child_transition('idle')
 			return
@@ -148,8 +144,7 @@ func run() -> void:
 		if Input.is_action_pressed('up'): shift_z = -1
 		if Input.is_action_pressed('down'): shift_z = 1
 		
-		var clamped_shift_z: float = clamp(shift_z * character.run_speed.z, character.run_speed.z * - 1, character.run_speed.z)
-		character.go_to_position.z = character.global_position.z + clamped_shift_z
+		character.go_to_position.z = character.global_position.z + shift_z
 			
 func forward_roll() -> void:
 	var csn: String = state_machine.current_state_name
