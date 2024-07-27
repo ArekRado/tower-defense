@@ -53,6 +53,7 @@ func _ready() -> void:
 	if is_player:
 		var player_controls_instance: PlayerControls = player_controls.instantiate()
 		add_child(player_controls_instance)
+		set_collision_layer_value(7, true)
 	else:
 		var character_ai_instance: CharacterAI = character_ai.instantiate()
 		add_child(character_ai_instance)
@@ -87,21 +88,21 @@ func create_hitbox(lifetime: float=0.2, hitbox_scale: Vector3=Vector3.ONE, hitbo
 	hitbox_instance.damage = damage
 
 func get_direction_to_target() -> Vector3:
-	var direction: Vector3
+	var direction_to_target: Vector3
 	if is_player:
 		if go_to_position.length() > 0:
-			direction = go_to_position - global_position
+			direction_to_target = go_to_position - global_position
 	else:
 		if go_to_position.length() > 0:
 			navigation_agent_3d.target_position = go_to_position
 			var next_path_target: Vector3 = global_position.direction_to(navigation_agent_3d.get_next_path_position())
-			direction = next_path_target
+			direction_to_target = next_path_target
 		elif go_to_character:
 			navigation_agent_3d.target_position = go_to_character.global_position
 			var next_path_target: Vector3 = global_position.direction_to(navigation_agent_3d.get_next_path_position())
-			direction = next_path_target
+			direction_to_target = next_path_target
 		else:
 			push_warning("Character needs go_to_position or go_to_character to be defined")
 
-	direction = direction.normalized()
-	return direction
+	direction_to_target = direction_to_target.normalized()
+	return direction_to_target

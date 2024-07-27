@@ -1,25 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://b2vyj1tibuqie"]
+[gd_scene load_steps=4 format=3 uid="uid://b2vyj1tibuqie"]
 
-[ext_resource type="PackedScene" uid="uid://2lb5jkkgdd1u" path="res://ground/ground.tscn" id="3_6x0mb"]
-[ext_resource type="Script" path="res://ground/ground.gd" id="3_eowuk"]
-[ext_resource type="PackedScene" uid="uid://b2cdgyauyl2s3" path="res://cities/city.tscn" id="6_chjbn"]
+[ext_resource type="PackedScene" uid="uid://bjyedkbmuknsa" path="res://ui/city_preview.tscn" id="5_sub33"]
+[ext_resource type="PackedScene" uid="uid://dchtb5jhrmh8x" path="res://map/map1.tscn" id="6_33ssr"]
 [ext_resource type="PackedScene" uid="uid://cvjqi4ybyfcq0" path="res://characters/recruit/recruit.tscn" id="8_hq443"]
 
-[sub_resource type="NavigationMesh" id="NavigationMesh_fovfp"]
-vertices = PackedVector3Array(-2.75, 0.17, -0.25, -2.75, 0.17, 0.25, 8.75, 0.17, 0.25, 8.75, 0.17, -0.25)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
-sample_partition_type = 2
-geometry_parsed_geometry_type = 1
-cell_height = 0.01
-agent_height = 0.32
-agent_radius = 0.25
-region_min_size = 1.0
-edge_max_error = 0.1
-
-[sub_resource type="LabelSettings" id="LabelSettings_n8ivq"]
-font_size = 60
-
 [node name="Game" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("8_hq443")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09986, 0.35277, -0.30992)
+is_player = true
+
+[node name="Map" parent="." instance=ExtResource("6_33ssr")]
 
 [node name="MainCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, -3.017, 3.609, 3.769)
@@ -27,48 +18,15 @@ projection = 1
 size = 2.961
 near = 0.001
 
-[node name="Player" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09986, 0.35277, -0.30992)
-is_player = true
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.146031, 0.98928, 0, -0.98928, 0.146031, -0.839667, 0.56689, 4.86059)
 light_volumetric_fog_energy = 0.0
 light_bake_mode = 1
 shadow_enabled = true
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-navigation_mesh = SubResource("NavigationMesh_fovfp")
-navigation_layers = 4
-script = ExtResource("3_eowuk")
-
-[node name="Ground" parent="NavigationRegion3D" instance=ExtResource("3_6x0mb")]
-metadata/_editor_floor_ = Vector3(0, -5, 0)
-
-[node name="City" parent="." instance=ExtResource("6_chjbn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 0)
-
 [node name="UI" type="Node3D" parent="."]
 
-[node name="CityPreview" type="Control" parent="UI"]
+[node name="CityPreview" parent="UI" instance=ExtResource("5_sub33")]
 visible = false
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="Label" type="Label" parent="UI/CityPreview"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.454
-anchor_top = 0.119
-anchor_right = 0.545
-anchor_bottom = 0.195
-offset_left = -0.680054
-offset_top = -0.520004
-offset_right = -0.400024
-offset_bottom = 0.399994
-text = "aaaaa"
-label_settings = SubResource("LabelSettings_n8ivq")
+[node name="Units" type="Node3D" parent="."]

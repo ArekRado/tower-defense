@@ -1,0 +1,64 @@
+[gd_scene load_steps=5 format=3 uid="uid://dchtb5jhrmh8x"]
+
+[ext_resource type="PackedScene" uid="uid://d3j6gyg3coyd5" path="res://ground/platform_large.tscn" id="1_hlp65"]
+[ext_resource type="Script" path="res://cities/city.gd" id="2_8uer4"]
+[ext_resource type="PackedScene" uid="uid://b2cdgyauyl2s3" path="res://cities/city.tscn" id="3_ympv8"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_turws"]
+vertices = PackedVector3Array(-1.30005, 0.040825, 0.5, -1.05005, 0.040825, 0.5, -1.05005, 0.040825, 0.25, -4.80005, 0.040825, -0.25, 4.94995, 0.040825, 0.25, 4.94995, 0.040825, 0.5, 5.19995, 0.040825, 0.5, 8.69995, 0.040825, -0.25, -4.80005, 0.040825, 1.25, -1.30005, 0.040825, 1.25, -1.30005, 0.040825, 0.5, -4.80005, 0.040825, -0.25, -4.80005, 0.040825, -0.25, -1.05005, 0.040825, 0.25, 4.94995, 0.040825, 0.25, 8.69995, 0.040825, -0.25, 5.19995, 0.040825, 0.5, 5.19995, 0.040825, 1.25, 8.69995, 0.040825, 1.25, 8.69995, 0.040825, -0.25)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(13, 12, 14), PackedInt32Array(14, 12, 15), PackedInt32Array(17, 16, 18), PackedInt32Array(18, 16, 19)]
+sample_partition_type = 2
+geometry_parsed_geometry_type = 1
+cell_height = 0.01
+agent_height = 0.32
+agent_radius = 0.25
+region_min_size = 1.0
+edge_max_error = 0.1
+
+[node name="Map" type="Node3D"]
+
+[node name="Ground" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_turws")
+
+[node name="Platform large3" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05005, -0.129175, 1)
+
+[node name="Platform large2" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.05005, -0.129175, 0)
+
+[node name="Platform large" parent="Ground" instance=ExtResource("1_hlp65")]
+
+[node name="Platform large4" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05005, -0.129175, 1)
+
+[node name="Platform large5" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05005, -0.129175, 0)
+
+[node name="Platform large6" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.94995, -0.129175, 0)
+
+[node name="Platform large7" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.94995, -0.129175, 0)
+
+[node name="Platform large8" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94995, -0.129175, 1)
+
+[node name="Platform large9" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.94995, -0.129175, 0)
+
+[node name="Platform large10" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.94995, -0.129175, 1)
+
+[node name="Platform large11" parent="Ground" instance=ExtResource("1_hlp65")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.94995, -0.129175, 0)
+
+[node name="Cities" type="Node3D" parent="."]
+script = ExtResource("2_8uer4")
+
+[node name="City" parent="Cities" instance=ExtResource("3_ympv8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.44791, 0.0208251, 0.410438)
+city_name = "Mielec"
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="Structures" type="Node3D" parent="."]
