@@ -46,6 +46,7 @@ var jump_velocity: float = 0.0
 var is_movement_blocked: bool = false
 # Used to display shake and fall animations
 var fall_direction: Vector3 = Vector3.ZERO
+var assigned_city_name: String
 
 var hitbox_instance: Hitbox
 

@@ -27,6 +27,6 @@ shadow_enabled = true
 [node name="UI" type="Node3D" parent="."]
 
 [node name="CityPreview" parent="UI" instance=ExtResource("5_sub33")]
-visible = false
-
-[node name="Units" type="Node3D" parent="."]
+anchors_preset = -1
+anchor_left = -0.006
+offset_left = -0.48

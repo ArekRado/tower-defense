@@ -7,7 +7,7 @@ class_name City
 @onready var house_scene: PackedScene = preload ("res://cities/house/house.tscn")
 
 var max_size: float = 5
-var assigned_characters: Array[Character] = []
+var assigned_characters_names: Array[String] = []
 var amount_of_houses_per_size: Array[int] = [1, 3, 5, 8, 13]
 
 func _ready() -> void:
@@ -31,24 +31,20 @@ func upgrade_city_size(from: int, to: int) -> void:
 
 	size = to
 
-func assign_character(character: Character) -> void:
-	assigned_characters.push_back(character)
+func assign_character(character_name: String) -> void:
+	assigned_characters_names.push_back(character_name)
 
-func unassign_character(character: Character) -> void:
-	assigned_characters = assigned_characters.filter(func(c: Character) -> bool:
-		return character.get_instance_id() != c.get_instance_id()
+func unassign_character(character_name: String) -> void:
+	assigned_characters_names = assigned_characters_names.filter(func(cn: String) -> bool:
+		return character_name != cn
 	)
 
 func _on_static_body_3d_body_entered(_body: Node3D) -> void:
 	var city_preview: CityPreview = Paths.get_ui_city_preview(get_tree())
 	if (city_preview is CityPreview):
-		@warning_ignore("unsafe_method_access")
-		city_preview.show()
-		@warning_ignore("unsafe_method_access")
-		city_preview.set_details(name)
+		city_preview.set_details(true, name)
 
 func _on_static_body_3d_body_exited(_body: Node3D) -> void:
 	var city_preview: CityPreview = Paths.get_ui_city_preview(get_tree())
 	if (city_preview is CityPreview):
-		@warning_ignore("unsafe_method_access")
 		city_preview.hide()
