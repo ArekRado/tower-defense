@@ -15,7 +15,7 @@ var double_press_time: float = double_press_max_time
 var last_action: String = ''
 
 func _ready() -> void:
-	remote_transform_3d.remote_path = '../../../MainCamera'
+	remote_transform_3d.remote_path = '../../../../../MainCamera'
 
 func _process(delta: float) -> void:
 	double_press_time -= delta

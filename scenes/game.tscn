@@ -1,14 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2vyj1tibuqie"]
+[gd_scene load_steps=3 format=3 uid="uid://b2vyj1tibuqie"]
 
 [ext_resource type="PackedScene" uid="uid://bjyedkbmuknsa" path="res://ui/city_preview.tscn" id="5_sub33"]
 [ext_resource type="PackedScene" uid="uid://dchtb5jhrmh8x" path="res://map/map1.tscn" id="6_33ssr"]
-[ext_resource type="PackedScene" uid="uid://cvjqi4ybyfcq0" path="res://characters/recruit/recruit.tscn" id="8_hq443"]
 
 [node name="Game" type="Node3D"]
-
-[node name="Player" parent="." instance=ExtResource("8_hq443")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.09986, 0.35277, -0.30992)
-is_player = true
 
 [node name="Map" parent="." instance=ExtResource("6_33ssr")]
 

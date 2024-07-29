@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqchrg6yhxkr5"]
+
+[ext_resource type="Texture2D" uid="uid://bfnrwdttxve07" path="res://player_marker/player_marker_gray.png" id="1_si3d4"]
+[ext_resource type="Script" path="res://player_marker/player_marker.gd" id="2_nf1ug"]
+
+[node name="PlayerMarker" type="Sprite3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_si3d4")
+script = ExtResource("2_nf1ug")

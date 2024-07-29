@@ -32,6 +32,7 @@ class_name Character
 @onready var state_machine: StateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
+@onready var player_marker: PlayerMarker = $PlayerMarker
 
 @onready var player_controls: PackedScene = preload ("res://player_controls/player_controls.tscn")
 @onready var character_ai: PackedScene = preload ("res://character_ai/character_ai.tscn")
@@ -51,6 +52,8 @@ var assigned_city_name: String
 var hitbox_instance: Hitbox
 
 func _ready() -> void:
+	player_marker.set_color('blue')
+	
 	if is_player:
 		var player_controls_instance: PlayerControls = player_controls.instantiate()
 		add_child(player_controls_instance)
