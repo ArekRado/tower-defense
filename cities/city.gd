@@ -3,8 +3,11 @@ class_name City
 
 @export var city_name: String = ''
 @export var size: int = 1
+@export var player: Player
 
-@onready var house_scene: PackedScene = preload ("res://cities/house/house.tscn")
+@onready var player_marker: PlayerMarker = $PlayerMarker
+@onready var house_scene: PackedScene = preload("res://cities/house/house.tscn")
+@onready var lumberjack_hut_scene: PackedScene = preload("res://cities/lumberjack_hut/lumberjack_hut.tscn")
 
 var max_size: float = 5
 var assigned_characters_names: Array[String] = []
@@ -12,6 +15,7 @@ var amount_of_houses_per_size: Array[int] = [1, 3, 5, 8, 13]
 
 func _ready() -> void:
 	upgrade_city_size(0, size)
+	player_marker.set_color(player.color)
 
 func upgrade_city_size(from: int, to: int) -> void:
 	var diff: int = to - from
@@ -30,6 +34,16 @@ func upgrade_city_size(from: int, to: int) -> void:
 			house.global_position = global_position + random_shift
 
 	size = to
+
+func build_lumberjack_hut() -> void:
+	var lumberjack_hut: Node3D = lumberjack_hut_scene.instantiate()
+
+	print(build_lumberjack_hut)
+	Paths.get_structures(get_tree()).add_child(lumberjack_hut)
+	var shift: Vector3 = Vector3(max_size / 2, 0, max_size / 8)
+	var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, 0, (randf() * shift.z) - shift.z / 2, )
+	lumberjack_hut.global_position = global_position + random_shift
+
 
 func assign_character(character_name: String) -> void:
 	assigned_characters_names.push_back(character_name)

@@ -8,7 +8,15 @@ static func get_cities(tree: SceneTree) -> Node3D:
 
 static func get_city(tree: SceneTree, city_name: String) -> City:
 	return get_cities(tree).get_node(city_name) as City
+# 
+# Players
+# 
+static func get_players(tree: SceneTree) -> Node3D:
+	return tree.get_root().get_node('./Game/Map/Players') as Node3D
 
+static func get_player(tree: SceneTree, player_name: String) -> Player:
+	return get_players(tree).get_node(player_name) as Player
+	
 # 
 # Structures
 # 

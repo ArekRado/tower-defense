@@ -1,9 +1,6 @@
 extends Sprite3D
 class_name PlayerMarker
 
-# func _ready() -> void:
-# 	set_color('gray')
-
 func set_color(player_color: String) -> void:
 	match player_color:
 		'gray':

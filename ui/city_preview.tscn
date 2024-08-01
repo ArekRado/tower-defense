@@ -66,6 +66,20 @@ offset_bottom = -0.200073
 theme_override_font_sizes/font_size = 20
 text = "Upgrade"
 
+[node name="BuildLumberjackHutButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.552
+anchor_top = 0.86
+anchor_right = 0.666
+anchor_bottom = 0.921
+offset_left = 0.159912
+offset_top = -0.799988
+offset_right = -0.719971
+offset_bottom = 0.319824
+theme_override_font_sizes/font_size = 20
+text = "Build Lumberjack Hut"
+
 [node name="RecruitButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -81,4 +95,5 @@ theme_override_font_sizes/font_size = 20
 text = "Recruit"
 
 [connection signal="button_up" from="UpgradeButton" to="." method="_on_upgrade_button_button_up"]
+[connection signal="button_up" from="BuildLumberjackHutButton" to="." method="_on_build_lumberjack_hut_button_button_up"]
 [connection signal="button_up" from="RecruitButton" to="." method="_on_recruit_button_button_up"]

@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dchtb5jhrmh8x" path="res://map/map1.tscn" id="6_33ssr"]
 
 [node name="Game" type="Node3D"]
+top_level = true
 
 [node name="Map" parent="." instance=ExtResource("6_33ssr")]
 

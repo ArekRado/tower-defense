@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://b2cdgyauyl2s3"]
+[gd_scene load_steps=4 format=3 uid="uid://b2cdgyauyl2s3"]
 
 [ext_resource type="Script" path="res://cities/city.gd" id="1_wee8n"]
+[ext_resource type="PackedScene" uid="uid://dqchrg6yhxkr5" path="res://player_marker/player_marker.tscn" id="2_5gm5g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_migwx"]
 
 [node name="City" type="Node3D"]
 script = ExtResource("1_wee8n")
+
+[node name="PlayerMarker" parent="." instance=ExtResource("2_5gm5g")]
 
 [node name="StaticBody3D" type="Area3D" parent="."]
 collision_layer = 32
