@@ -25,6 +25,6 @@ func physics_update(delta: float) -> void:
 		
 	character.move_and_slide()
 
-	if character.velocity.length() == 0||character.navigation_agent_3d.is_navigation_finished():
+	if character.velocity.length() == 0 || character.navigation_agent_3d.is_navigation_finished():
 		Transitioned.emit('idle')
 		character.go_to_character = null

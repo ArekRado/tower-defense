@@ -6,27 +6,27 @@ class_name Character
 @export var player: Player
 
 @export_category('movement')
-@export var walk_speed: Vector3 = Vector3(0.7, 0, 0.6)
-@export var run_speed: Vector3 = Vector3(1.5, 0, 0.9)
+@export var walk_speed: Vector3
+@export var run_speed: Vector3
 
 @export_category('jump')
-@export var jump_move_speed: Vector3 = Vector3(0.7, 0, 0.6)
-@export var jump_fast_move_speed: Vector3 = Vector3(1.7, 0, 1.0)
-@export var jump_height: float = 0.3
-@export var jump_fast_height: float = 0.22
+@export var jump_move_speed: Vector3
+@export var jump_fast_move_speed: Vector3
+@export var jump_height: float
+@export var jump_fast_height: float
 
 @export_category('hit short')
-@export var hit_short_range: float = 5
-@export var hit_short_damage: float = 1
-@export var hit_short_power: Vector3 = Vector3(20, 1, 0)
+@export var hit_short_range: float
+@export var hit_short_damage: float
+@export var hit_short_power: Vector3
 
 @export_category('run hit short')
-@export var run_hit_short_damage: float = 2
-@export var run_hit_short_power: Vector3 = Vector3(20, 1, 0)
+@export var run_hit_short_damage: float
+@export var run_hit_short_power: Vector3
 
 @export_category('jump fast hit short')
-@export var jump_fast_hit_short_damage: float = 2
-@export var jump_fast_hit_short_power: Vector3 = Vector3(20, 1, 0)
+@export var jump_fast_hit_short_damage: float
+@export var jump_fast_hit_short_power: Vector3
 
 @onready var animated_sprite: AnimatedSprite3D = $"AnimatedSprite3D"
 @onready var shadow: Shadow = $"Shadow"
@@ -49,6 +49,7 @@ var is_movement_blocked: bool = false
 # Used to display shake and fall animations
 var fall_direction: Vector3 = Vector3.ZERO
 var assigned_city_name: String
+var assigned_structure_name: String
 
 var hitbox_instance: Hitbox
 

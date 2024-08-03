@@ -54,7 +54,6 @@ func _on_recruit_button_button_up() -> void:
 
 	var character: Character = Paths.get_character(get_tree(), recruit.name)
 	character.assigned_city_name = city.name
-	character.assigned_city_name = city.name
 	city.assign_character(recruit.name)
 
 	recruit.initialize_data()

@@ -684,6 +684,13 @@ jump_move_speed = Vector3(70, 0, 60)
 jump_fast_move_speed = Vector3(150, 0, 90)
 jump_height = 3.5
 jump_fast_height = 2.5
+hit_short_range = 5.0
+hit_short_damage = 1.0
+hit_short_power = Vector3(20, 1, 0)
+run_hit_short_damage = 2.0
+run_hit_short_power = Vector3(20, 1, 0)
+jump_fast_hit_short_damage = 2.0
+jump_fast_hit_short_power = Vector3(20, 1, 0)
 
 [node name="PlayerMarker" parent="." instance=ExtResource("2_osd15")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.408584, 0)

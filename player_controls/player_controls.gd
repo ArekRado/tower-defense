@@ -35,48 +35,48 @@ func walk() -> void:
 	if state_machine.current_state_name == 'run':
 		return
 		
-	if state_machine.current_state_name == 'idle'||state_machine.current_state_name == 'walk':
+	if state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk':
 		var shift: Vector3 = Vector3.ZERO
 		if Input.is_action_pressed('left'): shift += Vector3.LEFT
 		if Input.is_action_pressed('right'): shift += Vector3.RIGHT
 		if Input.is_action_pressed('up'): shift += Vector3.FORWARD
 		if Input.is_action_pressed('down'): shift += Vector3.BACK
-		
+
 		shift = shift.normalized()
 
 		if shift.length() != 0:
 			character.go_to_position = character.global_position + (shift * character.walk_speed)
 			if state_machine.current_state_name != 'jump':
 				state_machine.on_child_transition('walk')
-		elif state_machine.current_state_name != 'jump'&&state_machine.current_state_name != 'idle':
+		elif state_machine.current_state_name != 'jump' && state_machine.current_state_name != 'idle':
 			state_machine.on_child_transition('idle')
 
 func block() -> void:
 	var csn: String = state_machine.current_state_name
 	
-	if Input.is_action_just_pressed("block")&&(csn == 'idle'||csn == 'walk'||csn == 'run'):
+	if Input.is_action_just_pressed("block") && (csn == 'idle' || csn == 'walk' || csn == 'run'):
 			state_machine.on_child_transition('block')
 
 func hit_short() -> void:
-	if Input.is_action_just_pressed("hit_short")&&(state_machine.current_state_name == 'idle'||state_machine.current_state_name == 'walk'):
+	if Input.is_action_just_pressed("hit_short") && (state_machine.current_state_name == 'idle' || state_machine.current_state_name == 'walk'):
 		state_machine.on_child_transition('hitShort')
 		
 func run_hit_short() -> void:
-	if Input.is_action_just_pressed("hit_short")&&state_machine.current_state_name == 'run':
+	if Input.is_action_just_pressed("hit_short") && state_machine.current_state_name == 'run':
 		state_machine.on_child_transition('runHitShort')
 
 func jump_fast_hit_short() -> void:
-	if Input.is_action_just_pressed("hit_short")&&state_machine.current_state_name == 'jumpFast':
+	if Input.is_action_just_pressed("hit_short") && state_machine.current_state_name == 'jumpFast':
 		state_machine.on_child_transition('jumpFastHitShort')
 		
 func jump() -> void:
 	var csn: String = state_machine.current_state_name
 
-	if Input.is_action_just_pressed("jump")&&(csn == 'run'||csn == 'walk'||csn == 'idle'||csn == 'forwardRoll'):
+	if Input.is_action_just_pressed("jump") && (csn == 'run' || csn == 'walk' || csn == 'idle' || csn == 'forwardRoll'):
 		character.velocity = Vector3.ZERO
 		state_machine.on_child_transition('jumpStart')
 
-	if csn == 'jump'||csn == 'jumpHitShort':
+	if csn == 'jump' || csn == 'jumpHitShort':
 		if Input.is_action_just_pressed("hit_short"):
 			state_machine.on_child_transition('jumphitShort')
 			
@@ -108,7 +108,7 @@ func jump_fast() -> void:
 func run() -> void:
 	var csn: String = state_machine.current_state_name
 
-	if csn == 'idle'||csn == 'walk'&&double_press_time >= 0:
+	if csn == 'idle' || csn == 'walk' && double_press_time >= 0:
 		if Input.is_action_just_pressed('left'):
 			state_machine.on_child_transition('run')
 			character.go_to_position = character.global_position + Vector3.LEFT
@@ -133,10 +133,10 @@ func run() -> void:
 			
 		character.go_to_position = character.global_position + character.velocity
 
-		if Input.is_action_just_pressed('left')&&character.velocity.x > 0:
+		if Input.is_action_just_pressed('left') && character.velocity.x > 0:
 			state_machine.on_child_transition('idle')
 			return
-		if Input.is_action_just_pressed('right')&&character.velocity.x < 0:
+		if Input.is_action_just_pressed('right') && character.velocity.x < 0:
 			state_machine.on_child_transition('idle')
 			return
 		
@@ -149,7 +149,7 @@ func run() -> void:
 func forward_roll() -> void:
 	var csn: String = state_machine.current_state_name
 	
-	if Input.is_action_just_pressed('block')&&(csn == 'run'||csn == 'jumpEnd'):
+	if Input.is_action_just_pressed('block') && (csn == 'run' || csn == 'jumpEnd'):
 		state_machine.on_child_transition('forwardRoll')
 		
 	if csn == 'forwardRoll':
@@ -160,7 +160,7 @@ func forward_roll() -> void:
 func fall() -> void:
 	var csn: String = state_machine.current_state_name
 	
-	if csn == 'jump'||csn == 'jumpFastHitShort'||csn == 'jumpHitShort'||csn == 'jumpFast':
+	if csn == 'jump' || csn == 'jumpFastHitShort' || csn == 'jumpHitShort' || csn == 'jumpFast':
 		return
 		
 	if shadow.is_above_ground == false:

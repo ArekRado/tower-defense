@@ -1,14 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://cvwhnb48xr1i8"]
+[gd_scene load_steps=4 format=3 uid="uid://cvwhnb48xr1i8"]
 
+[ext_resource type="Script" path="res://cities/house/house.gd" id="1_p64eh"]
 [ext_resource type="Texture2D" uid="uid://7emc534o815s" path="res://cities/house/house.png" id="1_t1dc2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0wpt"]
 size = Vector3(0.334351, 0.901123, 0.735229)
 
 [node name="House" type="StaticBody3D"]
+script = ExtResource("1_p64eh")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1.01, 0, 0, 0, 0.67, 0, 0, 0, 0.44, 0, 0.29, 0)
+transform = Transform3D(1, 0, 0, 0, 0.67, 0, 0, 0, 0.44, 0, 0.29, 0)
 shape = SubResource("BoxShape3D_y0wpt")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

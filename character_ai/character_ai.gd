@@ -14,13 +14,12 @@ func _process(delta: float) -> void:
 		
 		do_something()
 
-func go_to_random_point_near_city() -> void:
+func go_to_random_point_near_structure() -> void:
 	if character.assigned_city_name == null:
 		return
 
-	var city: City = Paths.get_city(get_tree(), character.assigned_city_name)
-
-	if city == null:
+	var struture: Node3D = Paths.get_structure(get_tree(), character.assigned_structure_name)
+	if struture == null:
 		return
 
 	var shift: Vector3 = Vector3(3, 0, 1)
@@ -30,7 +29,7 @@ func go_to_random_point_near_city() -> void:
 		(randf() * shift.z) - shift.z / 2,
 	)
 
-	character.go_to_position = city.global_position + random_shift
+	character.go_to_position = struture.global_position + random_shift
 	
 	var random_value: float = randf()
 	if random_value < 0.5:
@@ -63,7 +62,7 @@ func do_something() -> void:
 	wait_delay = 1
 
 	if random_value < 1.1:
-		go_to_random_point_near_city()
+		go_to_random_point_near_structure()
 	elif random_value < 0.2:
 		state_machine.on_child_transition('jump')
 	elif random_value < 0.9:
