@@ -14,18 +14,56 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_36nj3")
 
-[node name="CharactersList" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AmountOfStructures" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.296
+anchor_right = 0.368
+anchor_bottom = 0.036
+offset_left = -0.119995
+offset_top = 3.0
+offset_right = 0.039978
+offset_bottom = 0.079998
+text = "Structures: 0"
 
-[node name="Label2" type="Label" parent="CharactersList"]
+[node name="StructuresList" type="VBoxContainer" parent="."]
 layout_mode = 2
-text = "asd\\sd"
+offset_left = 211.0
+offset_top = 47.0
+offset_right = 407.0
+offset_bottom = 110.0
+
+[node name="Label" type="Label" parent="StructuresList"]
+layout_mode = 2
+text = "Structure #1
+"
+
+[node name="AmountOfCharacters" type="Label" parent="."]
+layout_mode = 2
+anchor_right = 0.072
+anchor_bottom = 0.032
+offset_left = 6.0
+offset_top = 1.0
+offset_right = 6.16
+offset_bottom = 0.959999
+text = "0/0
+"
+
+[node name="CharactersList" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.069
+anchor_right = 0.072
+anchor_bottom = 0.139
+offset_left = -2.0
+offset_top = -0.680004
+offset_right = 46.16
+offset_bottom = -1.08001
 
 [node name="Label" type="Label" parent="CharactersList"]
 layout_mode = 2
-text = "asd\\sd"
+text = "Character #1
+"
 
 [node name="CityNameLabel" type="Label" parent="."]
 layout_mode = 1

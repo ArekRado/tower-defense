@@ -70,6 +70,7 @@ top_level = true
 transform = Transform3D(0.986003, 0, 0, 0, 0.986003, 0, 0, 0, 0.986003, -2.43061, 0, 0.349697)
 is_player = true
 player = NodePath("../../Players/Player1")
+walk_speed = Vector3(90, 0, 0.6)
 
 [node name="Structures" type="Node3D" parent="."]
 top_level = true

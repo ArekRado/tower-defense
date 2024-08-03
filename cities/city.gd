@@ -11,6 +11,7 @@ class_name City
 
 var max_size: float = 5
 var assigned_characters_names: Array[String] = []
+var assigned_structures_names: Array[String] = []
 var amount_of_houses_per_size: Array[int] = [1, 3, 5, 8, 13]
 
 func _ready() -> void:
@@ -32,6 +33,7 @@ func upgrade_city_size(from: int, to: int) -> void:
 			var shift: Vector3 = Vector3(max_size / 2, 0, max_size / 8)
 			var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, 0, (randf() * shift.z) - shift.z / 2, )
 			house.global_position = global_position + random_shift
+			assign_structure(house.name)
 
 	size = to
 
@@ -43,7 +45,7 @@ func build_lumberjack_hut() -> void:
 	var shift: Vector3 = Vector3(max_size / 2, 0, max_size / 8)
 	var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, 0, (randf() * shift.z) - shift.z / 2, )
 	lumberjack_hut.global_position = global_position + random_shift
-
+	assign_structure(lumberjack_hut.name)
 
 func assign_character(character_name: String) -> void:
 	assigned_characters_names.push_back(character_name)
@@ -51,6 +53,14 @@ func assign_character(character_name: String) -> void:
 func unassign_character(character_name: String) -> void:
 	assigned_characters_names = assigned_characters_names.filter(func(cn: String) -> bool:
 		return character_name != cn
+	)
+
+func assign_structure(structure_name: String) -> void:
+	assigned_structures_names.push_back(structure_name)
+
+func unassign_structure(structure_name: String) -> void:
+	assigned_structures_names = assigned_structures_names.filter(func(sn: String) -> bool:
+		return structure_name != sn
 	)
 
 func _on_static_body_3d_body_entered(_body: Node3D) -> void:

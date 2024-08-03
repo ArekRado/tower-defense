@@ -3,10 +3,14 @@ class_name CityPreview
 
 var selected_city_name: String
 
-@onready var city_name_label: Label = $"./CityNameLabel"
-@onready var city_size_label: Label = $"./Size"
-@onready var recruit_button: Button = $"./RecruitButton"
-@onready var characters_list: VBoxContainer = $"./CharactersList"
+@onready var city_name_label: Label = $CityNameLabel
+@onready var city_size_label: Label = $Size
+@onready var recruit_button: Button = $RecruitButton
+@onready var characters_list: VBoxContainer = $CharactersList
+@onready var structures_list: VBoxContainer = $StructuresList
+@onready var amount_of_structures_label: Label = $AmountOfStructures
+@onready var amount_of_characters_label: Label = $AmountOfCharacters
+
 @onready var recruit_scene: PackedScene = preload("res://characters/recruit/recruit.tscn")
 
 func set_details(show_ui: bool, city_name: String) -> void:
@@ -20,13 +24,25 @@ func set_details(show_ui: bool, city_name: String) -> void:
 		
 	city_name_label.text = city.city_name
 	city_size_label.text = str(city.size)
+
+	amount_of_characters_label.text = "Infinity/" + str(city.assigned_characters_names.size())
+	amount_of_structures_label.text = "Infinity/" + str(city.assigned_structures_names.size())
 	
+	# characters_list
 	for n in characters_list.get_children(): characters_list.remove_child(n)
 	
 	for character_name in city.assigned_characters_names:
 		var label: Label = Label.new()
 		label.text = character_name
 		characters_list.add_child(label)
+			
+	# structures_list
+	for n in structures_list.get_children(): structures_list.remove_child(n)
+	
+	for structure_name in city.assigned_structures_names:
+		var label: Label = Label.new()
+		label.text = structure_name
+		structures_list.add_child(label)
 		
 func _on_recruit_button_button_up() -> void:
 	var recruit: Character = recruit_scene.instantiate()

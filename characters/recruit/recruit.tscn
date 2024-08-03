@@ -1,6 +1,6 @@
 [gd_scene load_steps=78 format=3 uid="uid://cvjqi4ybyfcq0"]
 
-[ext_resource type="Script" path="res://characters/character.gd" id="1_x41sk"]
+[ext_resource type="Script" path="res://characters/character.gd" id="1_20cwr"]
 [ext_resource type="PackedScene" uid="uid://dqchrg6yhxkr5" path="res://player_marker/player_marker.tscn" id="2_osd15"]
 [ext_resource type="Texture2D" uid="uid://dc6dvvgdmh5sa" path="res://characters/recruit/assets/recruit.png" id="2_spqwk"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="10_0v3jx"]
@@ -677,7 +677,7 @@ animations = [{
 [node name="Recruit" type="CharacterBody3D"]
 transform = Transform3D(0.986003, 0, 0, 0, 0.986003, 0, 0, 0, 0.986003, 0, 0, 0)
 collision_mask = 4
-script = ExtResource("1_x41sk")
+script = ExtResource("1_20cwr")
 walk_speed = Vector3(70, 0, 60)
 run_speed = Vector3(150, 0, 90)
 jump_move_speed = Vector3(70, 0, 60)
