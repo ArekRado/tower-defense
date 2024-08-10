@@ -1,4 +1,4 @@
-extends StaticBody3D
+extends Node3D
 class_name House
 
 @export var character_to_spawn: PackedScene = preload("res://characters/recruit/recruit.tscn")
@@ -16,7 +16,6 @@ func _ready() -> void:
 func create_new_character() -> void:
 	var character: Character = character_to_spawn.instantiate()
 	character.player = player
-	character.global_position = global_position + Vector3(0, 0.1, 0)
 
 	character.assigned_city_name = city_name
 	character.assigned_structure_name = name
@@ -26,3 +25,4 @@ func create_new_character() -> void:
 	city.assign_character(character.name)
 
 	Paths.get_characters(get_tree()).add_child(character)
+	character.global_position = global_position + Vector3(0, 0.1, 0)

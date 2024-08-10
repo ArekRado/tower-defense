@@ -65,7 +65,7 @@ layout_mode = 2
 text = "Character #1
 "
 
-[node name="CityNameLabel" type="Label" parent="."]
+[node name="CityName" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.454
@@ -90,7 +90,7 @@ offset_bottom = -0.160004
 scale = Vector2(0.994152, 1.00445)
 label_settings = SubResource("LabelSettings_n8ivq")
 
-[node name="UpgradeButton" type="Button" parent="."]
+[node name="Upgrade" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.551
@@ -104,7 +104,22 @@ offset_bottom = -0.200073
 theme_override_font_sizes/font_size = 20
 text = "Upgrade"
 
-[node name="BuildLumberjackHutButton" type="Button" parent="."]
+[node name="BuildBaracks" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.552
+anchor_top = 0.86
+anchor_right = 0.666
+anchor_bottom = 0.921
+offset_left = 2.56
+offset_top = -54.2
+offset_right = 83.48
+offset_bottom = -53.12
+theme_override_font_sizes/font_size = 20
+text = "Build Baracks
+"
+
+[node name="BuildLumberjackHut" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.552
@@ -118,7 +133,7 @@ offset_bottom = 0.319824
 theme_override_font_sizes/font_size = 20
 text = "Build Lumberjack Hut"
 
-[node name="RecruitButton" type="Button" parent="."]
+[node name="Recruit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.447
@@ -132,6 +147,7 @@ offset_bottom = -0.360107
 theme_override_font_sizes/font_size = 20
 text = "Recruit"
 
-[connection signal="button_up" from="UpgradeButton" to="." method="_on_upgrade_button_button_up"]
-[connection signal="button_up" from="BuildLumberjackHutButton" to="." method="_on_build_lumberjack_hut_button_button_up"]
-[connection signal="button_up" from="RecruitButton" to="." method="_on_recruit_button_button_up"]
+[connection signal="button_up" from="Upgrade" to="." method="_on_upgrade_button_button_up"]
+[connection signal="button_up" from="BuildBaracks" to="." method="_on_build_baracks_button_up"]
+[connection signal="button_up" from="BuildLumberjackHut" to="." method="_on_build_lumberjack_hut_button_button_up"]
+[connection signal="button_up" from="Recruit" to="." method="_on_recruit_button_button_up"]

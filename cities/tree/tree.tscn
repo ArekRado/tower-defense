@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct0kmyj4y7rxt"]
+
+[ext_resource type="Texture2D" uid="uid://c1h55bf48et1h" path="res://cities/tree/tree.png" id="1_wurra"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b2ecg"]
+size = Vector3(0.294189, 0.496216, 0.183105)
+
+[node name="Tree" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+texture_filter = 0
+texture = ExtResource("1_wurra")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0115967, 0.00933838, 0.00512695)
+shape = SubResource("BoxShape3D_b2ecg")

@@ -6,14 +6,16 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0wpt"]
 size = Vector3(0.334351, 0.901123, 0.735229)
 
-[node name="House" type="StaticBody3D"]
+[node name="House" type="Node3D"]
 script = ExtResource("1_p64eh")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.67, 0, 0, 0, 0.44, 0, 0.29, 0)
-shape = SubResource("BoxShape3D_y0wpt")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 offset = Vector2(0, 13.17)
 billboard = 1
 texture = ExtResource("1_t1dc2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 0.67, 0, 0, 0, 0.44, 0, 0.29, 0)
+shape = SubResource("BoxShape3D_y0wpt")

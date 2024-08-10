@@ -8,6 +8,7 @@ class_name City
 @onready var player_marker: PlayerMarker = $PlayerMarker
 @onready var house_scene: PackedScene = preload("res://cities/house/house.tscn")
 @onready var lumberjack_hut_scene: PackedScene = preload("res://cities/lumberjack_hut/lumberjack_hut.tscn")
+@onready var baracks_scene: PackedScene = preload("res://cities/baracks/baracks.tscn")
 
 var max_size: float = 5
 var assigned_characters_names: Array[String] = []
@@ -27,26 +28,39 @@ func upgrade_city_size(from: int, to: int) -> void:
 	for i in diff:
 		var amount_of_houses: int = amount_of_houses_per_size[i + from]
 		for j in amount_of_houses:
-			var house: House = house_scene.instantiate()
-
-			var shift: Vector3 = Vector3(max_size / 2, 0, max_size / 8)
-			var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, 0, (randf() * shift.z) - shift.z / 2)
-			house.global_position = global_position + random_shift
-			house.player = player
-			house.city_name = name
-			assign_structure(house.name)
-			Paths.get_structures(get_tree()).add_child(house)
+			build_house()
 
 	size = to
 
-func build_lumberjack_hut() -> void:
-	var lumberjack_hut: Node3D = lumberjack_hut_scene.instantiate()
+func build_house() -> void:
+	var house: House = house_scene.instantiate()
 
+	house.player = player
+	house.city_name = name
+
+	house.transform.origin = global_position + RandomShift.get_3(Vector3(max_size / 2, 0, max_size / 8))
+	Paths.get_structures(get_tree()).add_child(house)
+	assign_structure(house.name)
+
+func build_lumberjack_hut() -> void:
+	var lumberjack_hut: LumberjackHut = lumberjack_hut_scene.instantiate()
+
+	lumberjack_hut.player = player
+	lumberjack_hut.city_name = name
+
+	lumberjack_hut.transform.origin = global_position + RandomShift.get_3(Vector3(max_size / 2, 0, max_size / 8))
 	Paths.get_structures(get_tree()).add_child(lumberjack_hut)
-	var shift: Vector3 = Vector3(max_size / 2, 0, max_size / 8)
-	var random_shift: Vector3 = Vector3((randf() * shift.x) - shift.x / 2, 0, (randf() * shift.z) - shift.z / 2)
-	lumberjack_hut.global_position = global_position + random_shift
 	assign_structure(lumberjack_hut.name)
+	
+func build_baracks() -> void:
+	var baracks: Baracks = baracks_scene.instantiate()
+
+	baracks.player = player
+	baracks.city_name = name
+
+	baracks.transform.origin = global_position + RandomShift.get_3(Vector3(max_size / 2, 0, max_size / 8))
+	Paths.get_structures(get_tree()).add_child(baracks)
+	assign_structure(baracks.name)
 
 func assign_character(character_name: String) -> void:
 	assigned_characters_names.push_back(character_name)

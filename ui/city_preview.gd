@@ -3,9 +3,9 @@ class_name CityPreview
 
 var selected_city_name: String
 
-@onready var city_name_label: Label = $CityNameLabel
+@onready var city_name_label: Label = $CityName
 @onready var city_size_label: Label = $Size
-@onready var recruit_button: Button = $RecruitButton
+@onready var recruit_button: Button = $Recruit
 @onready var characters_list: VBoxContainer = $CharactersList
 @onready var structures_list: VBoxContainer = $StructuresList
 @onready var amount_of_structures_label: Label = $AmountOfStructures
@@ -14,6 +14,7 @@ var selected_city_name: String
 @onready var recruit_scene: PackedScene = preload("res://characters/recruit/recruit.tscn")
 
 func set_details(show_ui: bool, city_name: String) -> void:
+	print('city_name ', city_name)
 	if show_ui:
 		show()
 	else:
@@ -47,16 +48,16 @@ func set_details(show_ui: bool, city_name: String) -> void:
 func _on_recruit_button_button_up() -> void:
 	var recruit: Character = recruit_scene.instantiate()
 	
-	Paths.get_characters(get_tree()).add_child(recruit)
 	var city: City = Paths.get_city(get_tree(), selected_city_name)
 	recruit.player = city.player
-	recruit.global_position = city.global_position + Vector3(0, 0.1, 0)
 
 	var character: Character = Paths.get_character(get_tree(), recruit.name)
 	character.assigned_city_name = city.name
 	city.assign_character(recruit.name)
 
-	recruit.initialize_data()
+	Paths.get_characters(get_tree()).add_child(recruit)
+	recruit.global_position = city.global_position + Vector3(0, 0.1, 0)
+
 	set_details(true, selected_city_name)
 
 func _on_upgrade_button_button_up() -> void:
@@ -69,4 +70,10 @@ func _on_build_lumberjack_hut_button_button_up() -> void:
 	var city: City = Paths.get_city(get_tree(), selected_city_name)
 	if (city is City):
 		city.build_lumberjack_hut()
+		set_details(true, selected_city_name)
+
+func _on_build_baracks_button_up() -> void:
+	var city: City = Paths.get_city(get_tree(), selected_city_name)
+	if (city is City):
+		city.build_baracks()
 		set_details(true, selected_city_name)
