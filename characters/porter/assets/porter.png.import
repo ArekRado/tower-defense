@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc6dvvgdmh5sa"
-path="res://.godot/imported/recruit.png-c7e9a7c2e78f1fbafa753bfe1181fa59.ctex"
+uid="uid://by4kd3se6uqsb"
+path="res://.godot/imported/porter.png-4673a10c788e9727617308126fa0e790.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://characters/recruit/assets/recruit.png"
-dest_files=["res://.godot/imported/recruit.png-c7e9a7c2e78f1fbafa753bfe1181fa59.ctex"]
+source_file="res://characters/porter/assets/porter.png"
+dest_files=["res://.godot/imported/porter.png-4673a10c788e9727617308126fa0e790.ctex"]
 
 [params]
 

@@ -35,9 +35,9 @@ class_name Character
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var player_marker: PlayerMarker = $PlayerMarker
 
-@onready var player_controls: PackedScene = preload("res://player_controls/player_controls.tscn")
-@onready var character_ai: PackedScene = preload("res://character_ai/character_ai.tscn")
-@onready var hitbox: PackedScene = preload("res://hitbox/hitbox.tscn")
+@onready var player_controls: PackedScene = load("res://player_controls/player_controls.tscn")
+@onready var character_ai: PackedScene = load("res://character_ai/character_ai.tscn")
+@onready var hitbox: PackedScene = load("res://hitbox/hitbox.tscn")
 
 # true - right; false - left
 var direction: bool = true
@@ -118,3 +118,25 @@ func get_direction_to_target() -> Vector3:
 
 	direction_to_target = direction_to_target.normalized()
 	return direction_to_target
+
+# block
+# fall_back
+# fall_front
+# forward_roll
+# hit_short_1
+# hit_short_2
+# idle
+# jump
+# jump_end
+# jump_fast
+# jump_fast_hit_short
+# jump_hit_short_1
+# jump_hit_short_2
+# jump_start
+# lie_back
+# lie_front
+# run
+# run_hit_short
+# shake_back
+# shake_front
+# walk

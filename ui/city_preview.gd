@@ -11,10 +11,9 @@ var selected_city_name: String
 @onready var amount_of_structures_label: Label = $AmountOfStructures
 @onready var amount_of_characters_label: Label = $AmountOfCharacters
 
-@onready var recruit_scene: PackedScene = preload("res://characters/recruit/recruit.tscn")
+@onready var recruit_scene: PackedScene = load("res://characters/recruit/recruit.tscn")
 
 func set_details(show_ui: bool, city_name: String) -> void:
-	print('city_name ', city_name)
 	if show_ui:
 		show()
 	else:

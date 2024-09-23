@@ -1,10 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4hnnespr8fl5"]
 
+[ext_resource type="Script" path="res://cities/structure.gd" id="2_1xafb"]
 [ext_resource type="Texture2D" uid="uid://bf74h3oeapjar" path="res://cities/baracks/baracks.png" id="2_ahxgo"]
-[ext_resource type="Script" path="res://cities/baracks/baracks.gd" id="3_w5o7y"]
 
 [node name="Baracks" type="Node3D"]
-script = ExtResource("3_w5o7y")
+script = ExtResource("2_1xafb")
+structure_name = "Barracks"
+max_health = 100
+health = 100
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1

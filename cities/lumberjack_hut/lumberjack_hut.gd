@@ -1,8 +1,8 @@
 extends Node3D
 class_name LumberjackHut
 
-var player: Player
-var city_name: String
+@export var lumberjack_scene: PackedScene = load("res://characters/lumberjack/lumberjack.tscn")
+@onready var structure: Structure = $".."
 
 # Called when the node enters the scene tree for the first time.
 # func _ready() -> void:
