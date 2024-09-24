@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bfnrwdttxve07"
-path.s3tc="res://.godot/imported/player_marker_gray.png-8e93101420daade5a4c60f59282b063b.s3tc.ctex"
+path="res://.godot/imported/player_marker_gray.png-8e93101420daade5a4c60f59282b063b.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://player_marker/player_marker_gray.png"
-dest_files=["res://.godot/imported/player_marker_gray.png-8e93101420daade5a4c60f59282b063b.s3tc.ctex"]
+dest_files=["res://.godot/imported/player_marker_gray.png-8e93101420daade5a4c60f59282b063b.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
