@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://cvjqi4ybyfcq0"]
+[gd_scene load_steps=69 format=3 uid="uid://bplwchm0adtdd"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_20cwr"]
 [ext_resource type="PackedScene" uid="uid://dqchrg6yhxkr5" path="res://player_marker/player_marker.tscn" id="2_osd15"]
@@ -384,7 +384,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_77e2u")
 }],
-"loop": true,
+"loop": false,
 "name": &"block",
 "speed": 5.0
 }, {
@@ -392,7 +392,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xtmfk")
 }],
-"loop": true,
+"loop": false,
 "name": &"fall_back",
 "speed": 5.0
 }, {
@@ -400,7 +400,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8lqtv")
 }],
-"loop": true,
+"loop": false,
 "name": &"fall_front",
 "speed": 5.0
 }, {
@@ -416,8 +416,14 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t51ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvnio")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r4d62")
 }],
-"loop": true,
+"loop": false,
 "name": &"forward_roll",
 "speed": 10.0
 }, {
@@ -428,7 +434,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bnf8m")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit_short_1",
 "speed": 10.0
 }, {
@@ -439,7 +445,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_f4kn7")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit_short_2",
 "speed": 10.0
 }, {
@@ -464,7 +470,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8rps7")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump",
 "speed": 5.0
 }, {
@@ -472,7 +478,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3cpc8")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_end",
 "speed": 5.0
 }, {
@@ -480,7 +486,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_oab84")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_fast",
 "speed": 5.0
 }, {
@@ -488,7 +494,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7o4v6")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_fast_hit_short",
 "speed": 5.0
 }, {
@@ -499,7 +505,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yxvbe")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_hit_short_1",
 "speed": 10.0
 }, {
@@ -510,7 +516,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rgd0v")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_hit_short_2",
 "speed": 10.0
 }, {
@@ -518,7 +524,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_c7c2o")
 }],
-"loop": true,
+"loop": false,
 "name": &"jump_start",
 "speed": 5.0
 }, {
@@ -526,7 +532,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_y6mli")
 }],
-"loop": true,
+"loop": false,
 "name": &"lie_back",
 "speed": 5.0
 }, {
@@ -534,7 +540,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_j8y2m")
 }],
-"loop": true,
+"loop": false,
 "name": &"lie_front",
 "speed": 5.0
 }, {
@@ -559,13 +565,13 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1y2vy")
 }],
-"loop": true,
+"loop": false,
 "name": &"run_hit_short",
 "speed": 5.0
 }, {
@@ -646,7 +652,7 @@ billboard = 1
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_n677t")
-animation = &"block"
+animation = &"forward_roll"
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
 

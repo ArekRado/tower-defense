@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bf74h3oeapjar"
-path.s3tc="res://.godot/imported/baracks.png-029b42711c1e716d8bf7e1c390f124dc.s3tc.ctex"
+path="res://.godot/imported/baracks.png-029b42711c1e716d8bf7e1c390f124dc.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://cities/baracks/baracks.png"
-dest_files=["res://.godot/imported/baracks.png-029b42711c1e716d8bf7e1c390f124dc.s3tc.ctex"]
+dest_files=["res://.godot/imported/baracks.png-029b42711c1e716d8bf7e1c390f124dc.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

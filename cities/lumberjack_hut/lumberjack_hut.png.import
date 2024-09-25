@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://vvlqiwn2jef4"
-path.s3tc="res://.godot/imported/lumberjack_hut.png-2d52256a8421571eb88287ee44917e40.s3tc.ctex"
+path="res://.godot/imported/lumberjack_hut.png-2d52256a8421571eb88287ee44917e40.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://cities/lumberjack_hut/lumberjack_hut.png"
-dest_files=["res://.godot/imported/lumberjack_hut.png-2d52256a8421571eb88287ee44917e40.s3tc.ctex"]
+dest_files=["res://.godot/imported/lumberjack_hut.png-2d52256a8421571eb88287ee44917e40.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

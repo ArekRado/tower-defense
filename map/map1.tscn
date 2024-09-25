@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dchtb5jhrmh8x"]
+[gd_scene load_steps=8 format=3 uid="uid://dchtb5jhrmh8x"]
 
 [ext_resource type="PackedScene" uid="uid://d3j6gyg3coyd5" path="res://ground/platform_large.tscn" id="1_hlp65"]
 [ext_resource type="PackedScene" uid="uid://b2cdgyauyl2s3" path="res://cities/city.tscn" id="3_ympv8"]
-[ext_resource type="PackedScene" uid="uid://cvjqi4ybyfcq0" path="res://characters/recruit/recruit.tscn" id="4_6fgvd"]
+[ext_resource type="PackedScene" uid="uid://bplwchm0adtdd" path="res://characters/recruit/recruit.tscn" id="4_6fgvd"]
 [ext_resource type="PackedScene" uid="uid://ct0kmyj4y7rxt" path="res://cities/tree/tree.tscn" id="4_oug5w"]
 [ext_resource type="PackedScene" uid="uid://ckxaytmr37un5" path="res://player/player.tscn" id="5_lbcfr"]
+[ext_resource type="PackedScene" uid="uid://bsm33o1brlb51" path="res://characters/porter/porter.tscn" id="6_dngyn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_turws"]
 vertices = PackedVector3Array(-1.30005, 0.040825, 0.5, -1.05005, 0.040825, 0.5, -1.05005, 0.040825, 0.25, -4.80005, 0.040825, -0.25, 4.94995, 0.040825, 0.25, 4.94995, 0.040825, 0.5, 5.19995, 0.040825, 0.5, 8.69995, 0.040825, -0.25, -4.80005, 0.040825, 1.25, -1.30005, 0.040825, 1.25, -1.30005, 0.040825, 0.5, -4.80005, 0.040825, -0.25, -4.80005, 0.040825, -0.25, -1.05005, 0.040825, 0.25, 4.94995, 0.040825, 0.25, 8.69995, 0.040825, -0.25, 5.19995, 0.040825, 0.5, 5.19995, 0.040825, 1.25, 8.69995, 0.040825, 1.25, 8.69995, 0.040825, -0.25)
@@ -69,9 +70,13 @@ top_level = true
 
 [node name="Recruit" parent="Characters" node_paths=PackedStringArray("player") instance=ExtResource("4_6fgvd")]
 transform = Transform3D(0.986003, 0, 0, 0, 0.986003, 0, 0, 0, 0.986003, -2.43061, 0, 0.349697)
-is_player = true
 player = NodePath("../../Players/Player1")
 walk_speed = Vector3(90, 0, 60)
+
+[node name="Porter" parent="Characters" node_paths=PackedStringArray("player") instance=ExtResource("6_dngyn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01116, 0.138984, 0.0699041)
+is_player = true
+player = NodePath("../../Players/Player1")
 
 [node name="Structures" type="Node3D" parent="."]
 top_level = true
