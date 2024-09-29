@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3m1n5usy2mye"]
+
+[ext_resource type="Script" path="res://health/health.gd" id="1_7gdbo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qwc03"]
+bg_color = Color(1, 0.239216, 0.247059, 1)
+shadow_color = Color(0, 0, 0, 0.666667)
+anti_aliasing = false
+anti_aliasing_size = 10.0
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p4adk"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Health" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.306479, 0)
+script = ExtResource("1_7gdbo")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+disable_3d = true
+transparent_bg = true
+size = Vector2i(14, 2)
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 6.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_qwc03")
+value = 100.0
+show_percentage = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+texture = SubResource("ViewportTexture_p4adk")

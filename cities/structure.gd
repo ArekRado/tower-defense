@@ -2,10 +2,10 @@ extends Node3D
 class_name Structure
 
 @export var structure_name: String
-@export var max_health: int
-@export var health: int
 @export var player: Player
 @export var city: City
+
+@onready var health: Health = $Health
 
 var assigned_characters_names: Array[String] = []
 

@@ -34,6 +34,7 @@ class_name Character
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var player_marker: PlayerMarker = $PlayerMarker
+@onready var health: Health = $Health
 
 @onready var player_controls: PackedScene = load("res://player_controls/player_controls.tscn")
 @onready var character_ai: PackedScene = load("res://character_ai/character_ai.tscn")

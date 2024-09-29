@@ -6,7 +6,7 @@ class_name Hitbox
 @export var power: Vector3 = Vector3.ZERO
 
 @onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
-@onready var hitEffect: PackedScene = preload ("res://hitEffect/hitEffect.tscn")
+@onready var hitEffect: PackedScene = preload("res://hitEffect/hitEffect.tscn")
 
 func _process(delta: float) -> void:
 	lifetime -= delta
@@ -18,7 +18,13 @@ func _on_area_entered(area: Area3D) -> void:
 	var character: Character = area.get_parent()
 	var state_machine: StateMachine = area.get_parent().find_child('StateMachine')
 	
-	if state_machine&&character:
+	print(
+		character,
+		
+state_machine
+	)
+
+	if state_machine && character:
 		character.on_hit(damage, power)
 	
 	var hitEffectInstance: AnimatedSprite3D = hitEffect.instantiate()

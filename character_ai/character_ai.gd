@@ -18,6 +18,9 @@ func go_to_random_point_near_structure() -> void:
 	if character.assigned_city_name == null:
 		return
 
+	if character.assigned_structure_name == null:
+		return
+	
 	var struture: Node3D = Paths.get_structure(get_tree(), character.assigned_structure_name)
 	if struture == null:
 		return

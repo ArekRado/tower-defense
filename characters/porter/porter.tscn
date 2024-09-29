@@ -1,7 +1,8 @@
-[gd_scene load_steps=69 format=3 uid="uid://bsm33o1brlb51"]
+[gd_scene load_steps=70 format=3 uid="uid://bsm33o1brlb51"]
 
 [ext_resource type="PackedScene" uid="uid://dqchrg6yhxkr5" path="res://player_marker/player_marker.tscn" id="1_bst3i"]
 [ext_resource type="Script" path="res://characters/character.gd" id="1_ctbxm"]
+[ext_resource type="PackedScene" uid="uid://b3m1n5usy2mye" path="res://health/health.tscn" id="2_sqb86"]
 [ext_resource type="Texture2D" uid="uid://by4kd3se6uqsb" path="res://characters/porter/assets/porter.png" id="3_14tfd"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="3_m4jd1"]
 [ext_resource type="Script" path="res://scripts/stateMachine.gd" id="4_80qf8"]
@@ -618,6 +619,7 @@ animations = [{
 [node name="Porter" type="CharacterBody3D"]
 collision_mask = 4
 script = ExtResource("1_ctbxm")
+is_player = null
 walk_speed = Vector3(70, 0, 60)
 run_speed = Vector3(150, 0, 90)
 jump_move_speed = Vector3(70, 0, 60)
@@ -627,11 +629,18 @@ jump_fast_height = 2.5
 hit_short_range = 5.0
 hit_short_damage = 1.0
 hit_short_power = Vector3(20, 1, 0)
+run_hit_short_damage = null
 run_hit_short_power = Vector3(20, 1, 0)
+jump_fast_hit_short_damage = null
 jump_fast_hit_short_power = Vector3(20, 1, 0)
 
+[node name="Health" parent="." instance=ExtResource("2_sqb86")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.382203, 0)
+max_value = 100.0
+value = 100.0
+
 [node name="PlayerMarker" parent="." instance=ExtResource("1_bst3i")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.408584, 0)
+transform = Transform3D(0.1, 0, 0, 0, 0.0999921, 0.00126009, 0, -0.00126009, 0.0999921, 0, 0.492996, 0.00480107)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.963975, 0, 0, 0, 0.963975, 0, 0, 0, 0.963975, 0, 0.12, 0)

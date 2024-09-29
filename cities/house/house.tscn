@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvwhnb48xr1i8"]
+[gd_scene load_steps=6 format=3 uid="uid://cvwhnb48xr1i8"]
 
 [ext_resource type="Script" path="res://cities/house/house.gd" id="1_p64eh"]
 [ext_resource type="Script" path="res://cities/structure.gd" id="1_sxagy"]
 [ext_resource type="Texture2D" uid="uid://7emc534o815s" path="res://cities/house/house.png" id="1_t1dc2"]
+[ext_resource type="PackedScene" uid="uid://b3m1n5usy2mye" path="res://health/health.tscn" id="2_08vte"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0wpt"]
 size = Vector3(0.334351, 0.901123, 0.735229)
@@ -10,8 +11,11 @@ size = Vector3(0.334351, 0.901123, 0.735229)
 [node name="House" type="Node3D"]
 script = ExtResource("1_sxagy")
 structure_name = "House"
-max_health = 100
-health = 100
+
+[node name="Health" parent="." instance=ExtResource("2_08vte")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.524631, 0)
+max_value = 100.0
+value = 100.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 offset = Vector2(0, 13.17)

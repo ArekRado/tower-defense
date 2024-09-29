@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://deall7urbuam4"]
+[gd_scene load_steps=4 format=3 uid="uid://deall7urbuam4"]
 
 [ext_resource type="Script" path="res://cities/structure.gd" id="1_amgti"]
+[ext_resource type="PackedScene" uid="uid://b3m1n5usy2mye" path="res://health/health.tscn" id="2_jl7hg"]
 [ext_resource type="Texture2D" uid="uid://vvlqiwn2jef4" path="res://cities/lumberjack_hut/lumberjack_hut.png" id="2_qnywc"]
 
 [node name="LumberjackHut" type="Node3D"]
 script = ExtResource("1_amgti")
 structure_name = "Lumberjack Hut"
-max_health = 100
-health = 100
+
+[node name="Health" parent="." instance=ExtResource("2_jl7hg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.215339, 0)
+max_value = 100.0
+value = 100.0
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 billboard = 1

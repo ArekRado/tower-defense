@@ -1,6 +1,7 @@
-[gd_scene load_steps=69 format=3 uid="uid://bplwchm0adtdd"]
+[gd_scene load_steps=70 format=3 uid="uid://bplwchm0adtdd"]
 
 [ext_resource type="Script" path="res://characters/character.gd" id="1_20cwr"]
+[ext_resource type="PackedScene" uid="uid://b3m1n5usy2mye" path="res://health/health.tscn" id="2_cujp6"]
 [ext_resource type="PackedScene" uid="uid://dqchrg6yhxkr5" path="res://player_marker/player_marker.tscn" id="2_osd15"]
 [ext_resource type="Texture2D" uid="uid://dc6dvvgdmh5sa" path="res://characters/recruit/assets/recruit.png" id="3_5o6y3"]
 [ext_resource type="PackedScene" uid="uid://cvd7uoyfit1gr" path="res://shadow/shadow.tscn" id="10_0v3jx"]
@@ -633,6 +634,11 @@ run_hit_short_power = Vector3(20, 1, 0)
 jump_fast_hit_short_damage = 2.0
 jump_fast_hit_short_power = Vector3(20, 1, 0)
 
+[node name="Health" parent="." instance=ExtResource("2_cujp6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344675, 0)
+max_value = 100.0
+value = 100.0
+
 [node name="PlayerMarker" parent="." instance=ExtResource("2_osd15")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.408584, 0)
 
@@ -652,7 +658,7 @@ billboard = 1
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_n677t")
-animation = &"forward_roll"
+animation = &"idle"
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
 
