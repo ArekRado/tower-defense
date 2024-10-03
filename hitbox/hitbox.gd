@@ -14,14 +14,13 @@ func _process(delta: float) -> void:
 	if lifetime < 0:
 		queue_free()
 
-func _on_area_entered(area: Area3D) -> void:
-	var character: Character = area.get_parent()
-	var state_machine: StateMachine = area.get_parent().find_child('StateMachine')
+func on_collision(character: Character) -> void:
+	var state_machine: StateMachine = character.find_child('StateMachine')
 	
 	print(
+		"_on_area_entered ",
 		character,
-		
-state_machine
+		state_machine
 	)
 
 	if state_machine && character:
@@ -30,3 +29,15 @@ state_machine
 	var hitEffectInstance: AnimatedSprite3D = hitEffect.instantiate()
 	self.add_child(hitEffectInstance)
 	hitEffectInstance.position = collision_shape_3d.position
+
+func _on_area_entered(collide: Character) -> void:
+	if collide is Character:
+		on_collision(collide)
+
+func _on_body_entered(collide: Character) -> void:
+	if collide is Character:
+		on_collision(collide)
+
+
+# func _on_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
+# 	print("_on_body_shape_entered")

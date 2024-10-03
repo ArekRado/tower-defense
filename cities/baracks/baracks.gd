@@ -9,7 +9,7 @@ var city_name: String
 #var character_creation_time: float = 0.0
 #
 #@onready var structure: Structure = $".."
-#@onready var recruit: PackedScene = preload ("res://characters/recruit/recruit.tscn")
+#@onready var recruit: PackedScene = load("res://characters/recruit/recruit.tscn")
 #var recruitInstance: Character
 #
 #func _ready() -> void:

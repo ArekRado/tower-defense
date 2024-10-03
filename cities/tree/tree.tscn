@@ -21,6 +21,7 @@ texture_filter = 0
 texture = ExtResource("1_wurra")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0115967, 0.00933838, 0.00512695)

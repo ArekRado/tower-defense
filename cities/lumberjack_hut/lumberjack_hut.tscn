@@ -19,5 +19,6 @@ texture_filter = 0
 texture = ExtResource("2_qnywc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_layer = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]

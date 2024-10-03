@@ -53,7 +53,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, Vector3(0.3, 0.3, 0), Vector3(7, -15, 0), Vector3(20, 1, 0), 1.0],
+"args": [0.2, Vector3(0.3, 0.3, 0.3), Vector3(7, -15, 0), Vector3(20, 1, 0), 1.0],
 "method": &"create_hitbox"
 }]
 }
@@ -583,7 +583,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_3jfpi")
 }],
-"loop": true,
+"loop": false,
 "name": &"shake_back",
 "speed": 5.0
 }, {
@@ -594,7 +594,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8jl8h")
 }],
-"loop": true,
+"loop": false,
 "name": &"shake_front",
 "speed": 5.0
 }, {
@@ -619,7 +619,6 @@ animations = [{
 [node name="Porter" type="CharacterBody3D"]
 collision_mask = 4
 script = ExtResource("1_ctbxm")
-is_player = null
 walk_speed = Vector3(70, 0, 60)
 run_speed = Vector3(150, 0, 90)
 jump_move_speed = Vector3(70, 0, 60)
@@ -629,9 +628,7 @@ jump_fast_height = 2.5
 hit_short_range = 5.0
 hit_short_damage = 1.0
 hit_short_power = Vector3(20, 1, 0)
-run_hit_short_damage = null
 run_hit_short_power = Vector3(20, 1, 0)
-jump_fast_hit_short_damage = null
 jump_fast_hit_short_power = Vector3(20, 1, 0)
 
 [node name="Health" parent="." instance=ExtResource("2_sqb86")]
@@ -658,7 +655,7 @@ billboard = 1
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_w724e")
-animation = &"block"
+animation = &"walk"
 
 [node name="Shadow" parent="." instance=ExtResource("3_m4jd1")]
 

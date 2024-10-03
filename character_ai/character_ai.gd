@@ -15,10 +15,10 @@ func _process(delta: float) -> void:
 		do_something()
 
 func go_to_random_point_near_structure() -> void:
-	if character.assigned_city_name == null:
+	if !character.assigned_city_name:
 		return
 
-	if character.assigned_structure_name == null:
+	if !character.assigned_structure_name:
 		return
 	
 	var struture: Node3D = Paths.get_structure(get_tree(), character.assigned_structure_name)
