@@ -14,30 +14,21 @@ func _process(delta: float) -> void:
 	if lifetime < 0:
 		queue_free()
 
-func on_collision(character: Character) -> void:
-	var state_machine: StateMachine = character.find_child('StateMachine')
-	
-	print(
-		"_on_area_entered ",
-		character,
-		state_machine
-	)
+func on_collision(collide: Character) -> void:
+	var state_machine: StateMachine = collide.find_child('StateMachine')
 
-	if state_machine && character:
-		character.on_hit(damage, power)
+	if state_machine && collide:
+		collide.on_hit(damage, power)
 	
 	var hitEffectInstance: AnimatedSprite3D = hitEffect.instantiate()
 	self.add_child(hitEffectInstance)
-	hitEffectInstance.position = collision_shape_3d.position
+	# hitEffectInstance.position = collide.position + collision_shape_3d.position
+	hitEffectInstance.global_position = collide.global_position
 
 func _on_area_entered(collide: Character) -> void:
-	if collide is Character:
+	if collide is Character && get_parent() != collide:
 		on_collision(collide)
 
 func _on_body_entered(collide: Character) -> void:
-	if collide is Character:
+	if collide is Character && get_parent() != collide:
 		on_collision(collide)
-
-
-# func _on_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
-# 	print("_on_body_shape_entered")

@@ -54,6 +54,9 @@ var assigned_structure_name: String
 
 var hitbox_instance: Hitbox
 
+var disable_collision_with_hitboxes: bool = false
+var disable_collision_with_hitboxes_timer: float = 0.0
+
 func _ready() -> void:
 	initialize_data()
 
@@ -76,12 +79,17 @@ func _process(_delta: float) -> void:
 		direction = true
 	elif velocity.x < 0:
 		direction = false
+
+	if disable_collision_with_hitboxes && disable_collision_with_hitboxes_timer != 0.0:
+		disable_collision_with_hitboxes_timer -= _delta
 	
 func update_facing_direction() -> void:
 	if velocity.x < 0: animated_sprite.flip_h = true
 	elif velocity.x > 0: animated_sprite.flip_h = false
 
 func on_hit(damage: float, power: Vector3) -> void:
+	if disable_collision_with_hitboxes: return
+	
 	fall_direction = power
 	animation_player.stop()
 	
@@ -91,14 +99,14 @@ func on_hit(damage: float, power: Vector3) -> void:
 	else:
 		state_machine.on_child_transition('shake')
 
+# Zamiast uzywać tej funkcji lepiej aktywować/wyłączać hitboxy z node. 
 func create_hitbox(lifetime: float = 0.2, hitbox_scale: Vector3 = Vector3.ONE, hitbox_position: Vector3 = Vector3.ZERO, power: Vector3 = Vector3.ZERO, damage: float = 0.0) -> void:
 	hitbox_instance = hitbox.instantiate()
 	add_child(hitbox_instance)
 
-	# hitbox_instance.lifetime = lifetime
-	hitbox_instance.lifetime = 99999
+	hitbox_instance.lifetime = lifetime
+	# hitbox_instance.lifetime = 99999
 	hitbox_instance.collision_shape_3d.scale = hitbox_scale
-	# hitbox_instance.collision_shape_3d.position = Vector3(-1 * hitbox_position.x if animated_sprite.is_flipped_h() else hitbox_position.x, hitbox_position.y, 0)
 	hitbox_instance.power = Vector3(power.x if animated_sprite.is_flipped_h() else -1 * power.x, hit_short_power.y * -1, 0)
 	hitbox_instance.damage = damage
 
