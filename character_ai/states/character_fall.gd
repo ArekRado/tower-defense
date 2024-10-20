@@ -8,8 +8,14 @@ var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var shadow: Shadow = $"../../Shadow"
 
 func enter() -> void:
+	character.position.y += 0.2
 	character.jump_velocity = character.fall_direction.y
-	animated_sprite.play('fall_back') if character.fall_direction.x > 0 else animated_sprite.play('fall_front')
+	character.velocity.x = character.fall_direction.x
+
+	if character.fall_direction.x > 0:
+		animated_sprite.play('fall_back')
+	else:
+		animated_sprite.play('fall_front')
 
 func physics_update(delta: float) -> void:
 	character.velocity.y = character.jump_velocity

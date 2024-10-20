@@ -5,6 +5,7 @@ class_name CharacterRunHitShort
 @onready var character: Character = $"../.."
 
 func enter() -> void:
+	character.velocity = Vector3.ZERO
 	animation_player.play('run_hit_short')
 
 func physics_update(_delta: float) -> void:

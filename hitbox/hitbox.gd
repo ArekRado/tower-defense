@@ -5,7 +5,7 @@ class_name Hitbox
 @export var damage: float = 1
 @export var power: Vector3 = Vector3.ZERO
 
-@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
+#@onready var collision_shape_3d: CollisionShape3D = $CollisionShape3D
 @onready var hitEffect: PackedScene = preload("res://hitEffect/hitEffect.tscn")
 
 func _process(delta: float) -> void:
@@ -15,6 +15,7 @@ func _process(delta: float) -> void:
 		queue_free()
 
 func on_collision(collide: Character) -> void:
+	print("on_collision")
 	var state_machine: StateMachine = collide.find_child('StateMachine')
 
 	if state_machine && collide:

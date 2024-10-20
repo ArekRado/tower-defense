@@ -582,12 +582,24 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8snp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wblrw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8snp3")
 }],
 "loop": false,
 "name": &"shake_back",
 "speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ohhey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5tqb")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ohhey")
 }, {
@@ -628,11 +640,11 @@ jump_height = 3.5
 jump_fast_height = 2.5
 hit_short_range = 5.0
 hit_short_damage = 1.0
-hit_short_power = Vector3(20, 1, 0)
+hit_short_power = Vector3(0.2, 1, 0)
 run_hit_short_damage = 2.0
-run_hit_short_power = Vector3(20, 1, 0)
+run_hit_short_power = Vector3(0.2, 1, 0)
 jump_fast_hit_short_damage = 2.0
-jump_fast_hit_short_power = Vector3(20, 1, 0)
+jump_fast_hit_short_power = Vector3(0.2, 1, 0)
 
 [node name="Health" parent="." instance=ExtResource("2_cujp6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.344675, 0)
@@ -658,7 +670,7 @@ billboard = 1
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_n677t")
-animation = &"block"
+animation = &"shake_front"
 
 [node name="Shadow" parent="." instance=ExtResource("10_0v3jx")]
 

@@ -92,23 +92,22 @@ func on_hit(damage: float, power: Vector3) -> void:
 	
 	fall_direction = power
 	animation_player.stop()
-	
+
 	if damage > 1 || state_machine.current_state_name == 'fall' || state_machine.current_state_name == 'shake':
 		fall_direction += power
 		state_machine.on_child_transition('fall')
 	else:
 		state_machine.on_child_transition('shake')
 
-# Zamiast uzywać tej funkcji lepiej aktywować/wyłączać hitboxy z node. 
-func create_hitbox(lifetime: float = 0.2, hitbox_scale: Vector3 = Vector3.ONE, hitbox_position: Vector3 = Vector3.ZERO, power: Vector3 = Vector3.ZERO, damage: float = 0.0) -> void:
-	hitbox_instance = hitbox.instantiate()
-	add_child(hitbox_instance)
-
-	hitbox_instance.lifetime = lifetime
-	# hitbox_instance.lifetime = 99999
-	hitbox_instance.collision_shape_3d.scale = hitbox_scale
-	hitbox_instance.power = Vector3(power.x if animated_sprite.is_flipped_h() else -1 * power.x, hit_short_power.y * -1, 0)
-	hitbox_instance.damage = damage
+#func create_hitbox(lifetime: float = 0.2, hitbox_scale: Vector3 = Vector3.ONE, hitbox_position: Vector3 = Vector3.ZERO, power: Vector3 = Vector3.ZERO, damage: float = 0.0) -> void:
+	#hitbox_instance = hitbox.instantiate()
+	#add_child(hitbox_instance)
+#
+	#hitbox_instance.lifetime = lifetime
+	## hitbox_instance.lifetime = 99999
+	#hitbox_instance.collision_shape_3d.scale = hitbox_scale
+	#hitbox_instance.power = Vector3(power.x if animated_sprite.is_flipped_h() else -1 * power.x, hit_short_power.y * -1, 0)
+	#hitbox_instance.damage = damage
 
 func get_direction_to_target() -> Vector3:
 	var direction_to_target: Vector3
