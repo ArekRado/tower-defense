@@ -70,6 +70,7 @@ top_level = true
 
 [node name="Recruit" parent="Characters" node_paths=PackedStringArray("player") instance=ExtResource("4_6fgvd")]
 transform = Transform3D(0.986003, 0, 0, 0, 0.986003, 0, 0, 0, 0.986003, -2.43061, 0, 0.349697)
+is_enabled = false
 player = NodePath("../../Players/Player1")
 walk_speed = Vector3(90, 0, 60)
 

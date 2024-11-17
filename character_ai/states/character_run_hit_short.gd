@@ -1,12 +1,15 @@
 extends State
 class_name CharacterRunHitShort
 
-@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
+@onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
 
 func enter() -> void:
 	character.velocity = Vector3.ZERO
-	animation_player.play('run_hit_short')
+	animated_sprite.play('run_hit_short')
+	await Wait.seconds(get_tree(), 0.3)
+	Transitioned.emit('idle')
+
 
 func physics_update(_delta: float) -> void:
 	character.move_and_slide()

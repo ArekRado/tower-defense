@@ -2,21 +2,22 @@ extends State
 class_name CharacterHitShort
 
 @onready var character: Character = $'../..'
-@onready var animation_player: AnimationPlayer = $'../../AnimationPlayer'
-@onready var hitbox: PackedScene = load('res://hitbox/hitbox.tscn')
+@onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
+@onready var hitbox: Hitbox = $"../../Hitbox"
 
 var gravity: int = ProjectSettings.get_setting('physics/3d/default_gravity')
 
-var hitboxInstance: Hitbox
-var has_hitbox: bool = false
-
 func enter() -> void:
-	print('git short')
 	character.velocity = Vector3.ZERO
-	animation_player.play('hit_short')
+	hitbox.collision_shape_3d.disabled = false
+
+	if randi_range(0, 1) == 0:
+		animated_sprite.play('hit_short_1')
+	else:
+		animated_sprite.play('hit_short_2')
 
 func exit() -> void:
-	print('adios')
+	hitbox.collision_shape_3d.disabled = true
 
 func physics_update(delta: float) -> void:
 	character.move_and_slide()
@@ -26,3 +27,7 @@ func physics_update(delta: float) -> void:
 
 func update(_delta: float) -> void:
 	character.update_facing_direction()
+
+	if animated_sprite.is_playing() == false:
+		character.velocity = Vector3.ZERO
+		Transitioned.emit('idle')

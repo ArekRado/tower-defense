@@ -7,6 +7,9 @@ class_name CharacterAI
 var wait_delay: float = 0
 
 func _process(delta: float) -> void:
+	if character.is_enabled == false:
+		return
+		
 	if state_machine.current_state_name == 'idle':
 		if wait_delay > 0:
 			wait_delay -= delta

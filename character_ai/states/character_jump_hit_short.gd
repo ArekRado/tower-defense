@@ -5,13 +5,13 @@ var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
-@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
+@onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 
 func enter() -> void:
-	animation_player.play('jump_hit_short')
+	animated_sprite.play('jump_hit_short')
 
 func get_hitbox_position() -> Vector3:
-	var shift_x: float = 7 if character.velocity.x > 0 else - 7
+	var shift_x: float = 7 if character.velocity.x > 0 else -7
 	return Vector3(shift_x, -15, 0)
 
 func physics_update(delta: float) -> void:

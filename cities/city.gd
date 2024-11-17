@@ -1,6 +1,7 @@
 extends Node3D
 class_name City
 
+# @export var is_enabled: bool = true
 @export var city_name: String = ''
 @export var size: int = 1
 @export var player: Player

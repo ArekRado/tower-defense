@@ -5,10 +5,10 @@ var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var character: Character = $"../.."
 @onready var shadow: Shadow = $"../../Shadow"
-@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
+@onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 
 func enter() -> void:
-	animation_player.play('jump_fast_hit_short')
+	animated_sprite.play('jump_fast_hit_short')
 
 func physics_update(delta: float) -> void:
 	character.velocity.y = character.jump_velocity

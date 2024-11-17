@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name Character
 
 @export_category('general')
+@export var is_enabled: bool = true
 @export var is_player: bool = false
 @export var player: Player
 
@@ -31,7 +32,6 @@ class_name Character
 @onready var animated_sprite: AnimatedSprite3D = $"AnimatedSprite3D"
 @onready var shadow: Shadow = $"Shadow"
 @onready var state_machine: StateMachine = $StateMachine
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
 @onready var player_marker: PlayerMarker = $PlayerMarker
 @onready var health: Health = $Health
@@ -91,7 +91,7 @@ func on_hit(damage: float, power: Vector3) -> void:
 	if disable_collision_with_hitboxes: return
 	
 	fall_direction = power
-	animation_player.stop()
+	animated_sprite.stop()
 
 	if damage > 1 || state_machine.current_state_name == 'fall' || state_machine.current_state_name == 'shake':
 		fall_direction += power

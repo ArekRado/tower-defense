@@ -4,12 +4,11 @@ class_name CharacterLie
 @onready var animated_sprite: AnimatedSprite3D = $"../../AnimatedSprite3D"
 @onready var character: Character = $"../.."
 @onready var collision_shape: CollisionShape3D = $"../../CollisionShape3D"
-@onready var animation_player: AnimationPlayer = $"../../AnimationPlayer"
 
 var gravity: int = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func enter() -> void:
-	animation_player.play('lie')
+	animated_sprite.play('lie')
 
 	if character.fall_direction.x > 0:
 		animated_sprite.play('lie_back')
