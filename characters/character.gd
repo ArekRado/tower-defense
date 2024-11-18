@@ -55,7 +55,6 @@ var assigned_structure_name: String
 var hitbox_instance: Hitbox
 
 var disable_collision_with_hitboxes: bool = false
-var disable_collision_with_hitboxes_timer: float = 0.0
 
 func _ready() -> void:
 	initialize_data()
@@ -79,9 +78,6 @@ func _process(_delta: float) -> void:
 		direction = true
 	elif velocity.x < 0:
 		direction = false
-
-	if disable_collision_with_hitboxes && disable_collision_with_hitboxes_timer != 0.0:
-		disable_collision_with_hitboxes_timer -= _delta
 	
 func update_facing_direction() -> void:
 	if velocity.x < 0: animated_sprite.flip_h = true

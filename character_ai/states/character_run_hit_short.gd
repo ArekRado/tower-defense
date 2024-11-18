@@ -10,7 +10,6 @@ func enter() -> void:
 	await Wait.seconds(get_tree(), 0.3)
 	Transitioned.emit('idle')
 
-
 func physics_update(_delta: float) -> void:
 	character.move_and_slide()
 

@@ -17,11 +17,11 @@ func enter() -> void:
 
 	character.fall_direction = Vector3.ZERO
 	character.disable_collision_with_hitboxes = true
-	character.disable_collision_with_hitboxes_timer = 125.0
+	await Wait.seconds(get_tree(), 3)
+	Transitioned.emit('idle')
 	
 func exit() -> void:
 	character.disable_collision_with_hitboxes = false
-	character.disable_collision_with_hitboxes_timer = 0.0
 
 func physics_update(delta: float) -> void:
 	character.move_and_slide()
