@@ -215,11 +215,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jusfm"]
 _data = {
-"hit_short": SubResource("Animation_od7y6"),
-"jump_fast_hit_short": SubResource("Animation_qrhas"),
-"jump_hit_short": SubResource("Animation_hhjyv"),
-"lie": SubResource("Animation_heb12"),
-"run_hit_short": SubResource("Animation_cgt1k")
+&"run_hit_short": SubResource("Animation_cgt1k"),
+&"hit_short": SubResource("Animation_od7y6"),
+&"jump_fast_hit_short": SubResource("Animation_qrhas"),
+&"jump_hit_short": SubResource("Animation_hhjyv"),
+&"lie": SubResource("Animation_heb12")
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_57m8j"]
@@ -686,7 +686,7 @@ shape = SubResource("BoxShape3D_754fv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_jusfm")
+&"": SubResource("AnimationLibrary_jusfm")
 }
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]

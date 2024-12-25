@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://character_ai/states/character_lie.gd" id="18_idcmw"]
 [ext_resource type="Script" path="res://character_ai/states/character_jump_fast_hit_short.gd" id="19_kuba1"]
 [ext_resource type="Script" path="res://character_ai/states/character_run_hit_short.gd" id="20_m0um6"]
-[ext_resource type="PackedScene" uid="uid://blehlyd5p0n6g" path="res://hitbox/hitbox.tscn" id="23_vr2ph"]
+[ext_resource type="PackedScene" uid="uid://blehlyd5p0n6g" path="res://hitbox/hitbox.tscn" id="23_aowfc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_754fv"]
 size = Vector3(0.119821, 0.24, 0.13)
@@ -241,7 +241,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit_short_1",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -252,7 +252,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit_short_2",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -312,7 +312,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_hit_short_1",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -323,7 +323,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_hit_short_2",
-"speed": 10.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -467,11 +467,10 @@ double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_w724e")
 animation = &"hit_short_1"
+frame = 1
+frame_progress = 1.0
 
 [node name="Shadow" parent="." instance=ExtResource("3_m4jd1")]
-
-[node name="Hitbox" parent="." instance=ExtResource("23_vr2ph")]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0.16, -0.07)
 
 [node name="StateMachine" type="Node3D" parent="."]
 script = ExtResource("4_80qf8")
@@ -528,3 +527,9 @@ script = ExtResource("20_m0um6")
 path_desired_distance = 0.1
 target_desired_distance = 0.1
 navigation_layers = 4
+
+[node name="Hitbox" type="Node3D" parent="."]
+
+[node name="HitShort" parent="Hitbox" instance=ExtResource("23_aowfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0694538, 0.160911, 0)
+collider_dimensions = Vector3(0.02, 0.01, 0.01)

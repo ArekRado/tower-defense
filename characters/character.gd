@@ -40,8 +40,7 @@ class_name Character
 @onready var character_ai: PackedScene = load("res://character_ai/character_ai.tscn")
 @onready var hitbox: PackedScene = load("res://hitbox/hitbox.tscn")
 
-# true - right; false - left
-var direction: bool = true
+var direction: String = "right"
 var height: float = 0.0
 var go_to_position: Vector3
 var go_to_character: Character
@@ -75,9 +74,9 @@ func initialize_data() -> void:
 
 func _process(_delta: float) -> void:
 	if velocity.x > 0:
-		direction = true
+		direction = "right"
 	elif velocity.x < 0:
-		direction = false
+		direction = "left"
 	
 func update_facing_direction() -> void:
 	if velocity.x < 0: animated_sprite.flip_h = true
@@ -124,25 +123,3 @@ func get_direction_to_target() -> Vector3:
 
 	direction_to_target = direction_to_target.normalized()
 	return direction_to_target
-
-# block
-# fall_back
-# fall_front
-# forward_roll
-# hit_short_1
-# hit_short_2
-# idle
-# jump
-# jump_end
-# jump_fast
-# jump_fast_hit_short
-# jump_hit_short_1
-# jump_hit_short_2
-# jump_start
-# lie_back
-# lie_front
-# run
-# run_hit_short
-# shake_back
-# shake_front
-# walk
