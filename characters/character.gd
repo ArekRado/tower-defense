@@ -51,8 +51,6 @@ var fall_direction: Vector3 = Vector3.ZERO
 var assigned_city_name: String
 var assigned_structure_name: String
 
-var hitbox_instance: Hitbox
-
 var disable_collision_with_hitboxes: bool = false
 
 func _ready() -> void:

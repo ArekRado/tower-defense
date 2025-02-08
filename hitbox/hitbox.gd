@@ -9,7 +9,9 @@ class_name Hitbox
 @onready var hitEffect: PackedScene = preload("res://hitEffect/hitEffect.tscn")
 
 func _ready() -> void:
-	collision_shape_3d.scale = collider_dimensions
+	var box: BoxShape3D = BoxShape3D.new()
+	box.size = collider_dimensions
+	collision_shape_3d.shape = box
 
 func on_collision(collide: Character) -> void:
 	var state_machine: StateMachine = collide.find_child('StateMachine')
@@ -18,7 +20,7 @@ func on_collision(collide: Character) -> void:
 	
 	var hitEffectInstance: AnimatedSprite3D = hitEffect.instantiate()
 	self.add_child(hitEffectInstance)
-	# hitEffectInstance.position = collide.position + collision_shape_3d.position
+
 	hitEffectInstance.global_position = collide.global_position
 
 func _on_area_entered(collide: Character) -> void:

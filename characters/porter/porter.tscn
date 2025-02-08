@@ -460,15 +460,12 @@ transform = Transform3D(0.963975, 0, 0, 0, 0.963975, 0, 0, 0, 0.963975, 0, 0.12,
 shape = SubResource("BoxShape3D_754fv")
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.005, 0)
 offset = Vector2(0, 12)
 billboard = 1
 double_sided = false
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_w724e")
-animation = &"hit_short_1"
-frame = 1
-frame_progress = 1.0
+animation = &"jump_fast_hit_short"
 
 [node name="Shadow" parent="." instance=ExtResource("3_m4jd1")]
 
@@ -531,5 +528,17 @@ navigation_layers = 4
 [node name="Hitbox" type="Node3D" parent="."]
 
 [node name="HitShort" parent="Hitbox" instance=ExtResource("23_aowfc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0694538, 0.160911, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.075096, 0.156001, 0)
 collider_dimensions = Vector3(0.02, 0.01, 0.01)
+
+[node name="JumpHitShort" parent="Hitbox" instance=ExtResource("23_aowfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0762543, 0.160094, 0)
+collider_dimensions = Vector3(0.02, 0.01, 0.01)
+
+[node name="JumpFastHitShort2" parent="Hitbox" instance=ExtResource("23_aowfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0948216, 0.119637, 0)
+collider_dimensions = Vector3(0.02, 0.02, 0.02)
+
+[node name="RunHitShort" parent="Hitbox" instance=ExtResource("23_aowfc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.116566, 0.124447, 0)
+collider_dimensions = Vector3(0.02, 0.02, 0.02)

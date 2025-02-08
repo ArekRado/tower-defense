@@ -11,7 +11,6 @@ func enter() -> void:
 	character.velocity = Vector3.ZERO
 
 	hitbox_hit_short.collision_shape_3d.disabled = false;
-
 	hitbox_hit_short.adjust_position_to_character_direction(character)
 
 	if randi_range(0, 1) == 0:
